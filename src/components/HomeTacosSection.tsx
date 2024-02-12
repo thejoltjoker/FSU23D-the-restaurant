@@ -41,8 +41,10 @@ const HomeTacosSection = () => {
             <br />– a burst of flavor in every taco, a fiesta on your palate!
           </p>
         </div>
-        <div className="flex gap-80 overflow-x-scroll whitespace-nowrap">
-          {tacos?.map((taco) => <HomeFoodItem item={taco} />)}
+        <div className="no-scrollbar flex gap-80 overflow-x-scroll whitespace-nowrap pb-lg">
+          {tacos?.map((taco) => (
+            <HomeFoodItem item={taco} key={taco.imageName} />
+          ))}
         </div>
       </WavySection>
     </div>

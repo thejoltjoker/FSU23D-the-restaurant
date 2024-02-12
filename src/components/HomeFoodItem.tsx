@@ -7,9 +7,9 @@ interface HomeFoodItemProps {
 
 const HomeFoodItem = ({ item }: HomeFoodItemProps) => {
   return (
-    <div className="max-w-sm text-center">
-      <img src={`${getImageUrl(item.imageName)}.png`} alt="" />
-      <h4 className="text-xl">{item.name}</h4>
+    <div className="flex min-w-64 flex-col items-center text-center">
+      <img src={`${getImageUrl(item.imageName)}.png`} alt="" className="w-64" />
+      <h4 className="font-sans text-xl text-almost-white">{item.name}</h4>
     </div>
   );
 };

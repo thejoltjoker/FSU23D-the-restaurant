@@ -25,3 +25,14 @@
     @apply text-lg;
   }
 }
+
+@layer utilities {
+  .no-scrollbar {
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
