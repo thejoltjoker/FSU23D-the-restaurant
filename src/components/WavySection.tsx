@@ -23,7 +23,7 @@ const WavySection = ({
             preserveAspectRatio="none"
             className={`h-wave w-wave fill-${bgColor} lg:w-full`}
             xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
             version="1.1"
           >
             <path
@@ -42,7 +42,7 @@ const WavySection = ({
             preserveAspectRatio="none"
             className={`h-wave w-wave fill-${bgColor} rotate-180 lg:w-full  `}
             xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
             version="1.1"
           >
             <path
