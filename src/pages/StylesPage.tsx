@@ -105,7 +105,7 @@ const StylesPage = () => {
 
       <h1>Tables</h1>
 
-      <table cellspacing="0" cellpadding="0">
+      <table cellSpacing="0" cellPadding="0">
         <thead>
           <tr>
             <th>Table Header 1</th>
