@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply bg-pale-yellow text-white;
+    @apply bg-pale-yellow text-dark-red;
   }
   h1,
   h2,
@@ -15,5 +15,13 @@
   h5,
   h6 {
     @apply font-heading;
+  }
+
+  h1 {
+    @apply text-4xl lg:text-5xl;
+  }
+
+  p {
+    @apply text-lg;
   }
 }

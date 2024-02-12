@@ -6,6 +6,7 @@ import Homepage from "./pages/Homepage";
 import Layout from "./pages/Layout";
 import Menupage from "./pages/Menupage";
 import { createBrowserRouter } from "react-router-dom";
+import StylesPage from "./pages/StylesPage";
 
 export const router = createBrowserRouter(
   [
@@ -39,6 +40,10 @@ export const router = createBrowserRouter(
           path: "/admin",
           element: <Adminpage />,
           errorElement: <Errorpage />,
+        },
+        {
+          path: "/styles",
+          element: <StylesPage />,
         },
       ],
     },
