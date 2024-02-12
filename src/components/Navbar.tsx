@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { getImageUrl } from "../helpers/strings";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { FaInstagram, FaFacebook } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,14 +12,14 @@ const Navbar = () => {
 
   return (
     <div className=" flex w-screen justify-between bg-pale-yellow">
-      <Link to="/">
+      <NavLink to="/">
         <div className="ml-4 h-[120px] w-[120px] pt-4">
           <img
             src={getImageUrl("logo_black.png")}
             alt="Black Vaca Caliente logo"
           />
         </div>
-      </Link>
+      </NavLink>
       <div className="mr-5 pt-5" onClick={toggleNavigation}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -38,14 +39,14 @@ const Navbar = () => {
       {isOpen && (
         <div className="absolute right-0 z-50 w-full bg-orange">
           <div className="flex w-screen justify-between">
-            <Link to="/">
+            <NavLink to="/">
               <div className="ml-4 h-[120px] w-[120px] pt-4">
                 <img
                   src={getImageUrl("logo_white.png")}
                   alt="White Vaca Caliente logo"
                 />
               </div>
-            </Link>
+            </NavLink>
             <div className="mr-5 pt-5" onClick={toggleNavigation}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -64,21 +65,40 @@ const Navbar = () => {
             </div>
           </div>
           <div className="flex flex-col items-center justify-center pb-4">
-            <Link to="/" className="text-3xl text-pale-yellow">
+            <NavLink
+              to="/"
+              className="text-3xl text-pale-yellow transition-transform hover:scale-110 hover:text-almost-white-variant"
+            >
               Home
-            </Link>
-            <Link to="/booking" className="pt-4 text-3xl text-pale-yellow">
+            </NavLink>
+            <NavLink
+              to="/booking"
+              className="pt-4 text-3xl text-pale-yellow transition-transform hover:scale-110 hover:text-almost-white-variant"
+            >
               Book a Table
-            </Link>
-            <Link to="/contact" className="pt-4 text-3xl text-pale-yellow">
+            </NavLink>
+            <NavLink
+              to="/contact"
+              className="pt-4 text-3xl text-pale-yellow transition-transform hover:scale-110 hover:text-almost-white-variant"
+            >
               Contact
-            </Link>
-            <Link to="/menu" className="pt-4 text-3xl text-pale-yellow">
+            </NavLink>
+            <NavLink
+              to="/menu"
+              className="pt-4 text-3xl text-pale-yellow transition-transform hover:scale-110 hover:text-almost-white-variant"
+            >
               Menu
-            </Link>
-            <Link to="/admin" className="pt-4 text-3xl text-pale-yellow">
+            </NavLink>
+            <NavLink
+              to="/admin"
+              className="pt-4 text-3xl text-pale-yellow transition-transform hover:scale-110 hover:text-almost-white-variant"
+            >
               Admin
-            </Link>
+            </NavLink>
+            <div className="flex pt-4">
+              <FaInstagram className="m-2 h-8 w-8 cursor-pointer text-pale-yellow transition-all ease-in-out hover:scale-110 hover:text-almost-white-variant" />
+              <FaFacebook className="hover: m-2 h-8 w-8 cursor-pointer text-pale-yellow transition-all ease-in-out hover:scale-110 hover:text-almost-white-variant" />
+            </div>
           </div>
         </div>
       )}
