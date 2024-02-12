@@ -1,11 +1,5 @@
-import React from 'react'
-
 const Bookingpage = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  return <div></div>;
+};
 
-export default Bookingpage
+export default Bookingpage;
