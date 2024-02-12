@@ -18,7 +18,7 @@ export default {
       colors: {
         "pale-yellow": "#F9C96C",
         "vivid-orange": "#D7472A",
-        orange: "#DB5C25",
+        "orange": "#DB5C25",
         "dark-green": "#689B41",
         "dark-red": "#790117",
         "almost-white": "#F9F4EC",
