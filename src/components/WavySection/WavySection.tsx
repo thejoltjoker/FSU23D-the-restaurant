@@ -16,7 +16,10 @@ const WavySection = ({
   return (
     <div className={`relative ${top && "pt-wave"} ${bottom && "pb-wave"}`}>
       {top && (
-        <div className="wave-divider-top h-wave absolute left-0 top-0 w-full overflow-hidden">
+        <div
+          className="h-wave absolute left-0 top-0 w-full overflow-hidden"
+          data-testid="wave-divider-top"
+        >
           <svg
             id="visual"
             viewBox="0 0 1728 100"
@@ -35,7 +38,10 @@ const WavySection = ({
         </div>
       )}
       {bottom && (
-        <div className="wave-divider-top h-wave absolute bottom-0 left-0 w-full overflow-hidden">
+        <div
+          className="wave-divider-bottom h-wave absolute bottom-0 left-0 w-full overflow-hidden"
+          data-testid="wave-divider-bottom"
+        >
           <svg
             id="visual"
             viewBox="0 0 1728 100"
