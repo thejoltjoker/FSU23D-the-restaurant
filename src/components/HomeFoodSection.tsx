@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useScrollYContext } from "../contexts/ScrollYContext";
 import { IMenuItem } from "../models/IMenuItem";
 import { IMenuResponse } from "../models/IMenuResponse";
 import { get } from "../services/http";
@@ -9,14 +10,23 @@ interface HomeFoodSectionProps {
   title: string;
   description: string;
   category: string;
+  bgColor: string;
+  textColor?: string;
+  scrollOffset?: number;
+  scrollMultiplier?: number;
 }
 
 const HomeFoodSection = ({
   title,
   description,
   category,
+  bgColor = "orange",
+  textColor = "almost-white",
+  scrollOffset = 0,
+  scrollMultiplier = 0.35,
 }: HomeFoodSectionProps) => {
   const [food, setFood] = useState<IMenuItem[]>();
+  const scrollY = useScrollYContext();
 
   useEffect(() => {
     if (food) return;
@@ -47,15 +57,23 @@ const HomeFoodSection = ({
 
   return (
     <div className="-mt-wave">
-      <WavySection bgColor="orange" top={true} bottom={false}>
-        <div className="mx-auto max-w-screen-lg py-xl text-almost-white">
-          <h2 className="font-heading text-7xl">{title}</h2>
-          <p className="mb-sm text-xl">{description}</p>
-        </div>
-        <div className="no-scrollbar flex gap-80 overflow-x-scroll whitespace-nowrap pb-lg">
-          {food?.map((taco) => (
-            <HomeFoodItem item={taco} key={taco.imageName} />
-          ))}
+      <WavySection bgColor={bgColor} top={true} bottom={false}>
+        <div className={`text-${textColor}`}>
+          <div className="mx-auto max-w-screen-lg py-xl">
+            <h2 className="font-heading text-7xl">{title}</h2>
+            <p
+              className="mb-sm text-xl"
+              dangerouslySetInnerHTML={{ __html: description }}
+            ></p>
+          </div>
+          <div className="relative h-[32rem] overflow-clip">
+            <div
+              className="absolute top-0 flex gap-32 overscroll-x-none whitespace-nowrap pb-lg transition lg:gap-80"
+              style={{ left: -scrollY * scrollMultiplier + scrollOffset }}
+            >
+              {food?.map((taco) => <HomeFoodItem item={taco} key={taco.id} />)}
+            </div>
+          </div>
         </div>
       </WavySection>
     </div>
