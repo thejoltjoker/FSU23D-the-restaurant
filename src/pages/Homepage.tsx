@@ -1,5 +1,5 @@
 import HomeTacosSection from "../components/HomeTacosSection";
-import WavySection from "../components/WavySection";
+import WavySection from "../components/WavySection/WavySection";
 
 const Homepage = () => {
   return (

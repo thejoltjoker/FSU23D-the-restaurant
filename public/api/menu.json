@@ -1,0 +1,140 @@
+{
+  "items": [
+    {
+      "name": "Spicy Sizzle Tacos",
+      "description": "Tantalize your taste buds with these sizzling tacos featuring marinated and grilled meats, topped with a spicy kick. You'll be begging for more!",
+      "price": 9.99,
+      "category": "Tacos",
+      "isVegetarian": false,
+      "imageName": "taco-spicy-sizzle"
+    },
+    {
+      "name": "Carnivore's Delight Tacos",
+      "description": "For the true meat lovers out there, our Carnivore's Delight Tacos boast a mouthwatering selection of beef, chicken, and pork, perfectly seasoned to perfection.",
+      "price": 10.99,
+      "category": "Tacos",
+      "isVegetarian": false,
+      "imageName": "taco-carnivores-delight"
+    },
+    {
+      "name": "Zesty Veggie Fiesta Tacos",
+      "description": "Vegetarian bliss in every bite! Our Zesty Veggie Fiesta Tacos showcase a colorful medley of fresh veggies, drizzled with a zesty sauce. A fiesta for your taste buds!",
+      "price": 8.99,
+      "category": "Tacos",
+      "isVegetarian": true,
+      "imageName": "taco-zesty-veggie-fiesta"
+    },
+    {
+      "name": "Fisherman's Catch Tacos",
+      "description": "Dive into the ocean's flavors with our Fisherman's Catch Tacos. Featuring succulent fish, fresh salsa, and a hint of lime, it's a seafood sensation in every bite.",
+      "price": 11.49,
+      "category": "Tacos",
+      "isVegetarian": false,
+      "imageName": "taco-fishermans-catch"
+    },
+    {
+      "name": "Smoky Chipotle Chicken Tacos",
+      "description": "Savor the smoky goodness of our Chipotle Chicken Tacos. Tender chicken, grilled to perfection, and topped with a smoky chipotle sauce that will leave you craving more.",
+      "price": 9.49,
+      "category": "Tacos",
+      "isVegetarian": false,
+      "imageName": "taco-smoky-chipotle-chicken"
+    },
+    {
+      "name": "Burrito Bonanza",
+      "description": "Experience a flavor explosion in every bite! Our Burrito Bonanza is a delightful combination of savory fillings wrapped in a warm tortilla. It's a fiesta in your mouth!",
+      "price": 10.49,
+      "category": "Burritos",
+      "isVegetarian": false,
+      "imageName": "burrito-bonanza"
+    },
+    {
+      "name": "Tropical Heatwave Burrito",
+      "description": "Spice up your life with the Tropical Heatwave Burrito. Packed with tropical flavors and a hint of heat, it's a fiesta for your taste buds!",
+      "price": 11.99,
+      "category": "Burritos",
+      "isVegetarian": false,
+      "imageName": "burrito-tropical-heatwave"
+    },
+    {
+      "name": "Carnitas Carnival Burrito",
+      "description": "Step right up to the Carnitas Carnival! This burrito features slow-cooked carnitas, savory black beans, and a carnival of flavors that'll make your taste buds dance.",
+      "price": 12.49,
+      "category": "Burritos",
+      "isVegetarian": false,
+      "imageName": "burrito-carnitas-carnival"
+    },
+    {
+      "name": "Veggie Fiesta Burrito",
+      "description": "Join the Veggie Fiesta with our mouthwatering burrito packed full of fresh vegetables, seasoned rice, and a burst of flavorful sauces. Vegetarian delight at its finest!",
+      "price": 9.99,
+      "category": "Burritos",
+      "isVegetarian": true,
+      "imageName": "burrito-veggie-fiesta"
+    },
+    {
+      "name": "Chili Con Carne Burrito",
+      "description": "Warm up your taste buds with our Chili Con Carne Burrito. Filled with hearty chili, seasoned beef, and all the fixings, it's a comforting hug in a tortilla.",
+      "price": 10.99,
+      "category": "Burritos",
+      "isVegetarian": false,
+      "imageName": "burrito-chili-con-carne"
+    },
+    {
+      "name": "Dulce de Leche Delight",
+      "description": "Indulge your sweet tooth with our Dulce de Leche Delight dessert. A delectable treat that will transport you to a world of sweetness and satisfaction.",
+      "price": 7.99,
+      "category": "Desserts",
+      "isVegetarian": true,
+      "imageName": "dessert-dulce-de-leche-delight"
+    },
+    {
+      "name": "ChocoChurro Extravaganza",
+      "description": "Dive into the delightful combination of crispy churros coated in rich chocolate. It's not just a dessert; it's a ChocoChurro Extravaganza!",
+      "price": 8.49,
+      "category": "Desserts",
+      "isVegetarian": true,
+      "imageName": "dessert-chocochurro-extravaganza"
+    },
+    {
+      "name": "Dulce de Leche Delight",
+      "description": "Indulge your sweet tooth with our Dulce de Leche Delight dessert. A delectable treat that will transport you to a world of sweetness and satisfaction.",
+      "price": 7.99,
+      "category": "Desserts",
+      "isVegetarian": true,
+      "imageName": "dessert-dulce-de-leche-delight"
+    },
+    {
+      "name": "ChocoChurro Extravaganza",
+      "description": "Dive into the delightful combination of crispy churros coated in rich chocolate. It's not just a dessert; it's a ChocoChurro Extravaganza!",
+      "price": 8.49,
+      "category": "Desserts",
+      "isVegetarian": true,
+      "imageName": "dessert-chocochurro-extravaganza"
+    },
+    {
+      "name": "Tres Leches Temptation",
+      "description": "Satisfy your cravings with our Tres Leches Temptation. A moist and decadent cake soaked in three types of milk, creating a heavenly dessert experience.",
+      "price": 9.99,
+      "category": "Desserts",
+      "isVegetarian": true,
+      "imageName": "dessert-tres-leches-temptation"
+    },
+    {
+      "name": "Mango Tango Sorbet",
+      "description": "Dance into a world of tropical bliss with our Mango Tango Sorbet. A refreshing and fruity treat that will leave your taste buds doing the tango!",
+      "price": 6.99,
+      "category": "Desserts",
+      "isVegetarian": true,
+      "imageName": "dessert-mango-tango-sorbet"
+    },
+    {
+      "name": "Cinnamon Churro Explosion",
+      "description": "Experience an explosion of flavor with our Cinnamon Churro Explosion. Crispy churros rolled in cinnamon sugar, served with a side of pure joy.",
+      "price": 7.49,
+      "category": "Desserts",
+      "isVegetarian": true,
+      "imageName": "dessert-cinnamon-churro-explosion"
+    }
+  ]
+}
