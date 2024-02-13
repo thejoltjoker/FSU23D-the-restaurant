@@ -37,3 +37,30 @@ export const post = async <T>(url: string, body: string) => {
     throw error;
   }
 };
+
+export const put = async <T>(url: string, body: string) => {
+  const headers = {
+    Accept: "*/*",
+    "Content-Type": "application/json",
+  };
+  try {
+    const response = await axios.put<T>(url, body, { headers: headers });
+    return response.data;
+  } catch (error) {
+    handleError("PUT", url, error);
+    throw error;
+  }
+};
+
+export const remove = async <T>(url: string) => {
+  const headers = {
+    Accept: "*/*",
+  };
+  try {
+    const response = await axios.delete<T>(url, { headers: headers });
+    return response.data;
+  } catch (error) {
+    handleError("DELETE", url, error);
+    throw error;
+  }
+};
