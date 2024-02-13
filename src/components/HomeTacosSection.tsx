@@ -1,7 +1,36 @@
+import { useEffect, useState } from "react";
+import { IMenuItem } from "../models/IMenuItem";
+import { IMenuResponse } from "../models/IMenuResponse";
+import { get } from "../services/http";
 import HomeFoodItem from "./HomeFoodItem";
 import WavySection from "./WavySection";
 
 const HomeTacosSection = () => {
+  const [tacos, setTacos] = useState<IMenuItem[]>();
+
+  useEffect(() => {
+    if (tacos) return;
+    let ignore = false;
+
+    const fetchData = async () => {
+      try {
+        const response = await get<IMenuResponse>(
+          `${import.meta.env.BASE_URL}api/menu.json`,
+        );
+        if (!ignore)
+          setTacos(response.items.filter((item) => item.category === "Tacos"));
+      } catch (error) {
+        console.error("Error while fetching menu");
+      }
+    };
+
+    fetchData();
+
+    return () => {
+      ignore = true;
+    };
+  });
+
   return (
     <div className="-mt-wave">
       <WavySection bgColor="orange" top={true} bottom={false}>
@@ -11,18 +40,11 @@ const HomeTacosSection = () => {
             Savor Mexico's finest in every taco bite at Vaca Caliente
             <br />– a burst of flavor in every taco, a fiesta on your palate!
           </p>
-          <div>
-            <HomeFoodItem
-              item={{
-                name: "Taco Supreme",
-                description: "",
-                price: 9.99,
-                category: "Tacos",
-                isVegetarian: false,
-                imageName: "taco-del-mar",
-              }}
-            />
-          </div>
+        </div>
+        <div className="no-scrollbar flex gap-80 overflow-x-scroll whitespace-nowrap pb-lg">
+          {tacos?.map((taco) => (
+            <HomeFoodItem item={taco} key={taco.imageName} />
+          ))}
         </div>
       </WavySection>
     </div>
