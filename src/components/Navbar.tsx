@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { getImageUrl } from "../helpers/strings";
+import { FaFacebook, FaInstagram, FaYelp } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import { FaInstagram, FaFacebook, FaYelp } from "react-icons/fa";
+import { getImageUrl } from "../helpers/strings";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +11,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" flex w-screen justify-between bg-pale-yellow">
+    <div className="flex w-full justify-between bg-pale-yellow">
       <NavLink to="/">
         <div className="ml-4 h-[120px] w-[120px] pt-4">
           <img
