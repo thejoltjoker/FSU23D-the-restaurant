@@ -2,6 +2,9 @@
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
   "git.autofetch": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

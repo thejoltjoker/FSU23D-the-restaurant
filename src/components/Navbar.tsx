@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { getImageUrl } from "../helpers/strings";
 import { NavLink } from "react-router-dom";
-import { FaInstagram, FaFacebook } from "react-icons/fa";
+import { FaInstagram, FaFacebook, FaYelp } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -96,8 +96,9 @@ const Navbar = () => {
               Admin
             </NavLink>
             <div className="flex pt-4">
-              <FaInstagram className="m-2 h-8 w-8 cursor-pointer text-pale-yellow transition-all ease-in-out hover:scale-110 hover:text-almost-white-variant" />
-              <FaFacebook className="hover: m-2 h-8 w-8 cursor-pointer text-pale-yellow transition-all ease-in-out hover:scale-110 hover:text-almost-white-variant" />
+              <FaInstagram className="m-2 h-5 w-5 cursor-pointer text-pale-yellow transition-all ease-in-out hover:scale-110 hover:text-almost-white-variant" />
+              <FaFacebook className="hover: m-2 h-5 w-5 cursor-pointer text-pale-yellow transition-all ease-in-out hover:scale-110 hover:text-almost-white-variant" />
+              <FaYelp className="hover: m-2 h-5 w-5 cursor-pointer text-pale-yellow transition-all ease-in-out hover:scale-110 hover:text-almost-white-variant" />
             </div>
           </div>
         </div>
