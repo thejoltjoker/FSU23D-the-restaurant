@@ -26,6 +26,21 @@
   }
 }
 
+@layer components {
+  .btn-vivid-orange {
+    @apply shadow-btn-dark-red rounded-full bg-vivid-orange px-6 py-1.5 text-almost-white;
+  }
+  .btn-dark-red {
+    @apply shadow-btn-orange-variant rounded-full bg-dark-red px-6 py-1.5 text-almost-white;
+  }
+  .form-with-dark-red-shadow {
+    @apply shadow-form-dark-red mt-5 flex justify-between rounded-xl bg-almost-white p-3;
+  }
+  .form-with-orange-variant-shadow {
+    @apply shadow-form-orange-variant mt-5 flex justify-between rounded-xl bg-almost-white p-3;
+  }
+}
+
 @layer utilities {
   .no-scrollbar {
     -ms-overflow-style: none;
