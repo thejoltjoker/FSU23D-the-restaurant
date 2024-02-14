@@ -1,12 +1,12 @@
+import {
+  FaFacebook,
+  FaInstagram,
+  FaMapPin,
+  FaPhoneAlt,
+  FaYelp,
+} from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { getImageUrl } from "../helpers/strings";
-import {
-  FaInstagram,
-  FaFacebook,
-  FaYelp,
-  FaPhoneAlt,
-  FaMapPin,
-} from "react-icons/fa";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -17,7 +17,7 @@ const Footer = () => {
   };
   return (
     <>
-      <div className="flex justify-between bg-orange">
+      <div className="flex items-center justify-between bg-orange">
         <div
           className=" h-logo w-logo ml-4 cursor-pointer pt-4"
           onClick={scrollToTop}
