@@ -1,5 +1,6 @@
 import { Booking, IBooking } from "../models/Booking";
 import { Customer } from "../models/Customer";
+import { ICreateBookingResponse } from "../models/ICreateBookingResponse";
 import { IRestaurant } from "../models/IRestaurant";
 import { get, post } from "./http";
 
@@ -44,10 +45,10 @@ export class Endpoint {
 
 export const getRestaurant = async (restaurantId: string) => {
   try {
-    const response = await get<IRestaurant>(
+    const response = await get<IRestaurant[]>(
       Endpoint.getRestaurant(restaurantId),
     );
-    return response;
+    return response[0];
   } catch (error) {
     console.log("Error while getting restaurant data");
   }
@@ -55,8 +56,8 @@ export const getRestaurant = async (restaurantId: string) => {
 
 export const getBooking = async (bookingId: string) => {
   try {
-    const response = await get<IBooking>(Endpoint.getBooking(bookingId));
-    return response;
+    const response = await get<IBooking[]>(Endpoint.getBooking(bookingId));
+    return response[0];
   } catch (error) {
     console.log(`Error while getting booking ${bookingId}`);
   }
@@ -76,7 +77,10 @@ export const getRestaurantBookings = async (restaurantId: string) => {
 export const createBooking = async (booking: Booking) => {
   try {
     const body = JSON.stringify(booking);
-    const response = await post<Booking>(Endpoint.createBooking, body);
+    const response = await post<ICreateBookingResponse>(
+      Endpoint.createBooking,
+      body,
+    );
     return response;
   } catch (error) {
     console.log(

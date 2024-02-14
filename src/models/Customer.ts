@@ -7,11 +7,3 @@ export class Customer {
     public id?: string,
   ) {}
 }
-
-// export interface Customer {
-//   id: string;
-//   name: string;
-//   lastname: string;
-//   email: string;
-//   phone: string;
-// }
