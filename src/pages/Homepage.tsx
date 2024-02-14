@@ -1,19 +1,10 @@
 import HomeFoodSection from "../components/HomeFoodSection";
+import HeroSection from "../components/HeroSection";
 
 const Homepage = () => {
   return (
-    <div>
-      <div className="mx-auto max-w-screen-lg py-xl text-dark-red">
-        <h1>Placeholder Hero</h1>
-        <p className="pb-wave">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus at
-          incidunt impedit inventore! Aut expedita fugiat, laborum esse
-          perferendis eaque quis quae deserunt facilis? Quas debitis inventore
-          praesentium consequuntur? Dolor?
-        </p>
-      </div>
-
-      {/* <HomeTacosSection /> */}
+    <>
+      <HeroSection />
       <HomeFoodSection
         key={"tacos-section"}
         title="Tacos"
@@ -42,7 +33,7 @@ const Homepage = () => {
         scrollOffset={400}
         scrollMultiplier={0.3}
       />
-    </div>
+    </>
   );
 };
 
