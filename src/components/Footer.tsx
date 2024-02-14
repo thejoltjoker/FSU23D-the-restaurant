@@ -19,7 +19,7 @@ const Footer = () => {
     <>
       <div className="flex justify-between bg-orange">
         <div
-          className=" ml-4 h-[120px] w-[120px] cursor-pointer pt-4"
+          className=" h-logo w-logo ml-4 cursor-pointer pt-4"
           onClick={scrollToTop}
         >
           <img
