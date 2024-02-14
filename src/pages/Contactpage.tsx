@@ -18,18 +18,23 @@ const Contactpage = () => {
   });
 
   return (
-    <main className="flex h-screen flex-col items-center">
-      <div className="flex flex-col items-center">
-        <h1>Where are we?</h1>
-        <p className="mb-8 mt-8 w-3/4 text-xs">
-          We find ourselves in the midst of Stockholm's hustle and bustle, where
-          the beautiful bridges intersect and where meatballs meet tacos!
-          Welcome to "Vaca Caliente" - the Mexican hotspot in the heart of
-          Sweden's capital!🌮🎉
-        </p>
+    <>
+      <div className="-mb-wave">
+        <WavySection bgColor="pale-yellow" top={false} bottom={true}>
+          <div className="flex flex-col items-center">
+            <h1>Where are we?</h1>
+            <p className="mb-8 mt-8 w-3/4 text-xs">
+              We find ourselves in the midst of Stockholm's hustle and bustle,
+              where the beautiful bridges intersect and where meatballs meet
+              tacos! Welcome to "Vaca Caliente" - the Mexican hotspot in the
+              heart of Sweden's capital!🌮🎉
+            </p>
+          </div>
+        </WavySection>
       </div>
-      <div id="map" className="h-[300px] w-full"></div>
-      <div className="-m-wave flex h-1/3 w-full flex-wrap pt-4">
+
+      <div id="map" className="h-[500px] w-full"></div>
+      <div className="-m-wave">
         <WavySection bgColor="dark-green" top={true} bottom={false}>
           <div className="flex flex-grow flex-col items-center bg-dark-green">
             <h4 className="mt-8 text-xl text-almost-white">Contact us</h4>
@@ -75,7 +80,7 @@ const Contactpage = () => {
           </div>
         </WavySection>
       </div>
-    </main>
+    </>
   );
 };
 
