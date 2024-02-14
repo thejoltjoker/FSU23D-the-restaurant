@@ -60,7 +60,10 @@ export default {
         "dark-red-variant": "#47010D",
         "almost-white-variant": "#EDDDC5",
       },
-      boxShadow: {},
+      boxShadow: {
+        "btn-dark-red": "2px 3px 0 0 #790117",
+        "btn-orange-variant": "2px 3px 0 0 #AF491D",
+      },
     },
   },
   plugins: [],

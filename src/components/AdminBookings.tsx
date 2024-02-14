@@ -1,3 +1,4 @@
+import "tailwindcss/components.css";
 import WavySection from "./WavySection";
 
 const AdminBookings = () => {
@@ -16,7 +17,7 @@ const AdminBookings = () => {
               burst of flavor in every taco, a fiesta on your palate!
             </p>
             <div
-              className="mt-5 flex justify-between rounded-xl bg-almost-white p-3"
+              className=" mt-5 flex justify-between rounded-xl bg-almost-white p-3 shadow-[6px_5px_2px_0_#790117]"
               shadow-lg
             >
               <div>
@@ -28,13 +29,13 @@ const AdminBookings = () => {
               <div className="flex flex-col justify-around">
                 <button
                   onClick={HandleChangeBooking}
-                  className="rounded-full bg-vivid-orange px-4 py-1 text-white "
+                  className="shadow-btn-dark-red rounded-full bg-vivid-orange px-4 py-1 text-almost-white"
                 >
                   Change booking
                 </button>
                 <button
                   onClick={HandleCancelBooking}
-                  className="rounded-full bg-dark-red px-4 py-1 text-white drop-shadow-xl"
+                  className="shadow-btn-orange-variant  rounded-full bg-dark-red px-4 py-1 text-white"
                 >
                   Cancel booking
                 </button>
