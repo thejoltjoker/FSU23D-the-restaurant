@@ -1,23 +1,124 @@
-import { IBooking } from "../models/IBooking";
+import { Booking, IBooking } from "../models/Booking";
+import { Customer } from "../models/Customer";
+import { IRestaurant } from "../models/IRestaurant";
 import { get, post } from "./http";
 
-const baseURL = "https://school-restaurant-api.azurewebsites.net/";
-const restaurantId = "65c5e43412ebb6ed53265ab9";
+export const restaurantId = "65c5e43412ebb6ed53265ab9";
 
-export const getRestaurant = async () => {
-  const url = `${baseURL}restaurant/${restaurantId}`;
+export class Endpoint {
+  public static baseUrl = "https://school-restaurant-api.azurewebsites.net/";
+  public static createRestaurant: string = `${Endpoint.baseUrl}restaurant/create`;
+  public static createBooking: string = `${Endpoint.baseUrl}booking/create`;
+  public static createCustomer: string = `${Endpoint.baseUrl}customer/create`;
 
+  constructor() {}
+
+  public static getRestaurant(restaurantId: string) {
+    return `${Endpoint.baseUrl}restaurant/${restaurantId}`;
+  }
+
+  public static getBooking(bookingId: string) {
+    return `${Endpoint.baseUrl}booking/${bookingId}`;
+  }
+
+  public static getRestaurantBookings(restaurantId: string) {
+    return `${Endpoint.baseUrl}booking/restaurant/${restaurantId}`;
+  }
+
+  public static updateBooking(bookingId: string) {
+    return `${Endpoint.baseUrl}booking/update/${bookingId}`;
+  }
+
+  public static deleteBooking(bookingId: string) {
+    return `${Endpoint.baseUrl}booking/delete/${bookingId}`;
+  }
+
+  public static getCustomer(customerId: string) {
+    return `${Endpoint.baseUrl}customer/${customerId}`;
+  }
+
+  public static updateCustomer(customerId: string) {
+    return `${Endpoint.baseUrl}customer/update/${customerId}`;
+  }
+}
+
+export const getRestaurant = async (restaurantId: string) => {
   try {
-    const response = await get(url);
+    const response = await get<IRestaurant>(
+      Endpoint.getRestaurant(restaurantId),
+    );
     return response;
   } catch (error) {
     console.log("Error while getting restaurant data");
   }
 };
 
-export const createBooking = async (booking: IBooking) => {
-  const url = `${baseURL}booking/create`;
-  const body = JSON.stringify(booking);
-
-  post(url, body);
+export const getBooking = async (bookingId: string) => {
+  try {
+    const response = await get<IBooking>(Endpoint.getBooking(bookingId));
+    return response;
+  } catch (error) {
+    console.log(`Error while getting booking ${bookingId}`);
+  }
 };
+
+export const getRestaurantBookings = async (restaurantId: string) => {
+  try {
+    const response = await get<IBooking>(
+      Endpoint.getRestaurantBookings(restaurantId),
+    );
+    return response;
+  } catch (error) {
+    console.log(`Error while getting bookings for restaurant ${restaurantId}`);
+  }
+};
+
+export const createBooking = async (booking: Booking) => {
+  try {
+    const body = JSON.stringify(booking);
+    const response = await post<Booking>(Endpoint.createBooking, body);
+    return response;
+  } catch (error) {
+    console.log(
+      `Error while creating booking at restaurant ${booking.restaurantId}`,
+    );
+  }
+};
+
+// TODO
+// export const updateBooking = async (bookingId: string) => {
+//   const url = `${baseURL}booking/update/${restaurantId}`;
+// };
+
+export const deleteBooking = async (bookingId: string) => {
+  try {
+    const response = await get(Endpoint.deleteBooking(bookingId));
+    return response;
+  } catch (error) {
+    console.log(`Error while deleteing booking ${bookingId}`);
+  }
+};
+
+export const getCustomer = async (customerId: string) => {
+  try {
+    const response = await get<Customer>(Endpoint.getCustomer(customerId));
+    return response;
+  } catch (error) {
+    console.log(`Error while getting customer ${customerId}`);
+  }
+};
+
+export const createCustomer = async (customer: Customer) => {
+  try {
+    const body = JSON.stringify(customer);
+    const response = await post<Customer>(Endpoint.createCustomer, body);
+    return response;
+  } catch (error) {
+    console.log(`Error while creating customer ${customer.name}`);
+  }
+};
+
+// TODO
+// export const updateCustomer = async (customerId: string) => {
+//   const url = `${baseURL}customer/update/${customerId}`;
+// };

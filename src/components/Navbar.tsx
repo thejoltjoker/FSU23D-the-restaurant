@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { getImageUrl } from "../helpers/strings";
+import { FaFacebook, FaInstagram, FaYelp } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import { FaInstagram, FaFacebook } from "react-icons/fa";
+import { getImageUrl } from "../helpers/strings";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,9 +11,9 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" flex w-screen justify-between bg-pale-yellow">
+    <div className="flex w-full justify-between bg-pale-yellow">
       <NavLink to="/">
-        <div className="ml-4 h-[120px] w-[120px] pt-4">
+        <div className="h-logo w-logo ml-4 pt-4">
           <img
             src={getImageUrl("logo_black.png")}
             alt="Black Vaca Caliente logo"
@@ -96,8 +96,9 @@ const Navbar = () => {
               Admin
             </NavLink>
             <div className="flex pt-4">
-              <FaInstagram className="m-2 h-8 w-8 cursor-pointer text-pale-yellow transition-all ease-in-out hover:scale-110 hover:text-almost-white-variant" />
-              <FaFacebook className="hover: m-2 h-8 w-8 cursor-pointer text-pale-yellow transition-all ease-in-out hover:scale-110 hover:text-almost-white-variant" />
+              <FaInstagram className="m-2 h-5 w-5 cursor-pointer text-pale-yellow transition-all ease-in-out hover:scale-110 hover:text-almost-white-variant" />
+              <FaFacebook className="hover: m-2 h-5 w-5 cursor-pointer text-pale-yellow transition-all ease-in-out hover:scale-110 hover:text-almost-white-variant" />
+              <FaYelp className="hover: m-2 h-5 w-5 cursor-pointer text-pale-yellow transition-all ease-in-out hover:scale-110 hover:text-almost-white-variant" />
             </div>
           </div>
         </div>
