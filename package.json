@@ -26,6 +26,7 @@
     "sort-by": "^0.0.2"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
     "@types/mapbox-gl": "^2.7.21",

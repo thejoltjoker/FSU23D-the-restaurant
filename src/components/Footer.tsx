@@ -20,7 +20,7 @@ const Footer = () => {
     <>
       <div className="-m-wave">
         <WavySection bgColor="orange" top={true} bottom={false}>
-          <div className="flex justify-between bg-orange">
+          <div className="flex items-center justify-between bg-orange">
             <div
               className=" h-logo w-logo ml-4 cursor-pointer pt-4"
               onClick={scrollToTop}
