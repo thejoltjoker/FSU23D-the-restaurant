@@ -1,9 +1,11 @@
+import HeroSection from "../components/HeroSection";
 import HomeTacosSection from "../components/HomeTacosSection";
 import WavySection from "../components/WavySection";
 
 const Homepage = () => {
   return (
     <div>
+      <HeroSection />
       <WavySection bgColor="almost-white" top={true} bottom={false}>
         <div className="mx-auto max-w-screen-lg py-xl text-dark-red">
           <h1>My Squiggly Section</h1>
