@@ -1,8 +1,23 @@
 import { FaMapPin, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
+// import WavySection from "../components/WavySection";
+import mapboxgl from "mapbox-gl";
+import { useEffect } from "react";
 
 const Contactpage = () => {
+  useEffect(() => {
+    mapboxgl.accessToken = process.env.VITE_MAPBOX_TOKEN;
+    const map = new mapboxgl.Map({
+      container: "map",
+      style: "mapbox://styles/mapbox/streets-v12",
+      center: [18.0649, 59.3293],
+      zoom: 13,
+    });
+
+    new mapboxgl.Marker().setLngLat([18.0649, 59.3293]).addTo(map);
+
+    return () => map.remove();
+  });
+
   return (
     <main className="flex h-screen flex-col items-center">
       <div className="flex flex-col items-center">
@@ -14,25 +29,8 @@ const Contactpage = () => {
           Sweden's capital!🌮🎉
         </p>
       </div>
-      <div className="z-0 h-[400px] w-full">
-        <MapContainer
-          center={[59.3293, 18.0686]}
-          zoom={16}
-          style={{ height: "400px", width: "100%" }}
-          dragging={false}
-        >
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          />
-          <Marker position={[51.505, -0.09]}>
-            <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </Popup>
-          </Marker>
-        </MapContainer>
-      </div>
-
+      <div id="map" className=""></div>
+      {/* <WavySection bgColor="dark-green" top={false} bottom={true}> */}
       <div className="flex h-1/3 w-full flex-wrap pt-4">
         <div className="flex flex-grow flex-col items-center bg-dark-green">
           <h4 className="mt-8 text-xl text-almost-white">Contact us</h4>
@@ -51,18 +49,33 @@ const Contactpage = () => {
           </div>
         </div>
         <div className="flex flex-grow flex-col items-center bg-dark-green-variant">
-          <h4 className="mt-6 text-xl text-pale-yellow">Working hours</h4>
-          <p className="mt-1 text-sm text-pale-yellow">Mon 18:00 - 00:00</p>
-          <p className="mt-1 text-sm text-pale-yellow">Tue 18:00 - 00:00</p>
-          <p className="mt-1 text-sm text-pale-yellow">Wed 18:00 - 00:00</p>
-          <p className="mt-1 text-sm text-pale-yellow">Thu 18:00 - 00:00</p>
-          <p className="mt-1 text-sm text-pale-yellow">Fri 18:00 - 00:00</p>
-          <p className="mt-1 text-sm text-pale-yellow">Sat 18:00 - 00:00</p>
-          <p className="mb-3 mt-1 text-sm text-pale-yellow">
+          <h4 className="mt-6 text-xl text-pale-yellow-variant">
+            Working hours
+          </h4>
+          <p className="mt-1 text-sm text-pale-yellow-variant">
+            Mon 18:00 - 00:00
+          </p>
+          <p className="mt-1 text-sm text-pale-yellow-variant">
+            Tue 18:00 - 00:00
+          </p>
+          <p className="mt-1 text-sm text-pale-yellow-variant">
+            Wed 18:00 - 00:00
+          </p>
+          <p className="mt-1 text-sm text-pale-yellow-variant">
+            Thu 18:00 - 00:00
+          </p>
+          <p className="mt-1 text-sm text-pale-yellow-variant">
+            Fri 18:00 - 00:00
+          </p>
+          <p className="mt-1 text-sm text-pale-yellow-variant">
+            Sat 18:00 - 00:00
+          </p>
+          <p className="mb-3 mt-1 text-sm text-pale-yellow-variant">
             Sun 18:00 - 00:00
           </p>
         </div>
       </div>
+      {/* </WavySection> */}
     </main>
   );
 };

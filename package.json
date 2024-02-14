@@ -12,8 +12,10 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "dotenv": "^16.4.4",
     "leaflet": "^1.9.4",
     "localforage": "^1.10.0",
+    "mapbox-gl": "^3.1.2",
     "match-sorter": "^6.3.4",
     "react": "^18.2.0",
     "react-axios": "^2.0.6",
@@ -21,11 +23,13 @@
     "react-icons": "^5.0.1",
     "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.22.0",
-    "sort-by": "^1.2.0"
+    "sort-by": "^0.0.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
+    "@types/mapbox-gl": "^2.7.21",
+    "@types/node": "^20.11.17",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
