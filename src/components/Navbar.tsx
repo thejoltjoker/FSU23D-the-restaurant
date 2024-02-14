@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <div className="flex w-full justify-between bg-pale-yellow">
       <NavLink to="/">
-        <div className="ml-4 h-[120px] w-[120px] pt-4">
+        <div className="h-logo w-logo ml-4 pt-4">
           <img
             src={getImageUrl("logo_black.png")}
             alt="Black Vaca Caliente logo"
