@@ -6,7 +6,7 @@
       "price": 9.99,
       "category": "Tacos",
       "isVegetarian": false,
-      "imageName": "taco-spicy-sizzle"
+      "id": "taco-spicy-sizzle"
     },
     {
       "name": "Carnivore's Delight Tacos",
@@ -14,7 +14,7 @@
       "price": 10.99,
       "category": "Tacos",
       "isVegetarian": false,
-      "imageName": "taco-carnivores-delight"
+      "id": "taco-carnivores-delight"
     },
     {
       "name": "Zesty Veggie Fiesta Tacos",
@@ -22,7 +22,7 @@
       "price": 8.99,
       "category": "Tacos",
       "isVegetarian": true,
-      "imageName": "taco-zesty-veggie-fiesta"
+      "id": "taco-zesty-veggie-fiesta"
     },
     {
       "name": "Fisherman's Catch Tacos",
@@ -30,7 +30,7 @@
       "price": 11.49,
       "category": "Tacos",
       "isVegetarian": false,
-      "imageName": "taco-fishermans-catch"
+      "id": "taco-fishermans-catch"
     },
     {
       "name": "Smoky Chipotle Chicken Tacos",
@@ -38,7 +38,7 @@
       "price": 9.49,
       "category": "Tacos",
       "isVegetarian": false,
-      "imageName": "taco-smoky-chipotle-chicken"
+      "id": "taco-smoky-chipotle-chicken"
     },
     {
       "name": "Burrito Bonanza",
@@ -46,7 +46,7 @@
       "price": 10.49,
       "category": "Burritos",
       "isVegetarian": false,
-      "imageName": "burrito-bonanza"
+      "id": "burrito-bonanza"
     },
     {
       "name": "Tropical Heatwave Burrito",
@@ -54,7 +54,7 @@
       "price": 11.99,
       "category": "Burritos",
       "isVegetarian": false,
-      "imageName": "burrito-tropical-heatwave"
+      "id": "burrito-tropical-heatwave"
     },
     {
       "name": "Carnitas Carnival Burrito",
@@ -62,7 +62,7 @@
       "price": 12.49,
       "category": "Burritos",
       "isVegetarian": false,
-      "imageName": "burrito-carnitas-carnival"
+      "id": "burrito-carnitas-carnival"
     },
     {
       "name": "Veggie Fiesta Burrito",
@@ -70,7 +70,7 @@
       "price": 9.99,
       "category": "Burritos",
       "isVegetarian": true,
-      "imageName": "burrito-veggie-fiesta"
+      "id": "burrito-veggie-fiesta"
     },
     {
       "name": "Chili Con Carne Burrito",
@@ -78,7 +78,7 @@
       "price": 10.99,
       "category": "Burritos",
       "isVegetarian": false,
-      "imageName": "burrito-chili-con-carne"
+      "id": "burrito-chili-con-carne"
     },
     {
       "name": "Dulce de Leche Delight",
@@ -86,7 +86,7 @@
       "price": 7.99,
       "category": "Desserts",
       "isVegetarian": true,
-      "imageName": "dessert-dulce-de-leche-delight"
+      "id": "dessert-dulce-de-leche-delight"
     },
     {
       "name": "ChocoChurro Extravaganza",
@@ -94,23 +94,7 @@
       "price": 8.49,
       "category": "Desserts",
       "isVegetarian": true,
-      "imageName": "dessert-chocochurro-extravaganza"
-    },
-    {
-      "name": "Dulce de Leche Delight",
-      "description": "Indulge your sweet tooth with our Dulce de Leche Delight dessert. A delectable treat that will transport you to a world of sweetness and satisfaction.",
-      "price": 7.99,
-      "category": "Desserts",
-      "isVegetarian": true,
-      "imageName": "dessert-dulce-de-leche-delight"
-    },
-    {
-      "name": "ChocoChurro Extravaganza",
-      "description": "Dive into the delightful combination of crispy churros coated in rich chocolate. It's not just a dessert; it's a ChocoChurro Extravaganza!",
-      "price": 8.49,
-      "category": "Desserts",
-      "isVegetarian": true,
-      "imageName": "dessert-chocochurro-extravaganza"
+      "id": "dessert-chocochurro-extravaganza"
     },
     {
       "name": "Tres Leches Temptation",
@@ -118,7 +102,7 @@
       "price": 9.99,
       "category": "Desserts",
       "isVegetarian": true,
-      "imageName": "dessert-tres-leches-temptation"
+      "id": "dessert-tres-leches-temptation"
     },
     {
       "name": "Mango Tango Sorbet",
@@ -126,7 +110,7 @@
       "price": 6.99,
       "category": "Desserts",
       "isVegetarian": true,
-      "imageName": "dessert-mango-tango-sorbet"
+      "id": "dessert-mango-tango-sorbet"
     },
     {
       "name": "Cinnamon Churro Explosion",
@@ -134,7 +118,7 @@
       "price": 7.49,
       "category": "Desserts",
       "isVegetarian": true,
-      "imageName": "dessert-cinnamon-churro-explosion"
+      "id": "dessert-cinnamon-churro-explosion"
     }
   ]
 }

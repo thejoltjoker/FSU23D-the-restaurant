@@ -3,13 +3,23 @@ import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { FoodItemsContext } from "../contexts/FoodItemsContext";
+import { ScrollYContext } from "../contexts/ScrollYContext";
 import { IMenuItem } from "../models/IMenuItem";
 import { IMenuResponse } from "../models/IMenuResponse";
 import { get } from "../services/http";
 
 const Layout = () => {
   const [foodItems, setFoodItems] = useState<IMenuItem[]>();
+  const [scrollY, setScrollY] = useState(-1);
 
+  const handleScroll = () => {
+    setScrollY(window.scrollY);
+  };
+
+  if (scrollY === -1) {
+    setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+  }
   useEffect(() => {
     if (foodItems) return;
     let ignore = false;
@@ -36,9 +46,11 @@ const Layout = () => {
     <>
       <Navbar />
       <main>
-        <FoodItemsContext.Provider value={foodItems}>
-          <Outlet />
-        </FoodItemsContext.Provider>
+        <ScrollYContext.Provider value={scrollY}>
+          <FoodItemsContext.Provider value={foodItems}>
+            <Outlet />
+          </FoodItemsContext.Provider>
+        </ScrollYContext.Provider>
       </main>
       <Footer />
     </>
