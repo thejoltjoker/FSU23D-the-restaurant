@@ -16,10 +16,7 @@ const AdminBookings = () => {
               Savor Mexico's finest in every taco bite at Vaca Caliente – a
               burst of flavor in every taco, a fiesta on your palate!
             </p>
-            <div
-              className=" mt-5 flex justify-between rounded-xl bg-almost-white p-3 shadow-[6px_5px_2px_0_#790117]"
-              shadow-lg
-            >
+            <div className="form-with-dark-red-shadow">
               <div>
                 <p className="text-sm text-dark-red">Booking: </p>
                 <p className="text-sm text-dark-red">Guests: </p>
@@ -29,14 +26,11 @@ const AdminBookings = () => {
               <div className="flex flex-col justify-around">
                 <button
                   onClick={HandleChangeBooking}
-                  className="shadow-btn-dark-red rounded-full bg-vivid-orange px-4 py-1 text-almost-white"
+                  className="btn-vivid-orange mb-2"
                 >
                   Change booking
                 </button>
-                <button
-                  onClick={HandleCancelBooking}
-                  className="shadow-btn-orange-variant  rounded-full bg-dark-red px-4 py-1 text-white"
-                >
+                <button onClick={HandleCancelBooking} className="btn-dark-red">
                   Cancel booking
                 </button>
               </div>

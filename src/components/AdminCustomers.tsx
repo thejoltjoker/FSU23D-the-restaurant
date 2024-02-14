@@ -13,7 +13,7 @@ const AdminCustomers = () => {
               burst of flavor in every taco, a fiesta on your palate!
             </p>
 
-            <div className="mt-5 flex justify-between rounded-xl bg-almost-white p-3 ">
+            <div className="form-with-orange-variant-shadow">
               <div>
                 <p className="text-sm text-dark-red">Customer: </p>
                 <p className="text-sm text-dark-red">Name: </p>
@@ -21,7 +21,7 @@ const AdminCustomers = () => {
                 <p className="text-sm text-dark-red">Phone: </p>
               </div>
               <div className="flex flex-col justify-around">
-                <button className="button-vivid-orange">Update customer</button>
+                <button className="btn-vivid-orange">Update customer</button>
               </div>
             </div>
           </div>

@@ -63,6 +63,8 @@ export default {
       boxShadow: {
         "btn-dark-red": "2px 3px 0 0 #790117",
         "btn-orange-variant": "2px 3px 0 0 #AF491D",
+        "form-dark-red": "6px 0px 2px 0 #790117",
+        "form-orange-variant": "6px 0px 2px 0 #AF491D",
       },
     },
   },
