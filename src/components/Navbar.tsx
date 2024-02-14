@@ -68,30 +68,35 @@ const Navbar = () => {
             <NavLink
               to="/"
               className="text-5xl text-pale-yellow transition-transform hover:scale-110 hover:text-almost-white-variant"
+              onClick={toggleNavigation}
             >
               Home
             </NavLink>
             <NavLink
               to="/booking"
               className="pt-4 text-5xl text-pale-yellow transition-transform hover:scale-110 hover:text-almost-white-variant"
+              onClick={toggleNavigation}
             >
               Book a Table
             </NavLink>
             <NavLink
               to="/contact"
               className="pt-4 text-5xl text-pale-yellow transition-transform hover:scale-110 hover:text-almost-white-variant"
+              onClick={toggleNavigation}
             >
               Contact
             </NavLink>
             <NavLink
               to="/menu"
               className="pt-4 text-5xl text-pale-yellow transition-transform hover:scale-110 hover:text-almost-white-variant"
+              onClick={toggleNavigation}
             >
               Menu
             </NavLink>
             <NavLink
               to="/admin"
               className="pt-4 text-5xl text-pale-yellow transition-transform hover:scale-110 hover:text-almost-white-variant"
+              onClick={toggleNavigation}
             >
               Admin
             </NavLink>
