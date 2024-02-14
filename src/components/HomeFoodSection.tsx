@@ -56,32 +56,30 @@ const HomeFoodSection = ({
   });
 
   return (
-    <div className="-mt-wave">
-      <WavySection bgColor={bgColor} top={true} bottom={false}>
-        <div className={`text-${textColor} overflow-clip`}>
-          <div className="mx-auto max-w-screen-lg py-xl">
-            <h2 className="font-heading text-7xl">{title}</h2>
-            <p
-              className="mb-sm text-xl"
-              dangerouslySetInnerHTML={{ __html: description }}
-            ></p>
-          </div>
-
-          <div
-            className="flex gap-40 whitespace-nowrap pb-wave"
-            style={{ marginLeft: -scrollY * scrollMultiplier + scrollOffset }}
-          >
-            {food?.map((taco) => (
-              <HomeFoodItem
-                key={taco.id}
-                item={taco}
-                blobColor={`${bgColor}-variant`}
-              />
-            ))}
-          </div>
+    <WavySection bgColor={bgColor} top={true} bottom={false}>
+      <div className={`text-${textColor} overflow-clip`}>
+        <div className="mx-auto max-w-screen-lg py-xl">
+          <h2 className="font-heading text-7xl">{title}</h2>
+          <p
+            className="mb-sm text-xl"
+            dangerouslySetInnerHTML={{ __html: description }}
+          ></p>
         </div>
-      </WavySection>
-    </div>
+
+        <div
+          className="pb-wave-2 flex gap-40 whitespace-nowrap"
+          style={{ marginLeft: -scrollY * scrollMultiplier + scrollOffset }}
+        >
+          {food?.map((taco) => (
+            <HomeFoodItem
+              key={taco.id}
+              item={taco}
+              blobColor={`${bgColor}-variant`}
+            />
+          ))}
+        </div>
+      </div>
+    </WavySection>
   );
 };
 
