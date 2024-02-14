@@ -37,7 +37,7 @@ const Navbar = () => {
         </svg>
       </div>
       {isOpen && (
-        <div className="absolute right-0 z-50 w-full bg-orange">
+        <div className="absolute right-0 z-50 h-full w-full bg-orange">
           <div className="flex w-screen justify-between">
             <NavLink to="/">
               <div className="ml-4 h-[120px] w-[120px] pt-4">
@@ -64,34 +64,34 @@ const Navbar = () => {
               </svg>
             </div>
           </div>
-          <div className="flex flex-col items-center justify-center pb-4">
+          <div className="mt-10 flex flex-col items-center justify-center pb-4">
             <NavLink
               to="/"
-              className="text-3xl text-pale-yellow transition-transform hover:scale-110 hover:text-almost-white-variant"
+              className="text-5xl text-pale-yellow transition-transform hover:scale-110 hover:text-almost-white-variant"
             >
               Home
             </NavLink>
             <NavLink
               to="/booking"
-              className="pt-4 text-3xl text-pale-yellow transition-transform hover:scale-110 hover:text-almost-white-variant"
+              className="pt-4 text-5xl text-pale-yellow transition-transform hover:scale-110 hover:text-almost-white-variant"
             >
               Book a Table
             </NavLink>
             <NavLink
               to="/contact"
-              className="pt-4 text-3xl text-pale-yellow transition-transform hover:scale-110 hover:text-almost-white-variant"
+              className="pt-4 text-5xl text-pale-yellow transition-transform hover:scale-110 hover:text-almost-white-variant"
             >
               Contact
             </NavLink>
             <NavLink
               to="/menu"
-              className="pt-4 text-3xl text-pale-yellow transition-transform hover:scale-110 hover:text-almost-white-variant"
+              className="pt-4 text-5xl text-pale-yellow transition-transform hover:scale-110 hover:text-almost-white-variant"
             >
               Menu
             </NavLink>
             <NavLink
               to="/admin"
-              className="pt-4 text-3xl text-pale-yellow transition-transform hover:scale-110 hover:text-almost-white-variant"
+              className="pt-4 text-5xl text-pale-yellow transition-transform hover:scale-110 hover:text-almost-white-variant"
             >
               Admin
             </NavLink>

@@ -1,4 +1,6 @@
 import { FaMapPin, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 
 const Contactpage = () => {
   return (
@@ -11,8 +13,25 @@ const Contactpage = () => {
           Welcome to "Vaca Caliente" - the Mexican hotspot in the heart of
           Sweden's capital!🌮🎉
         </p>
-        <h1>Kartan här</h1>
       </div>
+
+      <MapContainer
+        center={[59.3293, 18.0686]}
+        zoom={16}
+        style={{ height: "400px", width: "100%" }}
+        dragging={false}
+      >
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
+        <Marker position={[51.505, -0.09]}>
+          <Popup>
+            A pretty CSS3 popup. <br /> Easily customizable.
+          </Popup>
+        </Marker>
+      </MapContainer>
+
       <div className="flex h-1/3 w-full flex-wrap pt-4">
         <div className="flex flex-grow flex-col items-center bg-dark-green">
           <h4 className="mt-8 text-xl text-almost-white">Contact us</h4>
