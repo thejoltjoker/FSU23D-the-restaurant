@@ -58,7 +58,7 @@ const HomeFoodSection = ({
   return (
     <div className="-mt-wave">
       <WavySection bgColor={bgColor} top={true} bottom={false}>
-        <div className={`text-${textColor}`}>
+        <div className={`text-${textColor} overflow-clip`}>
           <div className="mx-auto max-w-screen-lg py-xl">
             <h2 className="font-heading text-7xl">{title}</h2>
             <p
