@@ -3,7 +3,7 @@ import { Customer } from "../models/Customer";
 import { IRestaurant } from "../models/IRestaurant";
 import { get, post } from "./http";
 
-const restaurantId = "65c5e43412ebb6ed53265ab9";
+export const restaurantId = "65c5e43412ebb6ed53265ab9";
 
 export class Endpoint {
   public static baseUrl = "https://school-restaurant-api.azurewebsites.net/";
@@ -85,10 +85,10 @@ export const createBooking = async (booking: Booking) => {
   }
 };
 
-export const updateBooking = async (bookingId: string) => {
-  // TODO
-  const url = `${baseURL}booking/update/${restaurantId}`;
-};
+// TODO
+// export const updateBooking = async (bookingId: string) => {
+//   const url = `${baseURL}booking/update/${restaurantId}`;
+// };
 
 export const deleteBooking = async (bookingId: string) => {
   try {
@@ -118,7 +118,7 @@ export const createCustomer = async (customer: Customer) => {
   }
 };
 
-export const updateCustomer = async (customerId: string) => {
-  // TODO
-  const url = `${baseURL}customer/update/${customerId}`;
-};
+// TODO
+// export const updateCustomer = async (customerId: string) => {
+//   const url = `${baseURL}customer/update/${customerId}`;
+// };
