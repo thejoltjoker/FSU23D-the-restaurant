@@ -66,13 +66,18 @@ const HomeFoodSection = ({
               dangerouslySetInnerHTML={{ __html: description }}
             ></p>
           </div>
-          <div className="relative h-[32rem] overflow-clip">
-            <div
-              className="absolute top-0 flex gap-32 overscroll-x-none whitespace-nowrap pb-lg transition lg:gap-80"
-              style={{ left: -scrollY * scrollMultiplier + scrollOffset }}
-            >
-              {food?.map((taco) => <HomeFoodItem item={taco} key={taco.id} />)}
-            </div>
+
+          <div
+            className="flex gap-40 whitespace-nowrap pb-wave"
+            style={{ marginLeft: -scrollY * scrollMultiplier + scrollOffset }}
+          >
+            {food?.map((taco) => (
+              <HomeFoodItem
+                key={taco.id}
+                item={taco}
+                blobColor={`${bgColor}-variant`}
+              />
+            ))}
           </div>
         </div>
       </WavySection>
