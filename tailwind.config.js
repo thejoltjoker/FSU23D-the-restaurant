@@ -34,6 +34,7 @@ export default {
         "dark-red-variant": "#47010D",
         "almost-white-variant": "#EDDDC5",
       },
+      boxShadow: {},
     },
   },
   plugins: [require("@tailwindcss/forms")],
