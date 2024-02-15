@@ -1,7 +1,8 @@
 import { Booking, IBooking } from "../models/Booking";
-import { Customer } from "../models/Customer";
+import { Customer, ICustomer } from "../models/Customer";
+import { ICreateBookingResponse } from "../models/ICreateBookingResponse";
 import { IRestaurant } from "../models/IRestaurant";
-import { get, post } from "./http";
+import { get, post, put } from "./http";
 
 export const restaurantId = "65c5e43412ebb6ed53265ab9";
 
@@ -44,10 +45,10 @@ export class Endpoint {
 
 export const getRestaurant = async (restaurantId: string) => {
   try {
-    const response = await get<IRestaurant>(
+    const response = await get<IRestaurant[]>(
       Endpoint.getRestaurant(restaurantId),
     );
-    return response;
+    return response[0];
   } catch (error) {
     console.log("Error while getting restaurant data");
   }
@@ -55,8 +56,8 @@ export const getRestaurant = async (restaurantId: string) => {
 
 export const getBooking = async (bookingId: string) => {
   try {
-    const response = await get<IBooking>(Endpoint.getBooking(bookingId));
-    return response;
+    const response = await get<IBooking[]>(Endpoint.getBooking(bookingId));
+    return response[0];
   } catch (error) {
     console.log(`Error while getting booking ${bookingId}`);
   }
@@ -64,7 +65,7 @@ export const getBooking = async (bookingId: string) => {
 
 export const getRestaurantBookings = async (restaurantId: string) => {
   try {
-    const response = await get<IBooking>(
+    const response = await get<IBooking[]>(
       Endpoint.getRestaurantBookings(restaurantId),
     );
     return response;
@@ -76,7 +77,10 @@ export const getRestaurantBookings = async (restaurantId: string) => {
 export const createBooking = async (booking: Booking) => {
   try {
     const body = JSON.stringify(booking);
-    const response = await post<Booking>(Endpoint.createBooking, body);
+    const response = await post<ICreateBookingResponse>(
+      Endpoint.createBooking,
+      body,
+    );
     return response;
   } catch (error) {
     console.log(
@@ -85,24 +89,29 @@ export const createBooking = async (booking: Booking) => {
   }
 };
 
-// TODO
-// export const updateBooking = async (bookingId: string) => {
-//   const url = `${baseURL}booking/update/${restaurantId}`;
-// };
+export const updateBooking = async (booking: IBooking) => {
+  try {
+    const body = JSON.stringify(booking);
+    const response = await put(Endpoint.updateBooking(booking.id), body);
+    return response;
+  } catch (error) {
+    console.log(`Error while updating booking ${booking.id}`);
+  }
+};
 
 export const deleteBooking = async (bookingId: string) => {
   try {
     const response = await get(Endpoint.deleteBooking(bookingId));
     return response;
   } catch (error) {
-    console.log(`Error while deleteing booking ${bookingId}`);
+    console.log(`Error while deleting booking ${bookingId}`);
   }
 };
 
 export const getCustomer = async (customerId: string) => {
   try {
-    const response = await get<Customer>(Endpoint.getCustomer(customerId));
-    return response;
+    const response = await get<Customer[]>(Endpoint.getCustomer(customerId));
+    return response[0];
   } catch (error) {
     console.log(`Error while getting customer ${customerId}`);
   }
@@ -111,14 +120,19 @@ export const getCustomer = async (customerId: string) => {
 export const createCustomer = async (customer: Customer) => {
   try {
     const body = JSON.stringify(customer);
-    const response = await post<Customer>(Endpoint.createCustomer, body);
+    const response = await post<string>(Endpoint.createCustomer, body);
     return response;
   } catch (error) {
     console.log(`Error while creating customer ${customer.name}`);
   }
 };
 
-// TODO
-// export const updateCustomer = async (customerId: string) => {
-//   const url = `${baseURL}customer/update/${customerId}`;
-// };
+export const updateCustomer = async (customer: ICustomer) => {
+  try {
+    const body = JSON.stringify(customer);
+    const response = await put(Endpoint.updateCustomer(customer.id), body);
+    return response;
+  } catch (error) {
+    console.log(`Error while updating customer ${customer.id}`);
+  }
+};
