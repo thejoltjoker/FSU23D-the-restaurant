@@ -1,7 +1,54 @@
+import { useEffect, useState } from "react";
 import "tailwindcss/components.css";
+import { getBooking, getCustomer } from "../../services/restaurant";
+import { IBooking } from "../models/Booking";
+import { ICustomer } from "../models/Customer";
 import WavySection from "./WavySection";
 
 const AdminCustomers = () => {
+  const [customers, setCustomers] = useState<ICustomer[]>();
+  const [bookings, setBookings] = useState<IBooking[]>();
+
+  useEffect(() => {
+    if (bookings) return;
+    let ignore = false;
+
+    const fetchData = async () => {
+      try {
+        const response = await getBooking(bookingId);
+        console.log(response);
+        if (!ignore) setBookings(response);
+      } catch (error) {
+        console.error("Couldn't get bookings");
+      }
+    };
+    fetchData();
+
+    return () => {
+      ignore = true;
+    };
+  });
+
+  useEffect(() => {
+    if (customers) return;
+    let ignore = false;
+
+    const fetchData = async () => {
+      try {
+        const response = await getCustomer(customerId);
+        console.log(response);
+        if (!ignore) setCustomers(response);
+      } catch (error) {
+        console.error("Couldn't get the customers");
+      }
+    };
+    fetchData();
+
+    return () => {
+      ignore = true;
+    };
+  });
+
   return (
     <>
       <div className="-mt-wave">
