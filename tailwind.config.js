@@ -10,6 +10,7 @@ export default {
         heading: ["Calistoga", "Itim", ...defaultTheme.fontFamily.serif],
       },
       spacing: {
+        xs: ".5rem",
         sm: "1rem",
         md: "2rem",
         lg: "3rem",
@@ -17,7 +18,6 @@ export default {
         wave: "100px",
         "wave-1.5": "150px",
         "wave-2": "200px",
-
         logo: "140px",
       },
       width: {
