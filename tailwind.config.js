@@ -17,8 +17,7 @@ export default {
         wave: "100px",
         "wave-1.5": "150px",
         "wave-2": "200px",
-
-        logo: "140px",
+        logo: "12rem",
       },
       width: {
         wave: "1728px",
@@ -38,8 +37,8 @@ export default {
         "almost-white-variant": "#EDDDC5",
       },
       boxShadow: {
-        "btn-dark-red": "2px 3px 0 0 #790117",
-        "btn-orange-variant": "2px 3px 0 0 #AF491D",
+        "button-dark-red": "2px 3px 0 0 #790117",
+        "button-orange-variant": "2px 3px 0 0 #AF491D",
         "form-dark-red": "6px 0px 2px 0 #790117",
         "form-orange-variant": "6px 0px 2px 0 #AF491D",
       },

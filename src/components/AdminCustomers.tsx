@@ -21,7 +21,7 @@ const AdminCustomers = () => {
                 <p className="text-sm text-dark-red">Phone: </p>
               </div>
               <div className="flex flex-col justify-around">
-                <button className="btn-vivid-orange">Update customer</button>
+                <button className="button-vivid-orange">Update customer</button>
               </div>
             </div>
           </div>

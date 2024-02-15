@@ -1,0 +1,95 @@
+@tailwind utilities;
+
+@layer utilities {
+  .slide-in-top {
+    animation-duration: 0.6s;
+    animation-name: slideInTop;
+    animation-iteration-count: initial;
+    animation-direction: normal;
+  }
+  @keyframes slideInTop {
+    from {
+      top: -100vh;
+    }
+
+    to {
+      top: 0;
+    }
+  }
+  .spin-in {
+    animation-duration: 0.5s;
+    animation-name: spinIn;
+    animation-iteration-count: initial;
+    animation-direction: normal;
+  }
+
+  @keyframes spinIn {
+    from {
+      transform: rotate(180deg);
+    }
+
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+  .scale-up {
+    animation-duration: 0.3s;
+    animation-name: scaleUp;
+    animation-iteration-count: initial;
+    animation-direction: normal;
+  }
+
+  @keyframes scaleUp {
+    from {
+      scale: 0;
+    }
+
+    to {
+      scale: 1;
+    }
+  }
+}
+
+nav {
+  .menu-toggler-label {
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  ul {
+    li {
+      opacity: 0;
+      transform: translateY(100%);
+      transition-property: opacity, transform;
+      transition-duration: 0.35s;
+      transition-timing-function: cubic-bezier(0.85, 0, 0.15, 1);
+      @apply mb-md;
+    }
+
+    li {
+      &.social-icons {
+        a {
+          opacity: 0;
+          transform: scale(0%);
+          transition-property: opacity, transform;
+          transition-duration: 0.6s;
+          transition-timing-function: cubic-bezier(0.85, 0, 0.15, 1);
+        }
+      }
+    }
+  }
+
+  #menu:checked ~ div ul li {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: calc(0.25s + (0.075s * var(--i)));
+  }
+
+  #menu:checked ~ div ul li.social-icons a {
+    opacity: 1;
+    transform: scale(100%);
+    transition-delay: calc(0.2s + (0.075s * var(--i)));
+  }
+}
