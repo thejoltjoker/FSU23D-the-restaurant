@@ -5,7 +5,7 @@ import {
   FaPhoneAlt,
   FaYelp,
 } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { getImageUrl } from "../helpers/strings";
 import WavySection from "./WavySection";
 
@@ -17,70 +17,83 @@ const Footer = () => {
     });
   };
   return (
-    <>
-      <div className="-m-wave">
-        <WavySection bgColor="orange" top={true} bottom={false}>
-          <div className="flex items-center justify-between bg-orange">
-            <div
-              className=" h-logo w-logo ml-4 cursor-pointer pt-4"
-              onClick={scrollToTop}
-            >
-              <img
-                src={getImageUrl("logo_white.png")}
-                alt="White Vaca Caliente Logo"
-              />
-            </div>
-            <div className="flex flex-col justify-center">
-              <NavLink
-                to="/menu"
-                className="text-pale-yellow transition-transform hover:scale-110 hover:text-almost-white-variant"
-              >
-                Menu
-              </NavLink>
-              <NavLink
-                to="/booking"
-                className="text-pale-yellow transition-transform hover:scale-110 hover:text-almost-white-variant"
-              >
-                Book a table
-              </NavLink>
-              <NavLink
-                to="/contact"
-                className="text-pale-yellow transition-transform hover:scale-110 hover:text-almost-white-variant"
-              >
-                Contact
-              </NavLink>
-            </div>
-            <div className="mr-6">
-              <div className="flex flex-col items-center">
-                <p className="text-sm text-pale-yellow">Join the fiesta</p>
-                <div className="flex">
-                  <FaInstagram className="m-2 h-5 w-5 cursor-pointer text-pale-yellow transition-all ease-in-out hover:scale-110 hover:text-almost-white-variant" />
-                  <FaFacebook className="hover: m-2 h-5 w-5 cursor-pointer text-pale-yellow transition-all ease-in-out hover:scale-110 hover:text-almost-white-variant" />
-                  <FaYelp className="hover: m-2 h-5 w-5 cursor-pointer text-pale-yellow transition-all ease-in-out hover:scale-110 hover:text-almost-white-variant" />
+    <footer className="w-full  text-xl text-pale-yellow">
+      <div className="-mt-wave">
+        <WavySection bgColor="vivid-orange" top={true} bottom={false}>
+          <div className="mx-auto max-w-screen-lg p-sm">
+            <div className="items-top flex justify-between">
+              <div className="w-logo" onClick={scrollToTop}>
+                <img
+                  src={getImageUrl("logo_white.png")}
+                  alt="White Vaca Caliente Logo"
+                />
+              </div>
+              <ul>
+                <li className="pb-xs">
+                  <NavLink
+                    to="/menu"
+                    className="hover:text-almost-white-variant"
+                  >
+                    Menu
+                  </NavLink>
+                </li>
+                <li className="pb-xs">
+                  <NavLink
+                    to="/booking"
+                    className="hover:text-almost-white-variant"
+                  >
+                    Book a table
+                  </NavLink>
+                </li>
+                <li className="pb-xs">
+                  <NavLink
+                    to="/contact"
+                    className="hover:text-almost-white-variant"
+                  >
+                    Contact
+                  </NavLink>
+                </li>
+              </ul>
+              <div className="">
+                <p>Join the fiesta</p>
+                <ul className="flex gap-sm pb-sm pt-2">
+                  <li>
+                    <Link to="#">
+                      <FaInstagram className="size-md transition-all ease-in-out hover:scale-110 hover:text-almost-white-variant" />
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="#">
+                      <FaFacebook className="size-md transition-all ease-in-out hover:scale-110 hover:text-almost-white-variant" />
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="#">
+                      <FaYelp className="size-md transition-all ease-in-out hover:scale-110 hover:text-almost-white-variant" />
+                    </Link>
+                  </li>
+                </ul>
+                <hr className="border-t-2 border-pale-yellow"></hr>
+                <div className="flex flex-col gap-sm">
+                  <div className="inline-flex items-center gap-sm">
+                    <FaPhoneAlt className="mt-2 size-4 " />
+                    <p className="mt-2 text-pale-yellow">+46 123 46 78 90</p>
+                  </div>
+                  <div className="items-top inline-flex gap-sm">
+                    <FaMapPin className="mt-2 size-4 " />
+                    <div className="flex flex-col">
+                      <p className="">Mexikanska gatan 1</p>
+                      <p className="">723 52 Stockholm</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <hr className="border-t-2 border-pale-yellow"></hr>
-              <div className="flex">
-                <FaPhoneAlt className="m-2 h-3 w-3 text-pale-yellow" />
-                <p className="mt-2 text-xs text-pale-yellow">
-                  +46 123 46 78 90
-                </p>
-              </div>
-              <div className="flex">
-                <FaMapPin className="m-2 h-3 w-3 text-pale-yellow" />
-                <div className="flex flex-col">
-                  <p className="text-xs text-pale-yellow">Mexikanska gatan 1</p>
-                  <p className="text-xs text-pale-yellow">723 52 Stockholm</p>
-                </div>
-              </div>
             </div>
+            <p>&copy; 2024, Vaca Caliente. All rights reserved.</p>
           </div>
-          <p className="bg-orange pb-3 pl-3 text-xs text-pale-yellow">
-            &copy; 2024, Vaca Caliente. All rights reserved.
-          </p>
         </WavySection>
       </div>
-    </>
+    </footer>
   );
 };
 
