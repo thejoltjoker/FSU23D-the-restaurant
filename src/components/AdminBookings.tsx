@@ -26,11 +26,14 @@ const AdminBookings = () => {
               <div className="flex flex-col justify-around">
                 <button
                   onClick={HandleChangeBooking}
-                  className="btn-vivid-orange mb-2"
+                  className="button-vivid-orange mb-2"
                 >
                   Change booking
                 </button>
-                <button onClick={HandleCancelBooking} className="btn-dark-red">
+                <button
+                  onClick={HandleCancelBooking}
+                  className="button-dark-red"
+                >
                   Cancel booking
                 </button>
               </div>
