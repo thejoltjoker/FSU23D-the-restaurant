@@ -1,4 +1,4 @@
-import AdminBookings from "../components/AdminBookings";
+import AdminBookings from "../components/AdminBookings/AdminBookings";
 import AdminCustomers from "../components/AdminCustomers";
 
 const Adminpage = () => {

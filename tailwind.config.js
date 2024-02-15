@@ -40,7 +40,7 @@ export default {
       boxShadow: {
         "button-dark-red": "2px 3px 0 0 #790117",
         "button-dark-red-variant": "2px 3px 0 0 #47010D",
-        "form-dark-red": "6px 0px 2px 0 #790117",
+        "form-dark-red": "3px 3px 0 0 #790117",
         "form-dark-red-variant": "6px 0px 2px 0 #47010D",
       },
     },
