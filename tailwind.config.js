@@ -39,9 +39,9 @@ export default {
       },
       boxShadow: {
         "button-dark-red": "2px 3px 0 0 #790117",
-        "button-orange-variant": "2px 3px 0 0 #AF491D",
+        "button-dark-red-variant": "2px 3px 0 0 #47010D",
         "form-dark-red": "6px 0px 2px 0 #790117",
-        "form-orange-variant": "6px 0px 2px 0 #AF491D",
+        "form-dark-red-variant": "6px 0px 2px 0 #47010D",
       },
     },
   },
