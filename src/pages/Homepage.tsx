@@ -1,4 +1,5 @@
 import HeroSection from "../components/HeroSection";
+import HomeChefSection from "../components/HomeChefSection";
 import HomeFoodSection from "../components/HomeFoodSection";
 
 const Homepage = () => {
@@ -16,7 +17,7 @@ const Homepage = () => {
         scrollMultiplier={0.4}
       />
 
-      <div className="-mt-wave">
+      <div className="-mt-wave-2">
         <HomeFoodSection
           key={"burritos-section"}
           title="Burritos"
@@ -27,7 +28,7 @@ const Homepage = () => {
           scrollMultiplier={0.25}
         />
       </div>
-      <div className="-mt-wave">
+      <div className="-mt-wave-2">
         <HomeFoodSection
           key={"desserts-section"}
           title="Desserts"
@@ -38,6 +39,9 @@ const Homepage = () => {
           scrollOffset={400}
           scrollMultiplier={0.3}
         />
+      </div>
+      <div className="-mt-wave">
+        <HomeChefSection />
       </div>
     </>
   );
