@@ -15,7 +15,7 @@ export default {
         lg: "3rem",
         xl: "4rem",
         wave: "100px",
-        logo: "140px",
+        logo: "12rem",
       },
       width: {
         wave: "1728px",
