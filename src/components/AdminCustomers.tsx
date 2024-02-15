@@ -13,7 +13,7 @@ const AdminCustomers = () => {
               burst of flavor in every taco, a fiesta on your palate!
             </p>
 
-            <div className="form-with-orange-variant-shadow">
+            <div className="form-with-dark-red-variant-shadow">
               <div>
                 <p className="text-sm text-dark-red">Customer: </p>
                 <p className="text-sm text-dark-red">Name: </p>

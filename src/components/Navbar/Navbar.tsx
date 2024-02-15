@@ -23,6 +23,7 @@ const Navbar = () => {
                 : getImageUrl("logo_black.png")
             }
             alt="Vaca Caliente logo"
+            onClick={isOpen ? toggleNavigation : undefined}
           />
         </div>
       </NavLink>
