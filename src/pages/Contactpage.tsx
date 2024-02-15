@@ -37,7 +37,7 @@ const Contactpage = () => {
       <div id="map" className="h-[500px] w-full"></div>
       <div className="-m-wave">
         <WavySection bgColor="dark-green" top={true} bottom={false}>
-          <div className="flex flex-wrap text-xl">
+          <div className="mx-auto flex max-w-screen-lg flex-wrap p-sm text-xl">
             <div className="flex w-full flex-col items-center bg-dark-green md:w-1/2 lg:w-1/6">
               <h4 className="mt-8 text-4xl text-almost-white">Contact us</h4>
               <div className="mt-4 flex">
@@ -54,31 +54,33 @@ const Contactpage = () => {
                 <p className=" text-almost-white">info.vacacaliente.se</p>
               </div>
             </div>
-            <div className="flex w-full flex-grow flex-col items-center bg-dark-green md:w-1/2 lg:w-1/6">
+            <div className="flex w-full flex-grow flex-col items-center md:w-1/2 lg:w-1/6">
               <h4 className="mt-6 text-4xl text-pale-yellow-variant">
                 Working hours
               </h4>
-              <p className="mt-1  text-pale-yellow-variant">
-                Mon 18:00 - 00:00
-              </p>
-              <p className="mt-1  text-pale-yellow-variant">
-                Tue 18:00 - 00:00
-              </p>
-              <p className="mt-1  text-pale-yellow-variant">
-                Wed 18:00 - 00:00
-              </p>
-              <p className="mt-1  text-pale-yellow-variant">
-                Thu 18:00 - 00:00
-              </p>
-              <p className="mt-1  text-pale-yellow-variant">
-                Fri 18:00 - 00:00
-              </p>
-              <p className="mt-1  text-pale-yellow-variant">
-                Sat 18:00 - 00:00
-              </p>
-              <p className="mb-3 mt-1  text-pale-yellow-variant">
-                Sun 18:00 - 00:00
-              </p>
+              <table>
+                <p className="mt-1  text-pale-yellow-variant">
+                  Mon 18:00 - 00:00
+                </p>
+                <p className="mt-1  text-pale-yellow-variant">
+                  Tue 18:00 - 00:00
+                </p>
+                <p className="mt-1  text-pale-yellow-variant">
+                  Wed 18:00 - 00:00
+                </p>
+                <p className="mt-1  text-pale-yellow-variant">
+                  Thu 18:00 - 00:00
+                </p>
+                <p className="mt-1  text-pale-yellow-variant">
+                  Fri 18:00 - 00:00
+                </p>
+                <p className="mt-1  text-pale-yellow-variant">
+                  Sat 18:00 - 00:00
+                </p>
+                <p className="mb-3 mt-1  text-pale-yellow-variant">
+                  Sun 18:00 - 00:00
+                </p>
+              </table>
             </div>
           </div>
         </WavySection>
