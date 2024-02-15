@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { IBooking } from "../../models/Booking";
-import { getRestaurantBookings, restaurantId } from "../../services/restaurant";
+import {
+  deleteBooking,
+  getRestaurantBookings,
+  restaurantId,
+} from "../../services/restaurant";
 import WavySection from "../WavySection";
 import "./AdminBookings.css";
 
@@ -9,7 +13,11 @@ const AdminBookings = () => {
 
   const HandleChangeBooking = () => {};
 
-  const HandleCancelBooking = () => {};
+  const HandleCancelBooking = async (bookingId: string) => {
+    await deleteBooking(bookingId);
+
+    setBookings(bookings?.filter((booking) => booking._id !== bookingId));
+  };
 
   useEffect(() => {
     if (bookings) return;
@@ -79,7 +87,7 @@ const AdminBookings = () => {
                             Change booking
                           </button>
                           <button
-                            onClick={HandleCancelBooking}
+                            onClick={() => HandleCancelBooking(booking._id)}
                             className="button-dark-red"
                           >
                             Cancel booking
