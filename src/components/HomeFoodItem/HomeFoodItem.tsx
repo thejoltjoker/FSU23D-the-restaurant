@@ -12,7 +12,7 @@ const HomeFoodItem = ({
   blobColor = "orange-variant",
 }: HomeFoodItemProps) => {
   return (
-    <div className="home-food-item flex w-[28rem] shrink-0 grow-0 flex-col items-center justify-center">
+    <div className="home-food-item flex w-[28rem] shrink-0 grow-0 flex-col items-center">
       <div className="relative mb-md flex aspect-square w-full justify-center">
         <div className="absolute z-0 flex h-full w-full items-center justify-center">
           <div className={`text-${blobColor} w-[48rem]`}>
