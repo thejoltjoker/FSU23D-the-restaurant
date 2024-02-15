@@ -31,13 +31,13 @@
     @apply shadow-button-dark-red rounded-full bg-vivid-orange px-6 py-1.5 text-almost-white;
   }
   .button-dark-red {
-    @apply shadow-button-orange-variant rounded-full bg-dark-red px-6 py-1.5 text-almost-white;
+    @apply shadow-button-dark-red-variant rounded-full bg-dark-red px-6 py-1.5 text-almost-white;
   }
   .form-with-dark-red-shadow {
     @apply shadow-form-dark-red mt-5 flex justify-between rounded-xl bg-almost-white p-3;
   }
-  .form-with-orange-variant-shadow {
-    @apply shadow-form-orange-variant mt-5 flex justify-between rounded-xl bg-almost-white p-3;
+  .form-with-dark-red-variant-shadow {
+    @apply shadow-form-dark-red-variant mt-5 flex justify-between rounded-xl bg-almost-white p-3;
   }
 }
 
