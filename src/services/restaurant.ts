@@ -117,6 +117,21 @@ export const getCustomer = async (customerId: string) => {
   }
 };
 
+export const getRestaurantCustomers = async (restaurantId: string) => {
+  try {
+    const bookings = await getRestaurantBookings(restaurantId);
+    const customerIds = [
+      ...new Set(bookings?.map((booking) => booking.customerId)),
+    ];
+    const customers = await Promise.all(
+      customerIds.map((id) => getCustomer(id)),
+    );
+    return customers;
+  } catch (error) {
+    console.log(`Error while getting customers for restaurant ${restaurantId}`);
+  }
+};
+
 export const createCustomer = async (customer: Customer) => {
   try {
     const body = JSON.stringify(customer);
