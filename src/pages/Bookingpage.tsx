@@ -1,4 +1,7 @@
 import { FormEvent, useEffect, useState } from "react";
+import Downloadapp from "../components/BookingComponents/BookingApp";
+import Mainpic from "../components/BookingComponents/Mainpic";
+import WavySection from "../components/WavySection";
 import { Booking, IBooking } from "../models/Booking";
 import { Customer } from "../models/Customer";
 import { ICreateBookingResponse } from "../models/ICreateBookingResponse";
@@ -268,28 +271,36 @@ const Bookingpage = () => {
 
   return (
     <>
-      <div className="mx-auto max-w-screen-lg py-wave">
-        {/* Här visas all restaurangdata */}
-        <h3>Restaurant</h3>
-        <table>
-          <tbody>
-            {restaurant &&
-              Object.entries(restaurant).map(([k, v]) => {
-                return (
-                  <tr key={k}>
-                    <td className="text-stone-800">{k}:</td>
-                    <td className="text-vivid-orange">{v}</td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </table>
+      <Mainpic />
 
-        {/* Här visas bokningsdata */}
-        <h3>Booking</h3>
-        <GetBooking />
-        <CreateBooking />
-      </div>
+      <WavySection bgColor="dark-green" top={true} bottom={false}>
+        <div className=" mx-auto -mb-wave flex max-w-screen-lg flex-col justify-center bg-dark-green py-wave">
+          {/* Här visas all restaurangdata */}
+          <h3>Restaurant</h3>
+          <table>
+            <tbody>
+              {restaurant &&
+                Object.entries(restaurant).map(([k, v]) => {
+                  return (
+                    <tr key={k}>
+                      <td className="text-stone-800">{k}:</td>
+                      <td className="text-vivid-orange">{v}</td>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
+
+          {/* Här visas bokningsdata */}
+          <h3>Booking</h3>
+          <GetBooking />
+          <CreateBooking />
+        </div>
+      </WavySection>
+
+      <WavySection bgColor="dark-green-variant" top={true} bottom={false}>
+        <Downloadapp />
+      </WavySection>
     </>
   );
 };
