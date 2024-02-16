@@ -19,25 +19,20 @@ const Footer = () => {
   return (
     <footer className="w-full  text-xl text-pale-yellow">
       <div className="-mt-wave">
-        <WavySection
-          bgColor="vivid-orange"
-          waveIdTop={1}
-          top={true}
-          bottom={false}
-        >
-          <div className="mx-auto max-w-screen-lg p-sm">
-            <div className="items-top flex justify-between">
-              <div className="w-logo" onClick={scrollToTop}>
+        <WavySection bgColor="vivid-orange" waveIdTop={1} top={true} bottom={false}>
+          <div className="p-l mx-auto max-w-screen-lg">
+            <div className="items-top flex flex-col items-center justify-between sm:flex-row">
+              <div className="w-logo mb-10" onClick={scrollToTop}>
                 <img
                   src={getImageUrl("logo_white.png")}
                   alt="White Vaca Caliente Logo"
                 />
               </div>
-              <ul>
+              <ul className="mb-5">
                 <li className="pb-xs">
                   <NavLink
                     to="/menu"
-                    className="hover:text-almost-white-variant"
+                    className="text-almost-white-variant hover:text-pale-yellow"
                   >
                     Menu
                   </NavLink>
@@ -45,7 +40,7 @@ const Footer = () => {
                 <li className="pb-xs">
                   <NavLink
                     to="/booking"
-                    className="hover:text-almost-white-variant"
+                    className="text-almost-white-variant hover:text-pale-yellow"
                   >
                     Book a table
                   </NavLink>
@@ -53,15 +48,35 @@ const Footer = () => {
                 <li className="pb-xs">
                   <NavLink
                     to="/contact"
-                    className="hover:text-almost-white-variant"
+                    className="text-almost-white-variant hover:text-pale-yellow"
                   >
                     Contact
                   </NavLink>
                 </li>
               </ul>
               <div className="">
-                <p>Join the fiesta</p>
-                <ul className="flex gap-sm pb-sm pt-2">
+                <div className="flex flex-col gap-sm">
+                  <div className="inline-flex items-center gap-sm">
+                    <FaPhoneAlt className="mt-1 size-4 " />
+                    <p className=" text-pale-yellow">+46 123 46 78 90</p>
+                  </div>
+                  <div className="items-top inline-flex gap-sm">
+                    <FaMapPin className="mt-1 size-4 " />
+                    <div className="flex flex-col">
+                      <p className="">Mexikanska gatan 1</p>
+                      <p className="">723 52 Stockholm</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="pt-m flex  flex-col-reverse items-center justify-between p-lg sm:flex-row">
+              <div className="sm:mb-5 lg:mt-md">
+                <p>&copy; 2024, Vaca Caliente. All rights reserved.</p>
+              </div>
+              <div className="flex flex-col justify-center sm:flex-row">
+                <p className="mx-auto">Join the fiesta</p>
+                <ul className="flex gap-sm pb-sm pl-5 sm:order-last">
                   <li>
                     <Link to="#">
                       <FaInstagram className="size-md transition-all ease-in-out hover:scale-110 hover:text-almost-white-variant" />
@@ -78,23 +93,8 @@ const Footer = () => {
                     </Link>
                   </li>
                 </ul>
-                <hr className="border-t-2 border-pale-yellow"></hr>
-                <div className="flex flex-col gap-sm">
-                  <div className="inline-flex items-center gap-sm">
-                    <FaPhoneAlt className="mt-2 size-4 " />
-                    <p className="mt-2 text-pale-yellow">+46 123 46 78 90</p>
-                  </div>
-                  <div className="items-top inline-flex gap-sm">
-                    <FaMapPin className="mt-2 size-4 " />
-                    <div className="flex flex-col">
-                      <p className="">Mexikanska gatan 1</p>
-                      <p className="">723 52 Stockholm</p>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
-            <p>&copy; 2024, Vaca Caliente. All rights reserved.</p>
           </div>
         </WavySection>
       </div>
