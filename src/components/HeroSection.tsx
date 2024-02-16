@@ -3,7 +3,7 @@ import { getImageUrl } from "../helpers/strings";
 
 const HeroSection = () => {
   return (
-    <section className="mx-auto flex max-w-screen-lg ">
+    <section className="mx-auto flex min-h-[550px] max-w-screen-lg flex-col md:min-h-[400px] md:flex-row">
       <HeroContent />
       <HeroImage />
     </section>
@@ -24,8 +24,9 @@ const HeroContent = () => {
 
 const HeroImage = () => {
   return (
-    <div className="px-5">
+    <div className="md: mt-10 px-5 ">
       <img
+        className="md: m-auto max-h-[250px] "
         src={getImageUrl("taco-hero.png")}
         alt="Vaca Caliente's Special Burrito"
       />
