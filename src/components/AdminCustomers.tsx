@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import "tailwindcss/components.css";
-import { getBooking, getCustomer } from "../../services/restaurant";
 import { IBooking } from "../models/Booking";
 import { ICustomer } from "../models/Customer";
+import {
+  getCustomer,
+  getRestaurantBookings,
+  restaurantId,
+} from "../services/restaurant";
 import WavySection from "./WavySection";
 
 const AdminCustomers = () => {
@@ -10,30 +14,34 @@ const AdminCustomers = () => {
   const [bookings, setBookings] = useState<IBooking[]>();
 
   useEffect(() => {
+    if (bookings) return;
+    let ignore = false;
+
     const fetchData = async () => {
       try {
-        const customerResponse = await getCustomer();
-        setCustomers(customerResponse);
-
-        const bookingResponse = await getBooking();
-        setBookings(bookingResponse);
+        const bookingResponse = await getRestaurantBookings(restaurantId);
+        if (!ignore) setBookings(bookingResponse);
+        const customerIds = [
+          ...new Set(bookingResponse?.map((booking) => booking.customerId)),
+        ];
+        const customerResponses = [];
+        for (const customerId of customerIds) {
+          const customerResponse = await getCustomer(customerId);
+          console.log(customerResponse);
+          setCustomers([...customers, customerResponse]);
+          // if (customerResponse) customerResponses.push(customerResponse);
+        }
+        console.log(customerResponses);
+        // if (!ignore) setCustomers(customerResponses);
       } catch (error) {
         console.error("Error while getting customer data");
       }
     };
     fetchData();
+    return () => {
+      ignore = true;
+    };
   });
-
-  const getCustomerIdFromBooking = (booking: IBooking): string => {
-    const matchedCustomer = customers.find(
-      (customer) => customer.id === booking.customerId,
-    );
-    if (matchedCustomer) {
-      return matchedCustomer.id;
-    } else {
-      throw new Error("Error finding customerID");
-    }
-  };
 
   return (
     <>
@@ -47,10 +55,10 @@ const AdminCustomers = () => {
             </p>
 
             <div className="form-with-dark-red-variant-shadow">
-              {customers.map((customer) => (
-                <div key={matchedCustomer.id}>
+              {customers?.map((customer) => (
+                <div key={customer.id}>
                   <p className="text-sm text-dark-red">
-                    Customer: {matchedCustomer.id}
+                    Customer: {customer.id}
                   </p>
                   <p className="text-sm text-dark-red">Name: {customer.name}</p>
                   <p className="text-sm text-dark-red">

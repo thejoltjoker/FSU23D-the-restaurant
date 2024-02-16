@@ -110,7 +110,7 @@ export const deleteBooking = async (bookingId: string) => {
 
 export const getCustomer = async (customerId: string) => {
   try {
-    const response = await get<Customer[]>(Endpoint.getCustomer(customerId));
+    const response = await get<ICustomer[]>(Endpoint.getCustomer(customerId));
     return response[0];
   } catch (error) {
     console.log(`Error while getting customer ${customerId}`);
