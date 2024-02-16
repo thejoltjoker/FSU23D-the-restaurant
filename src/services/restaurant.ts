@@ -2,7 +2,7 @@ import { Booking, IBooking } from "../models/Booking";
 import { Customer, ICustomer } from "../models/Customer";
 import { ICreateBookingResponse } from "../models/ICreateBookingResponse";
 import { IRestaurant } from "../models/IRestaurant";
-import { get, post, put } from "./http";
+import { get, post, put, remove } from "./http";
 
 export const restaurantId = "65c5e43412ebb6ed53265ab9";
 
@@ -92,16 +92,16 @@ export const createBooking = async (booking: Booking) => {
 export const updateBooking = async (booking: IBooking) => {
   try {
     const body = JSON.stringify(booking);
-    const response = await put(Endpoint.updateBooking(booking.id), body);
+    const response = await put(Endpoint.updateBooking(booking._id), body);
     return response;
   } catch (error) {
-    console.log(`Error while updating booking ${booking.id}`);
+    console.log(`Error while updating booking ${booking._id}`);
   }
 };
 
 export const deleteBooking = async (bookingId: string) => {
   try {
-    const response = await get(Endpoint.deleteBooking(bookingId));
+    const response = await remove(Endpoint.deleteBooking(bookingId));
     return response;
   } catch (error) {
     console.log(`Error while deleting booking ${bookingId}`);
@@ -110,7 +110,7 @@ export const deleteBooking = async (bookingId: string) => {
 
 export const getCustomer = async (customerId: string) => {
   try {
-    const response = await get<Customer[]>(Endpoint.getCustomer(customerId));
+    const response = await get<ICustomer[]>(Endpoint.getCustomer(customerId));
     return response[0];
   } catch (error) {
     console.log(`Error while getting customer ${customerId}`);
