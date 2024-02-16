@@ -19,7 +19,12 @@ const Footer = () => {
   return (
     <footer className="w-full  text-xl text-pale-yellow">
       <div className="-mt-wave">
-        <WavySection bgColor="vivid-orange" top={true} bottom={false}>
+        <WavySection
+          bgColor="vivid-orange"
+          waveIdTop={1}
+          top={true}
+          bottom={false}
+        >
           <div className="mx-auto max-w-screen-lg p-sm">
             <div className="items-top flex justify-between">
               <div className="w-logo" onClick={scrollToTop}>

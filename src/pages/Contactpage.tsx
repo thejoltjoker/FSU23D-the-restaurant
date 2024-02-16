@@ -20,7 +20,13 @@ const Contactpage = () => {
   return (
     <>
       <div className="-mb-wave">
-        <WavySection bgColor="pale-yellow" top={false} bottom={true}>
+        <WavySection
+          bgColor="pale-yellow"
+          waveIdTop={1}
+          waveIdBottom={2}
+          top={false}
+          bottom={true}
+        >
           <div className="flex flex-col items-center">
             <h1>Where are we?</h1>
             <p className="mb-8 mt-8 w-3/4 text-xs">
@@ -35,7 +41,13 @@ const Contactpage = () => {
 
       <div id="map" className="h-[500px] w-full"></div>
       <div className="-m-wave">
-        <WavySection bgColor="dark-green" top={true} bottom={false}>
+        <WavySection
+          bgColor="dark-green"
+          waveIdTop={1}
+          waveIdBottom={2}
+          top={true}
+          bottom={false}
+        >
           <div className="flex flex-grow flex-col items-center bg-dark-green">
             <h4 className="mt-8 text-xl text-almost-white">Contact us</h4>
             <div className="mt-4 flex">
