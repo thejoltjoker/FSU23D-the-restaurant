@@ -6,48 +6,34 @@ import { ICustomer } from "../models/Customer";
 import WavySection from "./WavySection";
 
 const AdminCustomers = () => {
-  const [customers, setCustomers] = useState<ICustomer[]>();
+  const [customers, setCustomers] = useState<ICustomer[]>([]);
   const [bookings, setBookings] = useState<IBooking[]>();
 
   useEffect(() => {
-    if (bookings) return;
-    let ignore = false;
-
     const fetchData = async () => {
       try {
-        const response = await getBooking(bookingId);
-        console.log(response);
-        if (!ignore) setBookings(response);
+        const customerResponse = await getCustomer();
+        setCustomers(customerResponse);
+
+        const bookingResponse = await getBooking();
+        setBookings(bookingResponse);
       } catch (error) {
-        console.error("Couldn't get bookings");
+        console.error("Error while getting customer data");
       }
     };
     fetchData();
-
-    return () => {
-      ignore = true;
-    };
   });
 
-  useEffect(() => {
-    if (customers) return;
-    let ignore = false;
-
-    const fetchData = async () => {
-      try {
-        const response = await getCustomer(customerId);
-        console.log(response);
-        if (!ignore) setCustomers(response);
-      } catch (error) {
-        console.error("Couldn't get the customers");
-      }
-    };
-    fetchData();
-
-    return () => {
-      ignore = true;
-    };
-  });
+  const getCustomerIdFromBooking = (booking: IBooking): string => {
+    const matchedCustomer = customers.find(
+      (customer) => customer.id === booking.customerId,
+    );
+    if (matchedCustomer) {
+      return matchedCustomer.id;
+    } else {
+      throw new Error("Error finding customerID");
+    }
+  };
 
   return (
     <>
@@ -61,15 +47,25 @@ const AdminCustomers = () => {
             </p>
 
             <div className="form-with-dark-red-variant-shadow">
-              <div>
-                <p className="text-sm text-dark-red">Customer: </p>
-                <p className="text-sm text-dark-red">Name: </p>
-                <p className="text-sm text-dark-red">Email: </p>
-                <p className="text-sm text-dark-red">Phone: </p>
-              </div>
-              <div className="flex flex-col justify-around">
-                <button className="button-vivid-orange">Update customer</button>
-              </div>
+              {customers.map((customer) => (
+                <div key={matchedCustomer.id}>
+                  <p className="text-sm text-dark-red">
+                    Customer: {matchedCustomer.id}
+                  </p>
+                  <p className="text-sm text-dark-red">Name: {customer.name}</p>
+                  <p className="text-sm text-dark-red">
+                    Email: {customer.email}
+                  </p>
+                  <p className="text-sm text-dark-red">
+                    Phone: {customer.phone}
+                  </p>
+                  <div className="flex flex-col justify-around">
+                    <button className="button-vivid-orange">
+                      Update customer
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </WavySection>
