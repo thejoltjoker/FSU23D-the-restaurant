@@ -1,38 +1,21 @@
 import { useEffect, useState } from "react";
 import "tailwindcss/components.css";
-import { IBooking } from "../models/Booking";
 import { ICustomer } from "../models/Customer";
-import {
-  getCustomer,
-  getRestaurantBookings,
-  restaurantId,
-} from "../services/restaurant";
+import { getRestaurantCustomers, restaurantId } from "../services/restaurant";
 import WavySection from "./WavySection";
 
 const AdminCustomers = () => {
-  const [customers, setCustomers] = useState<ICustomer[]>([]);
-  const [bookings, setBookings] = useState<IBooking[]>();
+  const [customers, setCustomers] = useState<ICustomer[]>();
 
   useEffect(() => {
-    if (bookings) return;
+    if (customers) return;
     let ignore = false;
 
     const fetchData = async () => {
       try {
-        const bookingResponse = await getRestaurantBookings(restaurantId);
-        if (!ignore) setBookings(bookingResponse);
-        const customerIds = [
-          ...new Set(bookingResponse?.map((booking) => booking.customerId)),
-        ];
-        const customerResponses = [];
-        for (const customerId of customerIds) {
-          const customerResponse = await getCustomer(customerId);
-          console.log(customerResponse);
-          setCustomers([...customers, customerResponse]);
-          // if (customerResponse) customerResponses.push(customerResponse);
-        }
-        console.log(customerResponses);
-        // if (!ignore) setCustomers(customerResponses);
+        const customersResponse = await getRestaurantCustomers(restaurantId);
+        console.log(customersResponse);
+        if (!ignore) setCustomers(customersResponse);
       } catch (error) {
         console.error("Error while getting customer data");
       }
@@ -41,7 +24,7 @@ const AdminCustomers = () => {
     return () => {
       ignore = true;
     };
-  });
+  }, []);
 
   return (
     <>

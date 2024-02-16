@@ -26,7 +26,7 @@ const AdminBookings = () => {
     const fetchData = async () => {
       try {
         const response = await getRestaurantBookings(restaurantId);
-        console.log(response);
+
         if (!ignore) setBookings(response);
       } catch (error) {
         console.error("Couldn't get bookings");

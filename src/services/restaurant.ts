@@ -50,7 +50,7 @@ export const getRestaurant = async (restaurantId: string) => {
     );
     return response[0];
   } catch (error) {
-    console.log("Error while getting restaurant data");
+    console.error("Error while getting restaurant data");
   }
 };
 
@@ -59,7 +59,7 @@ export const getBooking = async (bookingId: string) => {
     const response = await get<IBooking[]>(Endpoint.getBooking(bookingId));
     return response[0];
   } catch (error) {
-    console.log(`Error while getting booking ${bookingId}`);
+    console.error(`Error while getting booking ${bookingId}`);
   }
 };
 
@@ -70,7 +70,9 @@ export const getRestaurantBookings = async (restaurantId: string) => {
     );
     return response;
   } catch (error) {
-    console.log(`Error while getting bookings for restaurant ${restaurantId}`);
+    console.error(
+      `Error while getting bookings for restaurant ${restaurantId}`,
+    );
   }
 };
 
@@ -83,7 +85,7 @@ export const createBooking = async (booking: Booking) => {
     );
     return response;
   } catch (error) {
-    console.log(
+    console.error(
       `Error while creating booking at restaurant ${booking.restaurantId}`,
     );
   }
@@ -95,7 +97,7 @@ export const updateBooking = async (booking: IBooking) => {
     const response = await put(Endpoint.updateBooking(booking._id), body);
     return response;
   } catch (error) {
-    console.log(`Error while updating booking ${booking._id}`);
+    console.error(`Error while updating booking ${booking._id}`);
   }
 };
 
@@ -104,7 +106,7 @@ export const deleteBooking = async (bookingId: string) => {
     const response = await remove(Endpoint.deleteBooking(bookingId));
     return response;
   } catch (error) {
-    console.log(`Error while deleting booking ${bookingId}`);
+    console.error(`Error while deleting booking ${bookingId}`);
   }
 };
 
@@ -113,22 +115,29 @@ export const getCustomer = async (customerId: string) => {
     const response = await get<ICustomer[]>(Endpoint.getCustomer(customerId));
     return response[0];
   } catch (error) {
-    console.log(`Error while getting customer ${customerId}`);
+    console.error(`Error while getting customer ${customerId}`);
   }
 };
 
-export const getRestaurantCustomers = async (restaurantId: string) => {
+export const getRestaurantCustomers = async (
+  restaurantId: string,
+): Promise<ICustomer[]> => {
   try {
     const bookings = await getRestaurantBookings(restaurantId);
     const customerIds = [
       ...new Set(bookings?.map((booking) => booking.customerId)),
     ];
+
     const customers = await Promise.all(
       customerIds.map((id) => getCustomer(id)),
     );
-    return customers;
+
+    return customers.filter((customer): customer is ICustomer => !!customer);
   } catch (error) {
-    console.log(`Error while getting customers for restaurant ${restaurantId}`);
+    console.error(
+      `Error while getting customers for restaurant ${restaurantId}`,
+    );
+    throw error;
   }
 };
 
@@ -138,7 +147,7 @@ export const createCustomer = async (customer: Customer) => {
     const response = await post<string>(Endpoint.createCustomer, body);
     return response;
   } catch (error) {
-    console.log(`Error while creating customer ${customer.name}`);
+    console.error(`Error while creating customer ${customer.name}`);
   }
 };
 
@@ -148,6 +157,6 @@ export const updateCustomer = async (customer: ICustomer) => {
     const response = await put(Endpoint.updateCustomer(customer.id), body);
     return response;
   } catch (error) {
-    console.log(`Error while updating customer ${customer.id}`);
+    console.error(`Error while updating customer ${customer.id}`);
   }
 };
