@@ -8,13 +8,12 @@ import {
 import Downloadapp from "../components/BookingComponents/BookingApp";
 import Mainpic from "../components/BookingComponents/Mainpic";
 import WavySection from "../components/WavySection";
-import { Booking, IBooking } from "../models/Booking";
+import { Booking } from "../models/Booking";
 import { Customer } from "../models/Customer";
 import { ICreateBookingResponse } from "../models/ICreateBookingResponse";
 import { IRestaurant } from "../models/IRestaurant";
 import {
   createBooking,
-  getBooking,
   getRestaurant,
   restaurantId,
 } from "../services/restaurant";
@@ -237,44 +236,44 @@ const CreateBooking = () => {
 };
 
 // Exampel på hur man kan hämta en bokning
-const GetBooking = () => {
-  const [inputValue, setInputValue] = useState("65cd2a385541b0f9094d3dc8");
-  const [booking, setBooking] = useState<IBooking>();
+// const GetBooking = () => {
+//   const [inputValue, setInputValue] = useState("65cd2a385541b0f9094d3dc8");
+//   const [booking, setBooking] = useState<IBooking>();
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const response = await getBooking(inputValue);
-    console.log(response);
-    setBooking(response);
-  };
+//   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+//     e.preventDefault();
+//     const response = await getBooking(inputValue);
+//     console.log(response);
+//     setBooking(response);
+//   };
 
-  return (
-    <div>
-      <h4>GetBooking</h4>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-        />
-        <button className="button-vivid-orange">Send</button>
-      </form>
-      <table>
-        <tbody>
-          {booking &&
-            Object.entries(booking).map(([k, v]) => {
-              return (
-                <tr key={k}>
-                  <td className="text-stone-800">{k}:</td>
-                  <td className="text-vivid-orange">{v}</td>
-                </tr>
-              );
-            })}
-        </tbody>
-      </table>
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       <h4>GetBooking</h4>
+//       <form onSubmit={handleSubmit}>
+//         <input
+//           type="text"
+//           value={inputValue}
+//           onChange={(e) => setInputValue(e.target.value)}
+//         />
+//         <button className="button-vivid-orange">Send</button>
+//       </form>
+//       <table>
+//         <tbody>
+//           {booking &&
+//             Object.entries(booking).map(([k, v]) => {
+//               return (
+//                 <tr key={k}>
+//                   <td className="text-stone-800">{k}:</td>
+//                   <td className="text-vivid-orange">{v}</td>
+//                 </tr>
+//               );
+//             })}
+//         </tbody>
+//       </table>
+//     </div>
+//   );
+// };
 
 const Bookingpage = () => {
   const [restaurant, setRestaurant] = useState<IRestaurant>();
