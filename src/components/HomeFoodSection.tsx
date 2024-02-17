@@ -12,6 +12,8 @@ interface HomeFoodSectionProps {
   category: string;
   bgColor: string;
   textColor?: string;
+  waveIdTop?: number;
+  waveIdBottom?: number;
   scrollOffset?: number;
   scrollMultiplier?: number;
 }
@@ -22,6 +24,8 @@ const HomeFoodSection = ({
   category,
   bgColor = "orange",
   textColor = "almost-white",
+  waveIdTop = 1,
+  waveIdBottom = 2,
   scrollOffset = 0,
   scrollMultiplier = 0.35,
 }: HomeFoodSectionProps) => {
@@ -56,7 +60,13 @@ const HomeFoodSection = ({
   });
 
   return (
-    <WavySection bgColor={bgColor} top={true} bottom={false}>
+    <WavySection
+      bgColor={bgColor}
+      waveIdTop={waveIdTop}
+      waveIdBottom={waveIdBottom}
+      top={true}
+      bottom={false}
+    >
       <div className={`text-${textColor} overflow-clip`}>
         <div className="mx-auto max-w-screen-lg py-xl">
           <h2 className="font-heading text-7xl">{title}</h2>
@@ -67,7 +77,7 @@ const HomeFoodSection = ({
         </div>
 
         <div
-          className="pb-wave-2 flex gap-40 whitespace-nowrap"
+          className="flex gap-40 whitespace-nowrap pb-wave-2"
           style={{ marginLeft: -scrollY * scrollMultiplier + scrollOffset }}
         >
           {food?.map((taco) => (

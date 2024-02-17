@@ -21,7 +21,13 @@ const Contactpage = () => {
   return (
     <>
       <div className="-mb-wave">
-        <WavySection bgColor="pale-yellow" top={false} bottom={true}>
+        <WavySection
+          bgColor="pale-yellow"
+          waveIdTop={1}
+          waveIdBottom={2}
+          top={false}
+          bottom={true}
+        >
           <div className="flex flex-col items-center">
             <h1 className="text-7xl">Where are we?</h1>
             <p className="mb-8 mt-8 w-3/4 text-xl">
@@ -36,23 +42,27 @@ const Contactpage = () => {
 
       <div id="map" className="h-[500px] w-full"></div>
       <div className="-m-wave">
-        <WavySection bgColor="dark-green" top={true} bottom={false}>
-          <div className="mx-auto flex max-w-screen-lg flex-wrap p-sm text-xl">
-            <div className="flex w-full flex-col items-center bg-dark-green md:w-1/2 lg:w-1/6">
-              <h4 className="mt-8 text-4xl text-almost-white">Contact us</h4>
-              <div className="mt-4 flex">
-                <FaMapPin className="mr-1 text-almost-white" />
-                <p className=" text-almost-white">Mexikanska gatan 1</p>
-              </div>
-              <p className=" text-almost-white">723 52 Stockholm</p>
-              <div className="mt-3 flex">
-                <FaPhoneAlt className="mr-1 text-almost-white" />
-                <p className=" text-almost-white">+46 123 46 78 90</p>
-              </div>
-              <div className="mb-5 mt-3 flex flex-row">
-                <FaEnvelope className="mr-1 text-almost-white" />
-                <p className=" text-almost-white">info.vacacaliente.se</p>
-              </div>
+        <WavySection
+          bgColor="dark-green"
+          waveIdTop={1}
+          waveIdBottom={2}
+          top={true}
+          bottom={false}
+        >
+          <div className="flex flex-grow flex-col items-center bg-dark-green">
+            <h4 className="mt-8 text-xl text-almost-white">Contact us</h4>
+            <div className="mt-4 flex">
+              <FaMapPin className="mr-1 text-almost-white" />
+              <p className="text-sm text-almost-white">Mexikanska gatan 1</p>
+            </div>
+            <p className="text-sm text-almost-white">723 52 Stockholm</p>
+            <div className="mt-3 flex">
+              <FaPhoneAlt className="mr-1 text-almost-white" />
+              <p className="text-sm text-almost-white">+46 123 46 78 90</p>
+            </div>
+            <div className="mb-5 mt-3 flex flex-row">
+              <FaEnvelope className="mr-1 text-almost-white" />
+              <p className="text-sm text-almost-white">info.vacacaliente.se</p>
             </div>
             <div className="flex w-full flex-grow flex-col items-center md:w-1/2 lg:w-1/6">
               <h4 className="mt-6 text-4xl text-pale-yellow-variant">
