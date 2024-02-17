@@ -26,6 +26,11 @@ export default {
       width: {
         wave: "1728px",
       },
+      height: {
+        "navbar-sm": "5rem",
+        "navbar-md": "6rem",
+        "navbar-lg": "7rem",
+      },
       colors: {
         "pale-yellow": "#F9C96C",
         "vivid-orange": "#D7472A",
