@@ -9,12 +9,12 @@ const MenuIcon = ({ isOpen }: Props) => {
     <>
       {isOpen ? (
         <HiXMark
-          className="spin-in size-lg cursor-pointer stroke-1 text-almost-white"
+          className="spin-in size-md cursor-pointer stroke-1 text-almost-white lg:size-lg"
           data-testid="x-mark"
         />
       ) : (
         <HiBars3
-          className="size-lg cursor-pointer stroke-1"
+          className="size-md cursor-pointer stroke-1 md:size-lg"
           data-testid="bars"
         />
       )}
