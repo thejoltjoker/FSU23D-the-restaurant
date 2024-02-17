@@ -35,7 +35,7 @@ const HomeFoodSection = ({
       waveIdTop={waveIdTop}
       waveIdBottom={waveIdBottom}
       top={true}
-      bottom={false}
+      bottom={true}
     >
       <div className={`text-${textColor} overflow-clip`}>
         <div className="mx-auto max-w-screen-lg px-sm py-xl">
