@@ -38,8 +38,10 @@ const HomeFoodSection = ({
       bottom={false}
     >
       <div className={`text-${textColor} overflow-clip`}>
-        <div className="mx-auto max-w-screen-lg py-xl">
-          <h2 className="font-heading text-7xl">{title}</h2>
+        <div className="mx-auto max-w-screen-lg px-sm py-xl">
+          <h2 className="text-heading-sm md:text-heading-md lg:text-heading-lg font-heading">
+            {title}
+          </h2>
           <p
             className="mb-sm text-xl"
             dangerouslySetInnerHTML={{ __html: description }}
@@ -47,7 +49,7 @@ const HomeFoodSection = ({
         </div>
 
         <div
-          className="flex gap-40 whitespace-nowrap pb-wave-2"
+          className="flex gap-20 whitespace-nowrap pb-wave-2 lg:gap-40"
           style={{ marginLeft: -scrollY * scrollMultiplier + scrollOffset }}
         >
           {food?.map((foodItem) => {

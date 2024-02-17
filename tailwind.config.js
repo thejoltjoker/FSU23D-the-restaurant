@@ -9,6 +9,14 @@ export default {
         sans: ["Itim", ...defaultTheme.fontFamily.sans],
         heading: ["Calistoga", "Itim", ...defaultTheme.fontFamily.serif],
       },
+      fontSize: {
+        "paragraph-sm": "1.1rem",
+        "paragraph-md": "1.15rem",
+        "paragraph-lg": "1.25rem",
+        "heading-sm": "3rem",
+        "heading-md": "4rem",
+        "heading-lg": "4.5rem",
+      },
       spacing: {
         xs: ".5rem",
         sm: "1rem",
@@ -25,6 +33,10 @@ export default {
       },
       width: {
         wave: "1728px",
+        "home-food-item-sm": "16rem",
+        "home-food-item-lg": "28rem",
+        "food-blob-sm": "28rem",
+        "food-blob-lg": "48rem",
       },
       height: {
         "navbar-sm": "5rem",
