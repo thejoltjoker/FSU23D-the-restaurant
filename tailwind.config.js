@@ -19,6 +19,9 @@ export default {
         "wave-1.5": "150px",
         "wave-2": "200px",
         logo: "12rem",
+        "logo-sm": "8rem",
+        "logo-md": "10rem",
+        "logo-lg": "12rem",
       },
       width: {
         wave: "1728px",

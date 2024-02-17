@@ -15,7 +15,7 @@ const Navbar = () => {
   return (
     <nav className="relative mx-auto flex w-full max-w-screen-xl items-center justify-between bg-pale-yellow px-sm py-sm">
       <NavLink to="/" className="z-50">
-        <div className="max-w-logo opacity-90">
+        <div className="max-w-logo-sm md:max-w-logo-md lg:max-w-logo-lg opacity-90">
           <img
             src={
               isOpen
@@ -44,7 +44,7 @@ const Navbar = () => {
         style={isOpen ? { top: 0 } : { top: "-100vh" }}
       >
         <ul
-          className="text-center font-heading text-6xl"
+          className="text-center font-heading text-4xl lg:text-6xl"
           onClick={toggleNavigation}
         >
           <li style={{ "--i": 0 } as React.CSSProperties}>
