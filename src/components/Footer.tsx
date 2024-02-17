@@ -17,12 +17,17 @@ const Footer = () => {
     });
   };
   return (
-    <footer className="w-full  text-xl text-pale-yellow">
+    <footer className="relative z-30 w-full text-xl text-pale-yellow">
       <div className="-mt-wave">
-        <WavySection bgColor="vivid-orange" waveIdTop={1} top={true} bottom={false}>
+        <WavySection
+          bgColor="vivid-orange"
+          waveIdTop={1}
+          top={true}
+          bottom={false}
+        >
           <div className="p-l mx-auto max-w-screen-lg">
             <div className="items-top flex flex-col items-center justify-between sm:flex-row">
-              <div className="w-logo mb-10" onClick={scrollToTop}>
+              <div className="mb-10 w-logo" onClick={scrollToTop}>
                 <img
                   src={getImageUrl("logo_white.png")}
                   alt="White Vaca Caliente Logo"
