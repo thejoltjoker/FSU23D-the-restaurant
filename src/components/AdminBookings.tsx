@@ -8,7 +8,7 @@ const AdminBookings = () => {
 
   return (
     <>
-      <div className="-mb-wave">
+      <div className="pb-wave-2">
         <WavySection
           bgColor={"orange"}
           waveIdBottom={9}
