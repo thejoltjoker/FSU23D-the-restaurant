@@ -52,10 +52,8 @@
 }
 
 nav {
-  .menu-toggler-label {
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: bold;
+  &:has(#menu:checked) {
+    @apply fixed z-50;
   }
 
   ul {
@@ -85,6 +83,9 @@ nav {
     opacity: 1;
     transform: translateY(0);
     transition-delay: calc(0.25s + (0.075s * var(--i)));
+    a {
+      @apply inline-block transition-transform hover:scale-105 hover:text-pale-yellow;
+    }
   }
 
   #menu:checked ~ div ul li.social-icons a {
