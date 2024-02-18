@@ -10,14 +10,10 @@ import "./AdminBookings.css";
 
 const AdminBookings = () => {
   const [bookings, setBookings] = useState<IBooking[]>();
-
-  const HandleChangeBooking = () => {};
-
-  const HandleCancelBooking = async (bookingId: string) => {
-    await deleteBooking(bookingId);
-
-    setBookings(bookings?.filter((booking) => booking._id !== bookingId));
-  };
+  // const [updatedBookingData, setUpdatedBookingData] = useState<string | null>(
+  //   null,
+  // );
+  const [isClicked, setIsClicked] = useState<boolean>(false);
 
   useEffect(() => {
     if (bookings) return;
@@ -39,6 +35,26 @@ const AdminBookings = () => {
     };
   });
 
+  // const HandleChangeBooking = async (bookingId: string, updatedBookingData: Partial<IBooking>) => {
+  //   try {
+  //     await
+
+  //   } catch (error) {
+  //     console.error("Error while updating booking:", error)
+  //   }
+  // };
+
+  const handleChangeButton = (bookingId: string) => {
+    setIsClicked(!isClicked);
+    return null;
+  };
+
+  const HandleCancelBooking = async (bookingId: string) => {
+    await deleteBooking(bookingId);
+
+    setBookings(bookings?.filter((booking) => booking._id !== bookingId));
+  };
+
   return (
     <>
       <div className="px-lg py-wave"></div>
@@ -54,9 +70,12 @@ const AdminBookings = () => {
               {bookings &&
                 bookings.map((booking) => {
                   return (
-                    <div
+                    <form
                       className="form-with-dark-red-shadow"
                       key={booking._id}
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                      }}
                     >
                       <div className="inline-flex grow basis-full items-center gap-sm">
                         <h4 className="text-lg text-dark-red">Booking</h4>
@@ -71,20 +90,29 @@ const AdminBookings = () => {
                             {booking.customerId}
                           </p>
                           <p className="text-dark-red">Guests: </p>
-                          <p className="text-vivid-orange">
-                            {booking.numberOfGuests}
-                          </p>
+                          <input
+                            className="text-vivid-orange"
+                            defaultValue={booking.numberOfGuests.toString()}
+                          />
                           <p className="text-dark-red">Date: </p>
-                          <p className="text-vivid-orange">{booking.date}</p>
+                          <input
+                            className="text-vivid-orange"
+                            defaultValue={booking.date}
+                          />
                           <p className="text-dark-red">Time: </p>
-                          <p className="text-vivid-orange">{booking.time}</p>
+                          <input
+                            className="text-vivid-orange"
+                            defaultValue={booking.time}
+                          />
                         </div>
                         <div className="ml-auto flex flex-col justify-around">
                           <button
-                            onClick={HandleChangeBooking}
                             className="button-vivid-orange mb-2"
+                            onClick={() => handleChangeButton(booking._id)}
                           >
-                            Change booking
+                            {isClicked(booking._id)
+                              ? "Save booking"
+                              : "Change booking"}
                           </button>
                           <button
                             onClick={() => HandleCancelBooking(booking._id)}
@@ -94,7 +122,7 @@ const AdminBookings = () => {
                           </button>
                         </div>
                       </div>
-                    </div>
+                    </form>
                   );
                 })}
             </div>
