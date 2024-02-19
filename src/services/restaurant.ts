@@ -212,17 +212,12 @@ export const getAvailableTimeSlots = async (
   seatsPerTable: number = 6,
 ): Promise<string[]> => {
   const timeSlots = Object.values(TimeSlots);
-  const availableTimeSlots: string[] = [];
 
   const requestedTables = Math.ceil(numberOfGuests / seatsPerTable);
 
   const bookings = await getRestaurantBookings(restaurantId);
-
+  const availableTimeSlots: string[] = [];
   if (bookings) {
-    const filteredBookings = bookings.filter(
-      (booking) => booking.date === date,
-    );
-
     timeSlots.forEach((time) => {
       const availableTables = calculateAvailableTables(
         bookings,
@@ -231,7 +226,7 @@ export const getAvailableTimeSlots = async (
         totalTables,
         seatsPerTable,
       );
-      availableTables > 0 ? availableTimeSlots.push(time) : null;
+      if (availableTables - requestedTables > 0) availableTimeSlots.push(time);
     });
   }
 
