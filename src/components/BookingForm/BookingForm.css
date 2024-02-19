@@ -1,0 +1,24 @@
+input[type="radio"] {
+  @apply hidden;
+  &:checked + label {
+    @apply bg-dark-green-variant;
+  }
+}
+
+.time-slots label,
+input[type="date"],
+input[type="number"] {
+  @apply flex h-12 items-center justify-center rounded-full border border-almost-white bg-dark-green px-sm;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}

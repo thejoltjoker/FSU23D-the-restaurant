@@ -10,7 +10,7 @@ import { getRestaurant, restaurantId } from "../../services/restaurant";
 
 const BookingRestaurantInfo = () => {
   const [restaurant, setRestaurant] = useState<IRestaurant>();
-  
+
   useEffect(() => {
     if (restaurant) return;
     let ignore = false;
@@ -30,11 +30,10 @@ const BookingRestaurantInfo = () => {
     };
   });
   return (
-    <div className="m-auto  flex w-4/5 flex-col  md:m-0 md:w-1/2 ">
+    <div className="flex flex-col">
       <div className="gap-5 md:flex">
         <p className="flex items-center gap-1">
           <FaMapMarkerAlt className="mr-2" />
-          Mexikanska gatan 1, 723 52 Stockholm
           {restaurant?.address}, {restaurant?.zip} {restaurant?.city}
         </p>
         <p className="flex items-center">
