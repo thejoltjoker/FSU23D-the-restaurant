@@ -98,7 +98,7 @@ const CreateBooking = () => {
           (inputValue.time === "21:00" && availableAt21) ||
           (inputValue.time === "18:00" && availableAt18)
         ) {
-          handleSubmit;
+          handleSubmit({} as FormEvent<HTMLFormElement>);
         } else {
           alert(
             "Unfortunately we have no available tables left at this time. Please pic another time.",
@@ -128,7 +128,7 @@ const CreateBooking = () => {
 
   return (
     <div className="m-auto md:m-0">
-      <form onSubmit={checkAvailability} className="">
+      <form onSubmit={checkAvailability}>
         <div>
           <label htmlFor="create-booking-date" className="sr-only">
             Booking
@@ -146,7 +146,7 @@ const CreateBooking = () => {
             Time
           </label>
           <select
-            name="selectedFruit"
+            name="selectedTime"
             value={inputValue.time}
             onChange={(e) =>
               setInputValue({ ...inputValue, time: e.target.value })

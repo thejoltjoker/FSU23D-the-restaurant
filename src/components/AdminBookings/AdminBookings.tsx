@@ -13,7 +13,7 @@ const AdminBookings = () => {
   // const [updatedBookingData, setUpdatedBookingData] = useState<string | null>(
   //   null,
   // );
-  const [isClicked, setIsClicked] = useState<boolean>(false);
+  // const [isClicked, setIsClicked] = useState<boolean>(false);
 
   useEffect(() => {
     if (bookings) return;
@@ -44,10 +44,10 @@ const AdminBookings = () => {
   //   }
   // };
 
-  const handleChangeButton = (bookingId: string) => {
-    setIsClicked(!isClicked);
-    return null;
-  };
+  // const handleChangeButton = (bookingId: string) => {
+  //   setIsClicked(!isClicked);
+  //   return null;
+  // };
 
   const HandleCancelBooking = async (bookingId: string) => {
     await deleteBooking(bookingId);
@@ -108,11 +108,11 @@ const AdminBookings = () => {
                         <div className="ml-auto flex flex-col justify-around">
                           <button
                             className="button-vivid-orange mb-2"
-                            onClick={() => handleChangeButton(booking._id)}
+                            // onClick={() => handleChangeButton(booking._id)}
                           >
-                            {isClicked(booking._id)
+                            {/* {isClicked(booking._id)
                               ? "Save booking"
-                              : "Change booking"}
+                              : "Change booking"} */}
                           </button>
                           <button
                             onClick={() => HandleCancelBooking(booking._id)}
