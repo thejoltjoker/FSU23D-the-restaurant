@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import Wave from "../Wave";
 
-interface Props {
+interface IWavySectionProps {
   bgColor: string;
   waveIdTop?: number;
   waveIdBottom?: number;
@@ -17,7 +17,7 @@ const WavySection = ({
   top = true,
   bottom = false,
   children,
-}: Props) => {
+}: IWavySectionProps) => {
   return (
     <div className={`relative ${top && "pt-wave"} ${bottom && "pb-wave"}`}>
       {top && (
