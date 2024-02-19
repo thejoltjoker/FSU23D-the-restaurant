@@ -1,0 +1,10 @@
+@tailwind base;
+
+@layer base {
+  .form-with-dark-red-shadow {
+    @apply shadow-form-dark-red rounded-xl bg-almost-white p-sm;
+  }
+  p {
+    @apply text-sm;
+  }
+}
