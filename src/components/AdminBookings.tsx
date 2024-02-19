@@ -38,7 +38,7 @@ const AdminBookings = () => {
                   Change booking
                 </button>
                 <Button
-                  bgColor="orange"
+                  bgColor="dark-red"
                   textColor="white"
                   onClick={HandleCancelBooking}
                 >
