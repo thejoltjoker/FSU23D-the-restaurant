@@ -337,7 +337,7 @@ describe("restaurant service", () => {
       const result = await getAvailableTimeSlots(
         "65cd4b5c36d71723f5b8d515",
         "2000-01-01",
-        TimeSlots.Six,
+        4,
       );
 
       expect(result).toStrictEqual(Object.values(TimeSlots));
@@ -427,6 +427,36 @@ describe("restaurant service", () => {
           date: "2000-01-01",
           time: TimeSlots.Six,
           numberOfGuests: 90,
+          customerId: "65cd2dc8340ab2862ce405c8",
+        },
+      ];
+      (axios.get as Mock).mockResolvedValue({ data: mockData });
+
+      const result = await getAvailableTimeSlots(
+        "65cd4b5c36d71723f5b8d515",
+        "2000-01-01",
+        8,
+      );
+
+      expect(result).toStrictEqual([]);
+    });
+    it("should return an empty array when trying to book more tables than available", async () => {
+      const restaurantId = "65cd4b5c36d71723f5b8d515";
+      const mockData = [
+        {
+          _id: "65d328f79e299a6dae545c51",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: TimeSlots.Nine,
+          numberOfGuests: 85,
+          customerId: "65cd2dc8340ab2862be40523",
+        },
+        {
+          _id: "65d328f79e299a6dae545c25",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: TimeSlots.Six,
+          numberOfGuests: 85,
           customerId: "65cd2dc8340ab2862ce405c8",
         },
       ];
