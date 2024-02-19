@@ -2,7 +2,8 @@ import { Booking, IBooking } from "../models/Booking";
 import { Customer, ICustomer } from "../models/Customer";
 import { ICreateBookingResponse } from "../models/ICreateBookingResponse";
 import { IRestaurant } from "../models/IRestaurant";
-import { get, post, put, remove } from "./http";
+import { TimeSlots } from "../models/TimeSlots";
+import { get, post, put } from "./http";
 
 export const restaurantId = "65c5e43412ebb6ed53265ab9";
 
@@ -161,29 +162,78 @@ export const updateCustomer = async (customer: ICustomer) => {
   }
 };
 
+const calculateAvailableTables = (
+  bookings: IBooking[],
+  date: string,
+  time: string,
+  totalTables: number = 15,
+  seatsPerTable: number = 6,
+) => {
+  const filteredBookings = bookings.filter(
+    (booking) => booking.date === date && booking.time === time,
+  );
+
+  const bookedTables = filteredBookings
+    .map((booking) => Math.ceil(booking.numberOfGuests / seatsPerTable))
+    .reduce((totalBookedSeats, seats) => totalBookedSeats + seats, 0);
+
+  const availableTables = totalTables - bookedTables;
+
+  return availableTables;
+};
+
 export const getAvailableTables = async (
   restaurantId: string,
   date: string,
   time: string,
+  totalTables: number = 15,
+  seatsPerTable: number = 6,
 ): Promise<number> => {
-  const totalTables = 15;
-  const seatsPerTable = 6;
+  const bookings = await getRestaurantBookings(restaurantId);
+
+  if (bookings) {
+    return calculateAvailableTables(
+      bookings,
+      date,
+      time,
+      totalTables,
+      seatsPerTable,
+    );
+  }
+
+  return 0;
+};
+
+export const getAvailableTimeSlots = async (
+  restaurantId: string,
+  date: string,
+  numberOfGuests: number,
+  totalTables: number = 15,
+  seatsPerTable: number = 6,
+): Promise<string[]> => {
+  const timeSlots = Object.values(TimeSlots);
+  const availableTimeSlots: string[] = [];
+
+  const requestedTables = Math.ceil(numberOfGuests / seatsPerTable);
 
   const bookings = await getRestaurantBookings(restaurantId);
 
   if (bookings) {
     const filteredBookings = bookings.filter(
-      (booking) => booking.date === date && booking.time === time,
+      (booking) => booking.date === date,
     );
 
-    const bookedTables = filteredBookings
-      .map((booking) => Math.ceil(booking.numberOfGuests / seatsPerTable))
-      .reduce((totalBookedSeats, seats) => totalBookedSeats + seats, 0);
-
-    const availableTables = totalTables - bookedTables;
-
-    return availableTables;
+    timeSlots.forEach((time) => {
+      const availableTables = calculateAvailableTables(
+        bookings,
+        date,
+        time,
+        totalTables,
+        seatsPerTable,
+      );
+      availableTables > 0 ? availableTimeSlots.push(time) : null;
+    });
   }
 
-  return 0;
+  return availableTimeSlots;
 };
