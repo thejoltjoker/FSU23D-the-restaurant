@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "tailwindcss/components.css";
 import { ICustomer } from "../models/Customer";
 import { getRestaurantCustomers, restaurantId } from "../services/restaurant";
+import Button from "./Button";
 import WavySection from "./WavySection";
 
 const AdminCustomers = () => {
@@ -56,9 +57,9 @@ const AdminCustomers = () => {
                     Phone: {customer.phone}
                   </p>
                   <div className="flex flex-col justify-around">
-                    <button className="button-vivid-orange">
+                    <Button bgColor="dark-red" textColor="white">
                       Update customer
-                    </button>
+                    </Button>
                   </div>
                 </div>
               ))}

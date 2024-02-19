@@ -5,6 +5,7 @@ import {
   getRestaurantBookings,
   restaurantId,
 } from "../../services/restaurant";
+import Button from "../Button";
 import WavySection from "../WavySection";
 import "./AdminBookings.css";
 
@@ -106,20 +107,23 @@ const AdminBookings = () => {
                           />
                         </div>
                         <div className="ml-auto flex flex-col justify-around">
-                          <button
-                            className="button-vivid-orange mb-2"
+                          <Button
+                            bgColor="vivid-orange"
+                            textColor="white"
                             // onClick={() => handleChangeButton(booking._id)}
                           >
                             {/* {isClicked(booking._id)
                               ? "Save booking"
-                              : "Change booking"} */}
-                          </button>
-                          <button
+                              : "Change booking"} */}{" "}
+                            Change booking
+                          </Button>
+                          <Button
+                            bgColor="dark-red"
+                            textColor="white"
                             onClick={() => HandleCancelBooking(booking._id)}
-                            className="button-dark-red"
                           >
                             Cancel booking
-                          </button>
+                          </Button>
                         </div>
                       </div>
                     </form>

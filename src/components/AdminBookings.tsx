@@ -1,4 +1,5 @@
 import "tailwindcss/components.css";
+import Button from "./Button";
 import WavySection from "./WavySection";
 
 const AdminBookings = () => {
@@ -36,12 +37,13 @@ const AdminBookings = () => {
                 >
                   Change booking
                 </button>
-                <button
+                <Button
+                  bgColor="dark-red"
+                  textColor="white"
                   onClick={HandleCancelBooking}
-                  className="button-dark-red"
                 >
                   Cancel booking
-                </button>
+                </Button>
               </div>
             </div>
           </div>
