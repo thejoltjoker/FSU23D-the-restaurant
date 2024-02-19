@@ -8,14 +8,13 @@ import {
 import Downloadapp from "../components/BookingComponents/BookingApp";
 import Mainpic from "../components/BookingComponents/Mainpic";
 import WavySection from "../components/WavySection";
-import { Booking, IBooking } from "../models/Booking";
+import { Booking } from "../models/Booking";
 import { Customer } from "../models/Customer";
 import { ICreateBookingResponse } from "../models/ICreateBookingResponse";
 import { IRestaurant } from "../models/IRestaurant";
 import {
   createBooking,
   getRestaurant,
-  getRestaurantBookings,
   restaurantId,
 } from "../services/restaurant";
 
@@ -70,46 +69,6 @@ const CreateBooking = () => {
     ),
   );
   const [booking, setBooking] = useState<ICreateBookingResponse>();
-  const [allBookings, setAllBookings] = useState<IBooking[]>();
-  const [availableAt18, setAvailable18] = useState<boolean>(false);
-  const [availableAt21, setAvailable21] = useState<boolean>(false);
-
-  const checkAvailability = async () => {
-    try {
-      const bookingsList = await getRestaurantBookings(restaurantId);
-      setAllBookings(bookingsList);
-
-      if (bookingsList) {
-        const matchingBookings = bookingsList.filter(
-          (booking) => booking.date === inputValue.date,
-        );
-        const bookingsAt18 = matchingBookings.filter(
-          (booking) => booking.time === "18:00",
-        );
-        const bookingsAt21 = matchingBookings.filter(
-          (booking) => booking.time === "21:00",
-        );
-
-        if (bookingsAt18.length < 15) setAvailable18(true);
-        if (bookingsAt21.length < 15) setAvailable21(true);
-        if (bookingsAt18.length >= 15) setAvailable18(false);
-        if (bookingsAt21.length >= 15) setAvailable21(false);
-        if (
-          (inputValue.time === "21:00" && availableAt21) ||
-          (inputValue.time === "18:00" && availableAt18)
-        ) {
-          handleSubmit({} as FormEvent<HTMLFormElement>);
-        } else {
-          alert(
-            "Unfortunately we have no available tables left at this time. Please pic another time.",
-          );
-        }
-      }
-    } catch (error) {
-      console.error("Error checking availability", error);
-      throw error;
-    }
-  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -128,7 +87,7 @@ const CreateBooking = () => {
 
   return (
     <div className="m-auto md:m-0">
-      <form onSubmit={checkAvailability}>
+      <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="create-booking-date" className="sr-only">
             Booking
