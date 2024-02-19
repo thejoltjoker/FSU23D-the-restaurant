@@ -99,6 +99,10 @@ const CreateBooking = () => {
           (inputValue.time === "18:00" && availableAt18)
         ) {
           handleSubmit;
+        } else {
+          alert(
+            "Unfortunately we have no available tables left at this time. Please pic another time.",
+          );
         }
       }
     } catch (error) {
