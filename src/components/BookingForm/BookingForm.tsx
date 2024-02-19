@@ -196,6 +196,7 @@ const BookingForm = () => {
           </>
         ) : null}
         {isLoading && formIsValid() && <Spinner>Making reservation</Spinner>}
+        {isError && "Error"}
       </form>
     </div>
   );
