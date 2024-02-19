@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
-import {
-  FaConciergeBell,
-  FaDirections,
-  FaMapMarkerAlt,
-  FaRegClock,
-} from "react-icons/fa";
+import { FaConciergeBell, FaMapPin, FaRegClock } from "react-icons/fa";
+import { FaDiamondTurnRight } from "react-icons/fa6";
 import { IRestaurant } from "../../models/IRestaurant";
 import { getRestaurant, restaurantId } from "../../services/restaurant";
 
@@ -30,30 +26,25 @@ const BookingRestaurantInfo = () => {
     };
   });
   return (
-    <div className="flex flex-col">
-      <div className="gap-5 md:flex">
-        <p className="flex items-center gap-1">
-          <FaMapMarkerAlt className="mr-2" />
-          {restaurant?.address}, {restaurant?.zip} {restaurant?.city}
-        </p>
-        <p className="flex items-center">
-          <FaRegClock className="mr-2" />
-          <time className="">18:00 - 00:00</time>
-        </p>
-      </div>
+    <div className="flex flex-col gap-sm text-lg">
+      <p className="inline-flex items-center gap-2 text-lg">
+        <FaMapPin />
+        {restaurant?.address}, {restaurant?.zip} {restaurant?.city}
+      </p>
+      <p className="inline-flex items-center gap-2 text-lg">
+        <FaRegClock />
+        <time className="">18:00 - 00:00</time>
+      </p>
 
-      <a
-        href="https://maps.app.goo.gl/Tbo8BWLwv9i9uYrG9"
-        className="mr-4 flex items-center"
-      >
-        <FaDirections className="mr-2" />
-        Get Direction
+      <a href="#" className="inline-flex items-center gap-2 text-lg">
+        <FaDiamondTurnRight />
+        Get Directions
       </a>
 
-      <button className="flex items-center">
-        <FaConciergeBell className="mr-2" />
+      <a className="inline-flex items-center gap-2 text-lg" href="#">
+        <FaConciergeBell />
         Show Menu
-      </button>
+      </a>
 
       <p className="mt-5">
         Vaca Caliente is a vibrant oasis that offers an authentic Mexican

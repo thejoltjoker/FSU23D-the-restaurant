@@ -32,12 +32,16 @@ const Bookingpage = () => {
       <Mainpic />
 
       <WavySection bgColor="dark-green" top={true} bottom={false}>
-        <div className="mx-auto -mb-wave flex max-w-screen-lg flex-col justify-center bg-dark-green py-wave">
-          <h1 className="mb-10 text-center text-almost-white">Booking form</h1>
-          <div className="grid justify-center gap-8 text-almost-white md:flex-row lg:grid-cols-2">
-            <BookingRestaurantInfo />
+        <div className="mx-auto -mb-wave flex max-w-screen-lg flex-col justify-center bg-dark-green px-sm py-wave text-xl text-almost-white">
+          <h1 className="mb-md text-almost-white">Come and eat!</h1>
+          <div className="flex flex-wrap gap-sm">
+            <div className="shrink grow basis-full pb-lg md:basis-1/3">
+              <BookingRestaurantInfo />
+            </div>
             {/* <CreateBooking /> */}
-            <BookingForm />
+            <div className="shrink grow basis-full pb-lg md:basis-1/3">
+              <BookingForm />
+            </div>
           </div>
         </div>
       </WavySection>
