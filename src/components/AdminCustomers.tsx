@@ -29,8 +29,13 @@ const AdminCustomers = () => {
   return (
     <>
       <div className="-mt-wave">
-        <WavySection bgColor="dark-red" top={true} bottom={true}>
-          <div className=" ml-10 mr-10 bg-dark-red">
+        <WavySection
+          bgColor="dark-red"
+          waveIdTop={8}
+          waveIdBottom={1}
+          bottom={true}
+        >
+          <div className=" ml-10 mr-10 bg-dark-red pb-md">
             <h1 className="mb-4 text-almost-white">Customers</h1>
             <p className="w-2/5 text-sm text-almost-white">
               Savor Mexico's finest in every taco bite at Vaca Caliente – a

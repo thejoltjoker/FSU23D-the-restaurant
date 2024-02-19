@@ -5,7 +5,7 @@ const Adminpage = () => {
   return (
     <main>
       <div className="mb-10 mt-10 flex justify-center">
-        <h1>Management</h1>
+        <h1 className="text-7xl">Management</h1>
       </div>
       <AdminBookings />
       <AdminCustomers />

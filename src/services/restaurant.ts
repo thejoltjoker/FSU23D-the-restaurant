@@ -160,3 +160,30 @@ export const updateCustomer = async (customer: ICustomer) => {
     console.error(`Error while updating customer ${customer.id}`);
   }
 };
+
+export const getAvailableTables = async (
+  restaurantId: string,
+  date: string,
+  time: string,
+): Promise<number> => {
+  const totalTables = 15;
+  const seatsPerTable = 6;
+
+  const bookings = await getRestaurantBookings(restaurantId);
+
+  if (bookings) {
+    const filteredBookings = bookings.filter(
+      (booking) => booking.date === date && booking.time === time,
+    );
+
+    const bookedTables = filteredBookings
+      .map((booking) => Math.ceil(booking.numberOfGuests / seatsPerTable))
+      .reduce((totalBookedSeats, seats) => totalBookedSeats + seats, 0);
+
+    const availableTables = totalTables - bookedTables;
+
+    return availableTables;
+  }
+
+  return 0;
+};
