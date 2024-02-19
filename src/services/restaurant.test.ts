@@ -1,97 +1,407 @@
-import { Endpoint } from "./restaurant";
+import axios from "axios";
+import { Mock, vi } from "vitest";
+import {
+  Endpoint,
+  getAvailableTables,
+  getRestaurantBookings,
+} from "./restaurant";
 
-describe("Endpoint", () => {
-  it("should have the correct baseUrl", () => {
-    expect(Endpoint.baseUrl).toBe(
-      "https://school-restaurant-api.azurewebsites.net/",
-    );
+vi.mock("axios");
+
+describe("restaurant service", () => {
+  afterEach(() => {
+    vi.resetAllMocks();
   });
 
-  it("should generate the correct get restaurant url", () => {
-    const restaurantId = "test-id";
+  describe("getRestaurantBookings function", () => {
+    it("should return the bookings for the given restaurant id", async () => {
+      const restaurantId = "65cd4b5c36d71723f5b8d515";
+      const mockData = [
+        {
+          _id: "65d328f79e299a6dae545c58",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 4,
+          customerId: "65cd2dc8340ab2862be405c5",
+        },
+        {
+          _id: "65d32905901c7dd7154906d5",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 4,
+          customerId: "65d32905901c7dd7154906d4",
+        },
+        {
+          _id: "65d3291f9e299a6dae545c5b",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 7,
+          customerId: "65d3291f9e299a6dae545c5a",
+        },
+      ];
+      (axios.get as Mock).mockResolvedValue({ data: mockData });
 
-    const url = Endpoint.getRestaurant(restaurantId);
+      const result = await getRestaurantBookings(restaurantId);
 
-    expect(url).toBe(
-      `https://school-restaurant-api.azurewebsites.net/restaurant/${restaurantId}`,
-    );
+      expect(result).toEqual(mockData);
+    });
   });
 
-  it("should return the create restaurant url", () => {
-    const url = Endpoint.createRestaurant;
+  describe("getAvailableTables function", () => {
+    it("should return the correct amount of available tables for 19:00", async () => {
+      const restaurantId = "65cd4b5c36d71723f5b8d515";
+      const mockData = [
+        {
+          _id: "65d328f79e299a6dae545c51",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 1,
+          customerId: "65cd2dc8340ab2862be40523",
+        },
+        {
+          _id: "65d328f79e299a6dae545c55",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 1,
+          customerId: "65cd2dc8340ab2862be405c0",
+        },
+        {
+          _id: "65d328f79e299a6dae545c25",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "21:00",
+          numberOfGuests: 1,
+          customerId: "65cd2dc8340ab2862ce405c8",
+        },
+      ];
+      (axios.get as Mock).mockResolvedValue({ data: mockData });
 
-    expect(url).toBe(
-      `https://school-restaurant-api.azurewebsites.net/restaurant/create`,
-    );
+      const result = await getAvailableTables(
+        "65cd4b5c36d71723f5b8d515",
+        "2000-01-01",
+        "19:00",
+      );
+
+      expect(result).toEqual(13);
+    });
+    it("should return the correct amount of available tables for 21:00", async () => {
+      const restaurantId = "65cd4b5c36d71723f5b8d515";
+      const mockData = [
+        {
+          _id: "65d328f79e299a6dae545c51",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 1,
+          customerId: "65cd2dc8340ab2862be405c5",
+        },
+        {
+          _id: "65d328f79e299a6dae545c55",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 1,
+          customerId: "65cd2dc8340ab2862be405c5",
+        },
+        {
+          _id: "65d328f79e299a6dae545c25",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "21:00",
+          numberOfGuests: 3,
+          customerId: "65cd2dc8340ab2862be405c5",
+        },
+      ];
+      (axios.get as Mock).mockResolvedValue({ data: mockData });
+
+      const result = await getAvailableTables(
+        restaurantId,
+        "2000-01-01",
+        "21:00",
+      );
+
+      expect(result).toEqual(14);
+    });
+    it("should return the correct amount of available tables when more than one table per booking", async () => {
+      const restaurantId = "65cd4b5c36d71723f5b8d515";
+      const mockData = [
+        {
+          _id: "65d328f79e299a6dae545c58",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 4,
+          customerId: "65cd2dc8340ab2862be405c5",
+        },
+        {
+          _id: "65d32905901c7dd7154906d5",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 7,
+          customerId: "65d32905901c7dd7154906d4",
+        },
+        {
+          _id: "65d3291f9e299a6dae545c5b",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 12,
+          customerId: "65d3291f9e299a6dae545c5a",
+        },
+        {
+          _id: "65d3291f9e299a6dae545c5b",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 19,
+          customerId: "65d3291f9e299a6dae545c5a",
+        },
+      ];
+      (axios.get as Mock).mockResolvedValue({ data: mockData });
+
+      const result = await getAvailableTables(
+        restaurantId,
+        "2000-01-01",
+        "19:00",
+      );
+
+      expect(result).toEqual(6);
+    });
+    it("should return 0 when all tables are booked", async () => {
+      const restaurantId = "65cd4b5c36d71723f5b8d515";
+      const mockData = [
+        {
+          _id: "65d328f79e299a6dae545c58",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 1,
+          customerId: "65cd2dc8340ab2862be405c5",
+        },
+        {
+          _id: "65d32905901c7dd7154906d5",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 2,
+          customerId: "65d32905901c7dd7154906d4",
+        },
+        {
+          _id: "65d3291f9e299a6dae545c5b",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 3,
+          customerId: "65d3291f9e299a6dae545c63",
+        },
+        {
+          _id: "65d3291f9e299a6dae545c5b",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 6,
+          customerId: "65d3291f9e299a6dae545c86",
+        },
+        {
+          _id: "65d3291f9e299a6dae545c5b",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 6,
+          customerId: "65d3291f9e299a6dae545c22",
+        },
+        {
+          _id: "65d3291f9e299a6dae545c5b",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 6,
+          customerId: "65d3291f9e299a6dae545c92",
+        },
+        {
+          _id: "65d3291f9e299a6dae545c5b",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 6,
+          customerId: "65d3291f9e299a6dae545052",
+        },
+        {
+          _id: "65d3291f9e299a6dae545c5b",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 6,
+          customerId: "65d3291f9e299a6dae545vve",
+        },
+        {
+          _id: "65d3291f9e299a6dae545c5b",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 6,
+          customerId: "65d3291f9e299a6dae545c5a",
+        },
+        {
+          _id: "65d3291f9e299a6dae545c5b",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 6,
+          customerId: "65d3291f9e299a6dae545c5a",
+        },
+        {
+          _id: "65d3291f9e299a6dae545c5b",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 6,
+          customerId: "65d3291f9e299a6dae545c5a",
+        },
+        {
+          _id: "65d3291f9e299a6dae545c5b",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 6,
+          customerId: "65d3291f9e299a6dae545c5a",
+        },
+        {
+          _id: "65d3291f9e299a6dae545c5b",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 6,
+          customerId: "65d3291f9e299a6dae545c5a",
+        },
+        {
+          _id: "65d3291f9e299a6dae545c5b",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 6,
+          customerId: "65d3291f9e299a6dae545c5a",
+        },
+        {
+          _id: "65d3291f9e299a6dae545c5b",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: "19:00",
+          numberOfGuests: 6,
+          customerId: "65d3291f9e299a6dae545c5a",
+        },
+      ];
+      (axios.get as Mock).mockResolvedValue({ data: mockData });
+
+      const result = await getAvailableTables(
+        restaurantId,
+        "2000-01-01",
+        "19:00",
+      );
+
+      expect(result).toEqual(0);
+    });
   });
 
-  it("should generate the correct get booking url", () => {
-    const bookingId = "test-booking-id";
-    const url = Endpoint.getBooking(bookingId);
+  describe("Endpoint", () => {
+    it("should have the correct baseUrl", () => {
+      expect(Endpoint.baseUrl).toBe(
+        "https://school-restaurant-api.azurewebsites.net/",
+      );
+    });
 
-    expect(url).toBe(
-      `https://school-restaurant-api.azurewebsites.net/booking/${bookingId}`,
-    );
-  });
+    it("should generate the correct get restaurant url", () => {
+      const restaurantId = "test-id";
 
-  it("should generate the correct get restaurant bookings url", () => {
-    const restaurantId = "restaurant-id";
-    const url = Endpoint.getRestaurantBookings(restaurantId);
+      const url = Endpoint.getRestaurant(restaurantId);
 
-    expect(url).toBe(
-      `https://school-restaurant-api.azurewebsites.net/booking/restaurant/${restaurantId}`,
-    );
-  });
+      expect(url).toBe(
+        `https://school-restaurant-api.azurewebsites.net/restaurant/${restaurantId}`,
+      );
+    });
 
-  it("should return the correct create booking url", () => {
-    const url = Endpoint.createBooking;
+    it("should return the create restaurant url", () => {
+      const url = Endpoint.createRestaurant;
 
-    expect(url).toBe(
-      `https://school-restaurant-api.azurewebsites.net/booking/create`,
-    );
-  });
+      expect(url).toBe(
+        `https://school-restaurant-api.azurewebsites.net/restaurant/create`,
+      );
+    });
 
-  it("should generate the correct update booking url", () => {
-    const bookingId = "booking-id";
-    const url = Endpoint.updateBooking(bookingId);
+    it("should generate the correct get booking url", () => {
+      const bookingId = "test-booking-id";
+      const url = Endpoint.getBooking(bookingId);
 
-    expect(url).toBe(
-      `https://school-restaurant-api.azurewebsites.net/booking/update/${bookingId}`,
-    );
-  });
+      expect(url).toBe(
+        `https://school-restaurant-api.azurewebsites.net/booking/${bookingId}`,
+      );
+    });
 
-  it("should generate the correct delete booking url", () => {
-    const bookingId = "booking-id";
-    const url = Endpoint.deleteBooking(bookingId);
+    it("should generate the correct get restaurant bookings url", () => {
+      const restaurantId = "restaurant-id";
+      const url = Endpoint.getRestaurantBookings(restaurantId);
 
-    expect(url).toBe(
-      `https://school-restaurant-api.azurewebsites.net/booking/delete/${bookingId}`,
-    );
-  });
+      expect(url).toBe(
+        `https://school-restaurant-api.azurewebsites.net/booking/restaurant/${restaurantId}`,
+      );
+    });
 
-  it("should generate the correct get customer url", () => {
-    const customerId = "customer-id";
-    const url = Endpoint.getCustomer(customerId);
+    it("should return the correct create booking url", () => {
+      const url = Endpoint.createBooking;
 
-    expect(url).toBe(
-      `https://school-restaurant-api.azurewebsites.net/customer/${customerId}`,
-    );
-  });
+      expect(url).toBe(
+        `https://school-restaurant-api.azurewebsites.net/booking/create`,
+      );
+    });
 
-  it("should return the correct create customer url", () => {
-    const url = Endpoint.createCustomer;
+    it("should generate the correct update booking url", () => {
+      const bookingId = "booking-id";
+      const url = Endpoint.updateBooking(bookingId);
 
-    expect(url).toBe(
-      `https://school-restaurant-api.azurewebsites.net/customer/create`,
-    );
-  });
+      expect(url).toBe(
+        `https://school-restaurant-api.azurewebsites.net/booking/update/${bookingId}`,
+      );
+    });
 
-  it("should generate the correct update customer url", () => {
-    const customerId = "customer-id";
-    const url = Endpoint.updateCustomer(customerId);
+    it("should generate the correct delete booking url", () => {
+      const bookingId = "booking-id";
+      const url = Endpoint.deleteBooking(bookingId);
 
-    expect(url).toBe(
-      `https://school-restaurant-api.azurewebsites.net/customer/update/${customerId}`,
-    );
+      expect(url).toBe(
+        `https://school-restaurant-api.azurewebsites.net/booking/delete/${bookingId}`,
+      );
+    });
+
+    it("should generate the correct get customer url", () => {
+      const customerId = "customer-id";
+      const url = Endpoint.getCustomer(customerId);
+
+      expect(url).toBe(
+        `https://school-restaurant-api.azurewebsites.net/customer/${customerId}`,
+      );
+    });
+
+    it("should return the correct create customer url", () => {
+      const url = Endpoint.createCustomer;
+
+      expect(url).toBe(
+        `https://school-restaurant-api.azurewebsites.net/customer/create`,
+      );
+    });
+
+    it("should generate the correct update customer url", () => {
+      const customerId = "customer-id";
+      const url = Endpoint.updateCustomer(customerId);
+
+      expect(url).toBe(
+        `https://school-restaurant-api.azurewebsites.net/customer/update/${customerId}`,
+      );
+    });
   });
 });
