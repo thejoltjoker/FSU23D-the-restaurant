@@ -1,8 +1,10 @@
 import axios from "axios";
 import { Mock, vi } from "vitest";
+import { TimeSlots } from "../models/TimeSlots";
 import {
   Endpoint,
   getAvailableTables,
+  getAvailableTimeSlots,
   getRestaurantBookings,
 } from "./restaurant";
 
@@ -21,7 +23,7 @@ describe("restaurant service", () => {
           _id: "65d328f79e299a6dae545c58",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 4,
           customerId: "65cd2dc8340ab2862be405c5",
         },
@@ -29,7 +31,7 @@ describe("restaurant service", () => {
           _id: "65d32905901c7dd7154906d5",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 4,
           customerId: "65d32905901c7dd7154906d4",
         },
@@ -37,7 +39,7 @@ describe("restaurant service", () => {
           _id: "65d3291f9e299a6dae545c5b",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 7,
           customerId: "65d3291f9e299a6dae545c5a",
         },
@@ -58,7 +60,7 @@ describe("restaurant service", () => {
           _id: "65d328f79e299a6dae545c51",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 1,
           customerId: "65cd2dc8340ab2862be40523",
         },
@@ -66,7 +68,7 @@ describe("restaurant service", () => {
           _id: "65d328f79e299a6dae545c55",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 1,
           customerId: "65cd2dc8340ab2862be405c0",
         },
@@ -74,7 +76,7 @@ describe("restaurant service", () => {
           _id: "65d328f79e299a6dae545c25",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "21:00",
+          time: TimeSlots.Nine,
           numberOfGuests: 1,
           customerId: "65cd2dc8340ab2862ce405c8",
         },
@@ -84,7 +86,7 @@ describe("restaurant service", () => {
       const result = await getAvailableTables(
         "65cd4b5c36d71723f5b8d515",
         "2000-01-01",
-        "19:00",
+        TimeSlots.Six,
       );
 
       expect(result).toEqual(13);
@@ -96,7 +98,7 @@ describe("restaurant service", () => {
           _id: "65d328f79e299a6dae545c51",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 1,
           customerId: "65cd2dc8340ab2862be405c5",
         },
@@ -104,7 +106,7 @@ describe("restaurant service", () => {
           _id: "65d328f79e299a6dae545c55",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 1,
           customerId: "65cd2dc8340ab2862be405c5",
         },
@@ -112,7 +114,7 @@ describe("restaurant service", () => {
           _id: "65d328f79e299a6dae545c25",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "21:00",
+          time: TimeSlots.Nine,
           numberOfGuests: 3,
           customerId: "65cd2dc8340ab2862be405c5",
         },
@@ -122,7 +124,7 @@ describe("restaurant service", () => {
       const result = await getAvailableTables(
         restaurantId,
         "2000-01-01",
-        "21:00",
+        TimeSlots.Nine,
       );
 
       expect(result).toEqual(14);
@@ -134,7 +136,7 @@ describe("restaurant service", () => {
           _id: "65d328f79e299a6dae545c58",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 4,
           customerId: "65cd2dc8340ab2862be405c5",
         },
@@ -142,7 +144,7 @@ describe("restaurant service", () => {
           _id: "65d32905901c7dd7154906d5",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 7,
           customerId: "65d32905901c7dd7154906d4",
         },
@@ -150,7 +152,7 @@ describe("restaurant service", () => {
           _id: "65d3291f9e299a6dae545c5b",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 12,
           customerId: "65d3291f9e299a6dae545c5a",
         },
@@ -158,7 +160,7 @@ describe("restaurant service", () => {
           _id: "65d3291f9e299a6dae545c5b",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 19,
           customerId: "65d3291f9e299a6dae545c5a",
         },
@@ -168,7 +170,7 @@ describe("restaurant service", () => {
       const result = await getAvailableTables(
         restaurantId,
         "2000-01-01",
-        "19:00",
+        TimeSlots.Six,
       );
 
       expect(result).toEqual(6);
@@ -180,7 +182,7 @@ describe("restaurant service", () => {
           _id: "65d328f79e299a6dae545c58",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 1,
           customerId: "65cd2dc8340ab2862be405c5",
         },
@@ -188,7 +190,7 @@ describe("restaurant service", () => {
           _id: "65d32905901c7dd7154906d5",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 2,
           customerId: "65d32905901c7dd7154906d4",
         },
@@ -196,7 +198,7 @@ describe("restaurant service", () => {
           _id: "65d3291f9e299a6dae545c5b",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 3,
           customerId: "65d3291f9e299a6dae545c63",
         },
@@ -204,7 +206,7 @@ describe("restaurant service", () => {
           _id: "65d3291f9e299a6dae545c5b",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 6,
           customerId: "65d3291f9e299a6dae545c86",
         },
@@ -212,7 +214,7 @@ describe("restaurant service", () => {
           _id: "65d3291f9e299a6dae545c5b",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 6,
           customerId: "65d3291f9e299a6dae545c22",
         },
@@ -220,7 +222,7 @@ describe("restaurant service", () => {
           _id: "65d3291f9e299a6dae545c5b",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 6,
           customerId: "65d3291f9e299a6dae545c92",
         },
@@ -228,7 +230,7 @@ describe("restaurant service", () => {
           _id: "65d3291f9e299a6dae545c5b",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 6,
           customerId: "65d3291f9e299a6dae545052",
         },
@@ -236,7 +238,7 @@ describe("restaurant service", () => {
           _id: "65d3291f9e299a6dae545c5b",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 6,
           customerId: "65d3291f9e299a6dae545vve",
         },
@@ -244,7 +246,7 @@ describe("restaurant service", () => {
           _id: "65d3291f9e299a6dae545c5b",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 6,
           customerId: "65d3291f9e299a6dae545c5a",
         },
@@ -252,7 +254,7 @@ describe("restaurant service", () => {
           _id: "65d3291f9e299a6dae545c5b",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 6,
           customerId: "65d3291f9e299a6dae545c5a",
         },
@@ -260,7 +262,7 @@ describe("restaurant service", () => {
           _id: "65d3291f9e299a6dae545c5b",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 6,
           customerId: "65d3291f9e299a6dae545c5a",
         },
@@ -268,7 +270,7 @@ describe("restaurant service", () => {
           _id: "65d3291f9e299a6dae545c5b",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 6,
           customerId: "65d3291f9e299a6dae545c5a",
         },
@@ -276,7 +278,7 @@ describe("restaurant service", () => {
           _id: "65d3291f9e299a6dae545c5b",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 6,
           customerId: "65d3291f9e299a6dae545c5a",
         },
@@ -284,7 +286,7 @@ describe("restaurant service", () => {
           _id: "65d3291f9e299a6dae545c5b",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 6,
           customerId: "65d3291f9e299a6dae545c5a",
         },
@@ -292,7 +294,7 @@ describe("restaurant service", () => {
           _id: "65d3291f9e299a6dae545c5b",
           restaurantId: restaurantId,
           date: "2000-01-01",
-          time: "19:00",
+          time: TimeSlots.Six,
           numberOfGuests: 6,
           customerId: "65d3291f9e299a6dae545c5a",
         },
@@ -302,10 +304,171 @@ describe("restaurant service", () => {
       const result = await getAvailableTables(
         restaurantId,
         "2000-01-01",
-        "19:00",
+        TimeSlots.Six,
       );
 
       expect(result).toEqual(0);
+    });
+  });
+
+  describe("getAvailableTimeSlots function", () => {
+    it("should return both time slots when they have tables available", async () => {
+      const restaurantId = "65cd4b5c36d71723f5b8d515";
+      const mockData = [
+        {
+          _id: "65d328f79e299a6dae545c51",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: TimeSlots.Nine,
+          numberOfGuests: 2,
+          customerId: "65cd2dc8340ab2862be40523",
+        },
+        {
+          _id: "65d328f79e299a6dae545c25",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: TimeSlots.Six,
+          numberOfGuests: 1,
+          customerId: "65cd2dc8340ab2862ce405c8",
+        },
+      ];
+      (axios.get as Mock).mockResolvedValue({ data: mockData });
+
+      const result = await getAvailableTimeSlots(
+        "65cd4b5c36d71723f5b8d515",
+        "2000-01-01",
+        4,
+      );
+
+      expect(result).toStrictEqual(Object.values(TimeSlots));
+    });
+    it("should return only time slot 18:00 when 21:00 is full", async () => {
+      const restaurantId = "65cd4b5c36d71723f5b8d515";
+      const mockData = [
+        {
+          _id: "65d328f79e299a6dae545c51",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: TimeSlots.Nine,
+          numberOfGuests: 90,
+          customerId: "65cd2dc8340ab2862be40523",
+        },
+        {
+          _id: "65d328f79e299a6dae545c25",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: TimeSlots.Six,
+          numberOfGuests: 1,
+          customerId: "65cd2dc8340ab2862ce405c8",
+        },
+      ];
+      (axios.get as Mock).mockResolvedValue({ data: mockData });
+
+      const result = await getAvailableTimeSlots(
+        "65cd4b5c36d71723f5b8d515",
+        "2000-01-01",
+        8,
+      );
+
+      expect(result).toStrictEqual([TimeSlots.Six]);
+    });
+    it("should return only time slot 21:00 when 18:00 is full", async () => {
+      const restaurantId = "65cd4b5c36d71723f5b8d515";
+      const mockData = [
+        {
+          _id: "65d328f79e299a6dae545c51",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: TimeSlots.Six,
+          numberOfGuests: 90,
+          customerId: "65cd2dc8340ab2862be40523",
+        },
+        {
+          _id: "65d328f79e299a6dae545c25",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: TimeSlots.Nine,
+          numberOfGuests: 9,
+          customerId: "65cd2dc8340ab2862ce405c8",
+        },
+        {
+          _id: "65d328f79e299a6dae545c25",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: TimeSlots.Nine,
+          numberOfGuests: 4,
+          customerId: "65cd2dc8340ab2862ce405c8",
+        },
+      ];
+      (axios.get as Mock).mockResolvedValue({ data: mockData });
+
+      const result = await getAvailableTimeSlots(
+        "65cd4b5c36d71723f5b8d515",
+        "2000-01-01",
+        3,
+      );
+
+      expect(result).toStrictEqual([TimeSlots.Nine]);
+    });
+    it("should return an empty array when all time slots are full", async () => {
+      const restaurantId = "65cd4b5c36d71723f5b8d515";
+      const mockData = [
+        {
+          _id: "65d328f79e299a6dae545c51",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: TimeSlots.Nine,
+          numberOfGuests: 90,
+          customerId: "65cd2dc8340ab2862be40523",
+        },
+        {
+          _id: "65d328f79e299a6dae545c25",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: TimeSlots.Six,
+          numberOfGuests: 90,
+          customerId: "65cd2dc8340ab2862ce405c8",
+        },
+      ];
+      (axios.get as Mock).mockResolvedValue({ data: mockData });
+
+      const result = await getAvailableTimeSlots(
+        "65cd4b5c36d71723f5b8d515",
+        "2000-01-01",
+        8,
+      );
+
+      expect(result).toStrictEqual([]);
+    });
+    it("should return an empty array when trying to book more tables than available", async () => {
+      const restaurantId = "65cd4b5c36d71723f5b8d515";
+      const mockData = [
+        {
+          _id: "65d328f79e299a6dae545c51",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: TimeSlots.Nine,
+          numberOfGuests: 85,
+          customerId: "65cd2dc8340ab2862be40523",
+        },
+        {
+          _id: "65d328f79e299a6dae545c25",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: TimeSlots.Six,
+          numberOfGuests: 85,
+          customerId: "65cd2dc8340ab2862ce405c8",
+        },
+      ];
+      (axios.get as Mock).mockResolvedValue({ data: mockData });
+
+      const result = await getAvailableTimeSlots(
+        "65cd4b5c36d71723f5b8d515",
+        "2000-01-01",
+        8,
+      );
+
+      expect(result).toStrictEqual([]);
     });
   });
 
