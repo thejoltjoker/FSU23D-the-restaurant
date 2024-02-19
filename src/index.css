@@ -33,9 +33,7 @@
   .button-dark-red {
     @apply shadow-button-dark-red-variant rounded-full bg-dark-red px-6 py-1.5 text-almost-white;
   }
-  .form-with-dark-red-shadow {
-    @apply shadow-form-dark-red mt-5 flex justify-between rounded-xl bg-almost-white p-3;
-  }
+  
   .form-with-dark-red-variant-shadow {
     @apply shadow-form-dark-red-variant mt-5 flex justify-between rounded-xl bg-almost-white p-3;
   }
