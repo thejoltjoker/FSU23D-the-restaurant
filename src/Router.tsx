@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import Adminpage from "./pages/AdminPage";
-import Bookingpage from "./pages/BookingPage";
-import Contactpage from "./pages/ContactPage";
+import AdminPage from "./pages/AdminPage";
+import BookingPage from "./pages/BookingPage";
+import ContactPage from "./pages/ContactPage";
 import ErrorPage from "./pages/ErrorPage";
-import Homepage from "./pages/HomePage";
+import HomePage from "./pages/HomePage";
 import Layout from "./pages/Layout";
-import Menupage from "./pages/MenuPage";
+import MenuPage from "./pages/MenuPage";
 import StylesPage from "./pages/StylesPage";
 
 export const router = createBrowserRouter(
@@ -18,23 +18,23 @@ export const router = createBrowserRouter(
         {
           path: "/",
           index: true,
-          element: <Homepage />,
+          element: <HomePage />,
         },
         {
           path: "/contact",
-          element: <Contactpage />,
+          element: <ContactPage />,
         },
         {
           path: "/booking",
-          element: <Bookingpage />,
+          element: <BookingPage />,
         },
         {
           path: "/menu",
-          element: <Menupage />,
+          element: <MenuPage />,
         },
         {
           path: "/admin",
-          element: <Adminpage />,
+          element: <AdminPage />,
         },
         {
           path: "/styles",

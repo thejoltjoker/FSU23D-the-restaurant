@@ -3,7 +3,8 @@ import { Customer, ICustomer } from "../models/Customer";
 import { ICreateBookingResponse } from "../models/ICreateBookingResponse";
 import { IRestaurant } from "../models/IRestaurant";
 import { TimeSlots } from "../models/TimeSlots";
-import { get, post, put } from "./http";
+import { get, post, put, remove } from "./http";
+
 
 export const restaurantId = "65c5e43412ebb6ed53265ab9";
 
