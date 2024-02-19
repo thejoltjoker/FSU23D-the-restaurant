@@ -11,7 +11,7 @@ export class Booking {
 }
 
 export interface IBooking {
-  id: string;
+  _id: string;
   restaurantID: string;
   date: string;
   time: string;

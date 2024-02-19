@@ -78,6 +78,7 @@ const CreateBooking = () => {
       console.log(response);
       setBooking(response);
       setIsLoading(false);
+      console.log(inputValue);
     } catch (error) {
       setIsLoading(false);
       setIsError(true);
@@ -86,7 +87,7 @@ const CreateBooking = () => {
 
   return (
     <div className="m-auto md:m-0">
-      <form onSubmit={handleSubmit} className="">
+      <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="create-booking-date" className="sr-only">
             Booking
@@ -100,19 +101,19 @@ const CreateBooking = () => {
               setInputValue({ ...inputValue, date: e.target.value })
             }
           />
-
           <label htmlFor="create-booking-time" className="sr-only">
             Time
           </label>
-          <input
-            type="time"
-            className="rounded-md text-pale-yellow"
-            name="create-booking-time"
+          <select
+            name="selectedTime"
             value={inputValue.time}
             onChange={(e) =>
               setInputValue({ ...inputValue, time: e.target.value })
             }
-          />
+          >
+            <option value="18:00">18:00</option>
+            <option value="21:00">21:00</option>
+          </select>
         </div>
 
         <div className="gap-1">

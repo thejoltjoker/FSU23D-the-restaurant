@@ -1,7 +1,31 @@
+import { useEffect, useState } from "react";
 import "tailwindcss/components.css";
+import { ICustomer } from "../models/Customer";
+import { getRestaurantCustomers, restaurantId } from "../services/restaurant";
 import WavySection from "./WavySection";
 
 const AdminCustomers = () => {
+  const [customers, setCustomers] = useState<ICustomer[]>();
+
+  useEffect(() => {
+    if (customers) return;
+    let ignore = false;
+
+    const fetchData = async () => {
+      try {
+        const customersResponse = await getRestaurantCustomers(restaurantId);
+        console.log(customersResponse);
+        if (!ignore) setCustomers(customersResponse);
+      } catch (error) {
+        console.error("Error while getting customer data");
+      }
+    };
+    fetchData();
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
   return (
     <>
       <div className="-mt-wave">
@@ -18,18 +42,26 @@ const AdminCustomers = () => {
               burst of flavor in every taco, a fiesta on your palate!
             </p>
 
-            <div className="form-with-dark-red-variant-shadow flex flex-col sm:flex-row">
-              <div>
-                <p className="text-sm text-dark-red">Customer: </p>
-                <p className="text-sm text-dark-red">Name: </p>
-                <p className="text-sm text-dark-red">Email: </p>
-                <p className="text-sm text-dark-red">Phone: </p>
-              </div>
-              <div className="flex flex-col justify-around">
-                <button className="button-vivid-orange mt-xs">
-                  Update customer
-                </button>
-              </div>
+            <div className="form-with-dark-red-variant-shadow">
+              {customers?.map((customer) => (
+                <div key={customer.id}>
+                  <p className="text-sm text-dark-red">
+                    Customer: {customer.id}
+                  </p>
+                  <p className="text-sm text-dark-red">Name: {customer.name}</p>
+                  <p className="text-sm text-dark-red">
+                    Email: {customer.email}
+                  </p>
+                  <p className="text-sm text-dark-red">
+                    Phone: {customer.phone}
+                  </p>
+                  <div className="flex flex-col justify-around">
+                    <button className="button-vivid-orange">
+                      Update customer
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </WavySection>
