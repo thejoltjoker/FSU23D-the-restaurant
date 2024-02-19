@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://medieinstitutet.github.io/the-restaurant-grupp1/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -12,6 +13,7 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "date-fns": "^3.3.1",
     "dotenv": "^16.4.4",
     "leaflet": "^1.9.4",
     "localforage": "^1.10.0",

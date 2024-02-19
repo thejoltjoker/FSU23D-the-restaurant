@@ -60,6 +60,7 @@ export default {
       boxShadow: {
         "button-disabled": "2px 3px 0 0 #44403c",
         "button-orange": "2px 3px 0 0 #790117",
+        "button-vivid-orange": "2px 3px 0 0 #790117",
         "button-dark-red-variant": "2px 3px 0 0 #47010D",
         "button-dark-red": "2px 3px 0 0 #47010D",
         "form-dark-red": "3px 3px 0 0 #790117",
@@ -71,6 +72,7 @@ export default {
   safelist: [
     "shadow-button-disabled",
     "shadow-button-orange",
+    "shadow-button-vivid-orange",
     "shadow-button-dark-red",
     "bg-pale-yellow",
     "bg-vivid-orange",
