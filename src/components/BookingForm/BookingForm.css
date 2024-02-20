@@ -1,0 +1,32 @@
+input[type="radio"] {
+  @apply hidden;
+  &:checked + label {
+    @apply bg-orange text-almost-white;
+  }
+}
+
+.time-slots label,
+input[type="date"],
+input[type="number"] {
+  @apply flex h-12 items-center justify-center rounded-full border-almost-white bg-pale-yellow px-sm text-dark-red;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  @apply m-0 appearance-none;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  @apply flex h-12 items-center justify-center rounded-full border border-orange bg-white px-sm text-dark-red;
+  &::placeholder {
+    @apply text-dark-red/40;
+  }
+}
