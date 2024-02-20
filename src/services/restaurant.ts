@@ -5,7 +5,6 @@ import { IRestaurant } from "../models/IRestaurant";
 import { TimeSlots } from "../models/TimeSlots";
 import { get, post, put, remove } from "./http";
 
-
 export const restaurantId = "65c5e43412ebb6ed53265ab9";
 
 export class Endpoint {
@@ -232,4 +231,32 @@ export const getAvailableTimeSlots = async (
   }
 
   return availableTimeSlots;
+};
+
+export const bookingIsPossible = async (
+  restaurantId: string,
+  date: string,
+  time: string,
+  numberOfGuests: number,
+  totalTables: number = 15,
+  seatsPerTable: number = 6,
+): Promise<boolean> => {
+  const requestedTables = Math.ceil(numberOfGuests / seatsPerTable);
+  const bookings = await getRestaurantBookings(restaurantId);
+
+  let availableTables = 0;
+
+  if (bookings) {
+    availableTables = calculateAvailableTables(
+      bookings,
+      date,
+      time,
+      totalTables,
+      seatsPerTable,
+    );
+  }
+  console.log("availableTables:", availableTables);
+  console.log("requestedTables:", requestedTables);
+
+  return requestedTables <= availableTables;
 };

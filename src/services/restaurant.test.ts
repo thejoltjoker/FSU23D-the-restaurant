@@ -3,6 +3,7 @@ import { Mock, vi } from "vitest";
 import { TimeSlots } from "../models/TimeSlots";
 import {
   Endpoint,
+  bookingIsPossible,
   getAvailableTables,
   getAvailableTimeSlots,
   getRestaurantBookings,
@@ -502,6 +503,133 @@ describe("restaurant service", () => {
     });
   });
 
+  describe("bookingIsPossible function", () => {
+    it("should return true if booking is possible for a given time slot", async () => {
+      const restaurantId = "65cd4b5c36d71723f5b8d515";
+      const mockData = [
+        {
+          _id: "65d328f79e299a6dae545c51",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: TimeSlots.Nine,
+          numberOfGuests: 80,
+          customerId: "65cd2dc8340ab2862be40523",
+        },
+        {
+          _id: "65d328f79e299a6dae545c51",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: TimeSlots.Six,
+          numberOfGuests: 90,
+          customerId: "65cd2dc8340ab2862be40523",
+        },
+      ];
+      (axios.get as Mock).mockResolvedValue({ data: mockData });
+
+      const result = await bookingIsPossible(
+        restaurantId,
+        "2000-01-01",
+        TimeSlots.Nine,
+        2,
+      );
+
+      expect(result).toBe(true);
+    });
+    it("should return true if booking is possible for a given date", async () => {
+      const restaurantId = "65cd4b5c36d71723f5b8d515";
+      const mockData = [
+        {
+          _id: "65d328f79e299a6dae545c51",
+          restaurantId: restaurantId,
+          date: "2000-01-02",
+          time: TimeSlots.Nine,
+          numberOfGuests: 80,
+          customerId: "65cd2dc8340ab2862be40523",
+        },
+        {
+          _id: "65d328f79e299a6dae545c51",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: TimeSlots.Nine,
+          numberOfGuests: 90,
+          customerId: "65cd2dc8340ab2862be40523",
+        },
+      ];
+      (axios.get as Mock).mockResolvedValue({ data: mockData });
+
+      const result = await bookingIsPossible(
+        restaurantId,
+        "2000-01-02",
+        TimeSlots.Nine,
+        4,
+      );
+
+      expect(result).toBe(true);
+    });
+
+    it("should return false if booking is not possible for a given time slot", async () => {
+      const restaurantId = "65cd4b5c36d71723f5b8d515";
+      const mockData = [
+        {
+          _id: "65d328f79e299a6dae545c51",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: TimeSlots.Six,
+          numberOfGuests: 80,
+          customerId: "65cd2dc8340ab2862be40523",
+        },
+        {
+          _id: "65d328f79e299a6dae545c51",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: TimeSlots.Nine,
+          numberOfGuests: 90,
+          customerId: "65cd2dc8340ab2862be40523",
+        },
+      ];
+      (axios.get as Mock).mockResolvedValue({ data: mockData });
+
+      const result = await bookingIsPossible(
+        restaurantId,
+        "2000-01-01",
+        TimeSlots.Nine,
+        4,
+      );
+
+      expect(result).toBe(false);
+    });
+    it("should return false if booking is not possible for a given date", async () => {
+      const restaurantId = "65cd4b5c36d71723f5b8d515";
+      const mockData = [
+        {
+          _id: "65d328f79e299a6dae545c51",
+          restaurantId: restaurantId,
+          date: "2000-01-02",
+          time: TimeSlots.Nine,
+          numberOfGuests: 80,
+          customerId: "65cd2dc8340ab2862be40523",
+        },
+        {
+          _id: "65d328f79e299a6dae545c51",
+          restaurantId: restaurantId,
+          date: "2000-01-01",
+          time: TimeSlots.Nine,
+          numberOfGuests: 90,
+          customerId: "65cd2dc8340ab2862be40523",
+        },
+      ];
+      (axios.get as Mock).mockResolvedValue({ data: mockData });
+
+      const result = await bookingIsPossible(
+        restaurantId,
+        "2000-01-01",
+        TimeSlots.Nine,
+        4,
+      );
+
+      expect(result).toBe(false);
+    });
+  });
   describe("Endpoint", () => {
     it("should have the correct baseUrl", () => {
       expect(Endpoint.baseUrl).toBe(
