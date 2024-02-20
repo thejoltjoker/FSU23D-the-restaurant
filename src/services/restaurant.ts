@@ -3,6 +3,7 @@ import { Customer, ICustomer } from "../models/Customer";
 import { ICreateBookingResponse } from "../models/ICreateBookingResponse";
 import { IRestaurant } from "../models/IRestaurant";
 import { IUpdateBooking } from "../models/IUpdateBooking";
+import { IUpdateCustomer } from "../models/IUpdateCustomer";
 import { TimeSlots } from "../models/TimeSlots";
 import { get, post, put, remove } from "./http";
 
@@ -153,7 +154,7 @@ export const createCustomer = async (customer: Customer) => {
   }
 };
 
-export const updateCustomer = async (customer: ICustomer) => {
+export const updateCustomer = async (customer: IUpdateCustomer) => {
   try {
     const body = JSON.stringify(customer);
     const response = await put(Endpoint.updateCustomer(customer.id), body);
