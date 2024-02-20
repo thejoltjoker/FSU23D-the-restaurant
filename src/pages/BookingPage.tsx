@@ -10,7 +10,6 @@ import { getRestaurant, restaurantId } from "../services/restaurant";
 const Bookingpage = () => {
   const [restaurant, setRestaurant] = useState<IRestaurant>();
 
-  // Effect för att hämta restaurangdata
   useEffect(() => {
     if (restaurant) return;
     let ignore = false;

@@ -112,6 +112,7 @@ const BookingForm = () => {
               id="date"
               value={booking.date}
               onChange={handleDateChange}
+              className="w-full"
             />
           </div>
           <div className="shrink grow basis-1/2">
