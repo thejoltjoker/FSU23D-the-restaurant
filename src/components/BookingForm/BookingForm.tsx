@@ -99,7 +99,7 @@ const BookingForm = () => {
   };
 
   return (
-    <div className="rounded-xl bg-almost-white px-sm py-md text-slate-800">
+    <div className="rounded-xl bg-almost-white px-sm py-md text-slate-800 booking-form">
       <h3 className="pb-sm text-3xl">Make a reservation</h3>
 
       <form onSubmit={handleSubmit} className="booking-form">

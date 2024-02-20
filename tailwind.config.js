@@ -5,6 +5,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      gridTemplateColumns: {
+        "admin-bookings": "repeat(7, minmax(auto, max-content))",
+      },
       fontFamily: {
         sans: ["Itim", ...defaultTheme.fontFamily.sans],
         heading: ["Calistoga", "Itim", ...defaultTheme.fontFamily.serif],
