@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
+
 import { IBooking } from "../models/Booking";
 import { TimeSlots } from "../models/TimeSlots";
 import Button from "./Button";
-
 interface IAdminBookingListItemProps {
   booking: IBooking;
   onEdit: (booking: IBooking) => void;
@@ -26,7 +26,7 @@ const AdminBookingListItem = (props: IAdminBookingListItemProps) => {
     props.onCancel(booking._id);
   };
   return (
-    <>
+    <div className="text-paragraph-sm">
       <form
         className="form-with-dark-red-shadow"
         key={booking._id}
@@ -35,59 +35,91 @@ const AdminBookingListItem = (props: IAdminBookingListItemProps) => {
         }}
       >
         <div className="inline-flex grow basis-full items-center gap-sm">
-          <h4 className="text-lg text-dark-red">Booking</h4>
-          <p className=" text-lg text-vivid-orange">#{booking._id}</p>
+          <h4 className="text-paragraph-sm text-dark-red md:text-paragraph-md lg:text-paragraph-lg">
+            Booking
+          </h4>
+          <p className="text-vivid-orange">#{booking._id}</p>
         </div>
-        <div className="flex">
-          <div className="grid shrink grid-cols-2">
-            <p className="text-dark-red">Customer id: </p>
-            <p className="text-vivid-orange">{booking.customerId}</p>
-            <p className="text-dark-red">Guests: </p>
-            <input
-              className="text-vivid-orange"
-              value={booking.numberOfGuests}
-              disabled={!isEditable}
-              onChange={(e) =>
-                setBooking({
-                  ...booking,
-                  numberOfGuests: Number(e.currentTarget.value),
-                })
-              }
-            />
-            <p className="text-dark-red">Date: </p>
-            <input
-              type="date"
-              className="text-vivid-orange"
-              value={booking.date}
-              disabled={!isEditable}
-              onChange={(e) =>
-                setBooking({
-                  ...booking,
-                  date: e.currentTarget.value,
-                })
-              }
-            />
-            <p className="text-dark-red">Time: </p>
-
-            <select
-              name=""
-              id=""
-              value={booking.time}
-              disabled={!isEditable}
-              onChange={(e) =>
-                setBooking({
-                  ...booking,
-                  time: e.currentTarget.value,
-                })
-              }
-            >
-              {Object.values(TimeSlots).map((slot) => (
-                <option value={slot} selected={booking.time == slot} key={slot}>
-                  {slot}
-                </option>
-              ))}
-            </select>
-          </div>
+        <div className="flex flex-wrap">
+          <table className="">
+            <tbody>
+              <tr>
+                <td>
+                  <p className="text-dark-red">Customer id: </p>
+                </td>
+                <td>
+                  <p className="text-vivid-orange">{booking.customerId}</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p className="text-dark-red">Guests: </p>
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    className="w-full text-vivid-orange"
+                    value={booking.numberOfGuests}
+                    disabled={!isEditable}
+                    onChange={(e) =>
+                      setBooking({
+                        ...booking,
+                        numberOfGuests: Number(e.currentTarget.value),
+                      })
+                    }
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p className="text-dark-red">Date: </p>
+                </td>
+                <td>
+                  <input
+                    type="date"
+                    className="w-full text-vivid-orange"
+                    value={booking.date}
+                    disabled={!isEditable}
+                    onChange={(e) =>
+                      setBooking({
+                        ...booking,
+                        date: e.currentTarget.value,
+                      })
+                    }
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p className="text-dark-red">Time: </p>
+                </td>
+                <td>
+                  <select
+                    name="time-slot"
+                    className="flex h-12 w-full items-center justify-center rounded-full border-almost-white bg-pale-yellow px-sm text-dark-red"
+                    value={booking.time}
+                    disabled={!isEditable}
+                    onChange={(e) =>
+                      setBooking({
+                        ...booking,
+                        time: e.currentTarget.value,
+                      })
+                    }
+                  >
+                    {Object.values(TimeSlots).map((slot) => (
+                      <option
+                        value={slot}
+                        selected={booking.time == slot}
+                        key={slot}
+                      >
+                        {slot}
+                      </option>
+                    ))}
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
           <div className="ml-auto flex flex-col items-center justify-around">
             <Button
               bgColor="vivid-orange"
@@ -110,7 +142,7 @@ const AdminBookingListItem = (props: IAdminBookingListItemProps) => {
           </div>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 
