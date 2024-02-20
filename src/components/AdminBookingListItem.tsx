@@ -19,7 +19,7 @@ const AdminBookingListItem = (props: IAdminBookingListItemProps) => {
 
   const handleEditBooking = () => {
     props.onEdit(booking);
-    // setIsEditable(!isEditable);
+    setIsEditable(!isEditable);
   };
 
   const handleCancelBooking = () => {
@@ -103,7 +103,7 @@ const AdminBookingListItem = (props: IAdminBookingListItemProps) => {
             <Button
               bgColor="dark-red"
               textColor="white"
-              onClick={() => handleCancelBooking(booking._id)}
+              onClick={() => handleCancelBooking()}
             >
               Cancel booking
             </Button>
