@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { IBooking } from "../../models/Booking";
 import {
+  bookingIsPossible,
   deleteBooking,
-  getAvailableTables,
   getRestaurantBookings,
   restaurantId,
   updateBooking,
@@ -35,11 +35,21 @@ const AdminBookings = () => {
   });
 
   const handleEditBooking = async (booking: IBooking) => {
-    const availableTables = getAvailableTables(restaurantId, booking.date, booking.time)
-    await updateBooking(booking);
-    setBookings(bookings?.map((b) => (b._id === booking._id ? booking : b)));
+    if (
+      await bookingIsPossible(
+        restaurantId,
+        booking.date,
+        booking.time,
+        booking.numberOfGuests,
+      )
+    ) {
+      const { _id, ...updateBody } = booking;
+      await updateBooking({ ...updateBody, id: _id });
+      setBookings(bookings?.map((b) => (b._id === booking._id ? booking : b)));
+    }
   };
   const handleCancelBooking = async (bookingId: string) => {
+    console.log("removing booking", bookingId);
     await deleteBooking(bookingId);
     setBookings(bookings?.filter((booking) => booking._id !== bookingId));
   };

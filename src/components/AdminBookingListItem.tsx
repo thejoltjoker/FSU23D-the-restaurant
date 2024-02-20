@@ -82,7 +82,7 @@ const AdminBookingListItem = (props: IAdminBookingListItemProps) => {
               }
             >
               {Object.values(TimeSlots).map((slot) => (
-                <option value={slot} selected={booking.time == slot}>
+                <option value={slot} selected={booking.time == slot} key={slot}>
                   {slot}
                 </option>
               ))}

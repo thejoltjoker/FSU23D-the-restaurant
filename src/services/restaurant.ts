@@ -2,6 +2,7 @@ import { Booking, IBooking } from "../models/Booking";
 import { Customer, ICustomer } from "../models/Customer";
 import { ICreateBookingResponse } from "../models/ICreateBookingResponse";
 import { IRestaurant } from "../models/IRestaurant";
+import { IUpdateBooking } from "../models/IUpdateBooking";
 import { TimeSlots } from "../models/TimeSlots";
 import { get, post, put, remove } from "./http";
 
@@ -92,13 +93,13 @@ export const createBooking = async (booking: Booking) => {
   }
 };
 
-export const updateBooking = async (booking: IBooking) => {
+export const updateBooking = async (booking: IUpdateBooking) => {
   try {
     const body = JSON.stringify(booking);
-    const response = await put(Endpoint.updateBooking(booking._id), body);
+    const response = await put(Endpoint.updateBooking(booking.id), body);
     return response;
   } catch (error) {
-    console.error(`Error while updating booking ${booking._id}`);
+    console.error(`Error while updating booking ${booking.id}`);
   }
 };
 
