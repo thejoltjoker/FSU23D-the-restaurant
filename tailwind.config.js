@@ -42,6 +42,7 @@ export default {
         "navbar-sm": "5rem",
         "navbar-md": "6rem",
         "navbar-lg": "7rem",
+        "booking-hero": "40rem",
       },
       colors: {
         "pale-yellow": "#F9C96C",

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Downloadapp from "../components/BookingComponents/BookingApp";
-import Mainpic from "../components/BookingComponents/Mainpic";
+import BookingHeroImg from "../components/BookingComponents/BookingHeroImg";
 import BookingForm from "../components/BookingForm";
 import BookingRestaurantInfo from "../components/BookingRestaurantInfo/BookingRestaurantInfo";
 import "../components/CreateBooking/CreateBooking.css";
@@ -29,16 +29,17 @@ const Bookingpage = () => {
 
   return (
     <>
-      <Mainpic />
+      <BookingHeroImg />
 
       <WavySection bgColor="dark-green" top={true} bottom={false}>
         <div className="mx-auto -mb-wave flex max-w-screen-lg flex-col justify-center bg-dark-green px-sm py-wave text-xl text-almost-white">
-          <h1 className="mb-md text-almost-white">Come and eat!</h1>
+          <h1 className="mb-md text-heading-sm text-almost-white md:text-heading-md lg:text-heading-lg">
+            Come and eat!
+          </h1>
           <div className="flex flex-wrap gap-sm">
             <div className="shrink grow basis-full pb-lg md:basis-1/3">
               <BookingRestaurantInfo />
             </div>
-            {/* <CreateBooking /> */}
             <div className="shrink grow basis-full pb-lg md:basis-1/3">
               <BookingForm />
             </div>

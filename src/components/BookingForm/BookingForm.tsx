@@ -43,35 +43,33 @@ const BookingForm = () => {
     );
   };
 
-  const getTimeSlots = async () => {
+  const getTimeSlots = async (date: string, numberOfGuests: number) => {
     setIsLoading(true);
     const slots = await getAvailableTimeSlots(
       booking.restaurantId,
-      booking.date,
-      booking.numberOfGuests,
+      date,
+      numberOfGuests,
     );
-
+    console.log(booking);
     setTimeSlots(slots);
     setIsLoading(false);
   };
 
-  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
+  const handleDateChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setBooking({ ...booking, date: e.currentTarget.value });
-    // getTimeSlots();
+    await getTimeSlots(e.currentTarget.value, booking.numberOfGuests);
   };
 
-  const handleGuestsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
+  const handleGuestsChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setBooking({ ...booking, numberOfGuests: Number(e.currentTarget.value) });
-    // getTimeSlots();
+    await getTimeSlots(booking.date, Number(e.currentTarget.value));
   };
 
   const handleClickGetTimeSlots = async (
     e: React.MouseEvent<HTMLButtonElement>,
   ) => {
     e.preventDefault();
-    await getTimeSlots();
+    await getTimeSlots(booking.date, booking.numberOfGuests);
     setBooking({ ...booking, time: "" });
   };
 
@@ -147,19 +145,23 @@ const BookingForm = () => {
             <div className="time-slots my-sm">
               <p className="text-xl">Available time slots</p>
               <div className="time-slots flex gap-sm" data-testid="time-slots">
-                {timeSlots.map((time, i) => (
-                  <div key={`time-slot-${i}`}>
-                    <input
-                      type="radio"
-                      id={`time-slot-${i}`}
-                      name="time"
-                      value={time}
-                      className="time-slot hidden w-full"
-                      onClick={handleTimeSlotClick}
-                    />
-                    <label htmlFor={`time-slot-${i}`}>{time}</label>
-                  </div>
-                ))}
+                {timeSlots.length > 0 ? (
+                  timeSlots.map((time, i) => (
+                    <div key={`time-slot-${i}`}>
+                      <input
+                        type="radio"
+                        id={`time-slot-${i}`}
+                        name="time"
+                        value={time}
+                        className="time-slot hidden w-full"
+                        onClick={handleTimeSlotClick}
+                      />
+                      <label htmlFor={`time-slot-${i}`}>{time}</label>
+                    </div>
+                  ))
+                ) : (
+                  <p>No available time slots for this selection</p>
+                )}
               </div>
             </div>
           </>
