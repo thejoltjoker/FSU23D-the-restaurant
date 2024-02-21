@@ -1,3 +1,4 @@
+import BurritosMenu from "../components/BurritosMenu";
 import IntroSection from "../components/IntroSection";
 import TacoMenu from "../components/TacoMenu";
 
@@ -6,6 +7,7 @@ const Menupage = () => {
     <>
       <IntroSection />
       <TacoMenu />
+      <BurritosMenu />
     </>
   );
 };
