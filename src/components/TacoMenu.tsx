@@ -1,5 +1,31 @@
-import { getImageUrl } from "../helpers/strings";
+import TacoMenuList from "./TacoMenuList";
 import WavySection from "./WavySection";
+
+const tacoItems = [
+  {
+    id: 1,
+    imageUrl: "taco-spicy-sizzle.png",
+    title: "Taco Delight",
+    description:
+      "Savor the Taco Delight – a perfect blend of seasoned goodness and zesty toppings.",
+  },
+
+  {
+    id: 2,
+    imageUrl: "taco-spicy-sizzle.png",
+    title: "Taco Delight",
+    description:
+      "Savor the Taco Delight – a perfect blend of seasoned goodness and zesty toppings.",
+  },
+
+  {
+    id: 3,
+    imageUrl: "taco-spicy-sizzle.png",
+    title: "Taco Delight",
+    description:
+      "Savor the Taco Delight – a perfect blend of seasoned goodness and zesty toppings.",
+  },
+];
 
 const TacoMenu = () => {
   return (
@@ -10,70 +36,12 @@ const TacoMenu = () => {
         <h2 className="md:heading-md text-center text-heading-sm text-almost-white lg:text-heading-lg">
           Tacos
         </h2>
+
         <div className="m-auto flex w-full max-w-screen-lg flex-col p-5 md:flex-row md:gap-5  ">
-          <div className="mbl:w-2/3 mbl:m-auto md:w-full">
-            <div className="">
-              <img
-                src={getImageUrl("taco-spicy-sizzle.png")}
-                alt="White Vaca Caliente Logo"
-              />
-            </div>
-            <div className="rounded-md bg-white p-5">
-              <h3 className="md:text-2rem mb-5  text-center text-heading-sm  ">
-                Taco Delight
-              </h3>
-              <p className="md:paragraph-md  text-paragraph-sm  ">
-                Savor the Taco Delight – a perfect blend of seasoned goodness
-                and zesty toppings.
-              </p>
-            </div>
-          </div>
-
-          <div className="Mbl:w-2/3 Mbl:m-auto md:w-full">
-            <div className="">
-              <img
-                src={getImageUrl("taco-spicy-sizzle.png")}
-                alt="White Vaca Caliente Logo"
-              />
-            </div>
-            <div className="rounded-md bg-white p-5">
-              <h3 className="md:text-2rem mb-5  text-center text-heading-sm  ">
-                Taco Delight
-              </h3>
-              <p className="md:paragraph-md  text-paragraph-sm  ">
-                Savor the Taco Delight – a perfect blend of seasoned goodness
-                and zesty toppings.
-              </p>
-            </div>
-          </div>
-
-          <div className="Mbl:w-2/3 Mbl:m-auto md:w-full">
-            <div className="">
-              <img
-                src={getImageUrl("taco-spicy-sizzle.png")}
-                alt="White Vaca Caliente Logo"
-              />
-            </div>
-            <div className="rounded-md bg-white p-5">
-              <h3 className="md:text-2rem mb-5  text-center text-heading-sm  ">
-                Taco Delight
-              </h3>
-              <p className="md:paragraph-md  text-paragraph-sm  ">
-                Savor the Taco Delight – a perfect blend of seasoned goodness
-                and zesty toppings.
-              </p>
-            </div>
-          </div>
+          <TacoMenuList items={tacoItems} />
         </div>
       </div>
     </section>
-
-    //  "paragraph-sm": "1.1rem",
-    // "paragraph-md": "1.15rem",
-    // "paragraph-lg": "1.25rem",
-    // "heading-sm": "3rem",
-    // "heading-md": "4rem",
-    // "heading-lg": "4.5rem",
   );
 };
 
