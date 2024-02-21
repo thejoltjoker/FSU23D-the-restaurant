@@ -5,6 +5,10 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      screens: {
+        Mbl: { min: "469px" },
+      },
+
       fontFamily: {
         sans: ["Itim", ...defaultTheme.fontFamily.sans],
         heading: ["Calistoga", "Itim", ...defaultTheme.fontFamily.serif],
