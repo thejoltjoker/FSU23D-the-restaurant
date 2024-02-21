@@ -3,14 +3,13 @@ import { getImageUrl } from "../../helpers/strings";
 import "./HomeChefSection.css";
 const HomeChefSection = () => {
   const scrollY = useScrollYContext();
-  console.log(getImageUrl("chef-bg.jpg"));
   return (
     <div className="overflow-hidden">
       <div
         className="chef-section relative flex h-[50rem] w-full items-center overflow-hidden bg-cover bg-center"
         style={{ backgroundImage: `url(${getImageUrl("chef-bg.jpg")})` }}
       >
-        <div className="text-heading-lg relative z-20 w-full text-center">
+        <div className="relative z-20 w-full text-center text-heading-lg">
           <h5 className="absolute left-0 top-0 z-10 w-full text-almost-white lg:top-20">
             The Good, The Bad, The Chef
           </h5>
