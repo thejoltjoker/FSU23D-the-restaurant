@@ -4,29 +4,33 @@ import WavySection from "./WavySection";
 const dessertItems = [
   {
     id: 1,
-    imageUrl: "burrito-bonanza.png",
-    title: "Royal Burrito",
+    imageUrl: "dessert-chocochurro-extravaganza.png",
+    title: "Chocochurro Extravaganza",
   },
 
   {
     id: 2,
-    imageUrl: "burrito-baby.png",
-    title: "Baby Burrito",
+    imageUrl: "dessert-cinnamon-churro-explosion.png",
+    title: "Cinnamon Churro Explosion",
   },
 
   {
     id: 3,
-    imageUrl: "burrito-veggie-fiesta.png",
-    title: "Veggie Fiesta",
+    imageUrl: "dessert-dulce-de-leche-delight.png",
+    title: "Dulce De Leche Delight",
   },
 ];
 
 const DessertsMenu = () => {
   return (
-    <section className="min-h-[1000px]  ">
-      <WavySection bgColor="dark-red" top={true} bottom={false}></WavySection>
+    <section className="  ">
+      <WavySection
+        bgColor="dark-red-variant"
+        top={true}
+        bottom={false}
+      ></WavySection>
 
-      <div className=" bg-dark-red">
+      <div className=" bg-dark-red-variant">
         <h2 className="md:heading-md text-center text-heading-sm text-almost-white lg:text-heading-lg">
           Desserts
         </h2>

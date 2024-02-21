@@ -23,10 +23,10 @@ const burritosItems = [
 
 const BurritosMenu = () => {
   return (
-    <section className="min-h-[1000px]  ">
+    <section className=" ">
       <WavySection bgColor="dark-red" top={true} bottom={false}></WavySection>
 
-      <div className=" bg-dark-red">
+      <div className=" -mb-[65px] bg-dark-red">
         <h2 className="md:heading-md text-center text-heading-sm text-almost-white lg:text-heading-lg">
           Burritos
         </h2>
