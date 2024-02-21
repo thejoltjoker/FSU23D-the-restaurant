@@ -8,7 +8,9 @@ export default {
       screens: {
         mbl: { min: "469px" },
       },
-
+      gridTemplateColumns: {
+        "admin-bookings": "repeat(7, minmax(auto, max-content))",
+      },
       fontFamily: {
         sans: ["Itim", ...defaultTheme.fontFamily.sans],
         heading: ["Calistoga", "Itim", ...defaultTheme.fontFamily.serif],
@@ -47,6 +49,7 @@ export default {
         "navbar-sm": "5rem",
         "navbar-md": "6rem",
         "navbar-lg": "7rem",
+        "booking-hero": "40rem",
       },
       colors: {
         "pale-yellow": "#F9C96C",

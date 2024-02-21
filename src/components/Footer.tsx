@@ -25,63 +25,72 @@ const Footer = () => {
           top={true}
           bottom={false}
         >
-          <div className="p-l mx-auto max-w-screen-lg">
-            <div className="items-top flex flex-col items-center justify-between sm:flex-row">
-              <div className="mb-10 w-logo" onClick={scrollToTop}>
+          <div className="p-l mx-auto max-w-screen-lg p-sm text-paragraph-sm md:pb-md md:text-paragraph-md lg:text-paragraph-lg">
+            <div className="flex flex-col justify-between sm:flex-row sm:items-center">
+              <div className="mb-lg grow" onClick={scrollToTop}>
                 <img
                   src={getImageUrl("logo_white.png")}
                   alt="White Vaca Caliente Logo"
+                  className="max-w-logo"
                 />
               </div>
-              <ul className="mb-5">
-                <li className="pb-xs">
-                  <NavLink
-                    to="/menu"
-                    className="text-almost-white-variant hover:text-pale-yellow"
-                  >
-                    Menu
-                  </NavLink>
-                </li>
-                <li className="pb-xs">
-                  <NavLink
-                    to="/booking"
-                    className="text-almost-white-variant hover:text-pale-yellow"
-                  >
-                    Book a table
-                  </NavLink>
-                </li>
-                <li className="pb-xs">
-                  <NavLink
-                    to="/contact"
-                    className="text-almost-white-variant hover:text-pale-yellow"
-                  >
-                    Contact
-                  </NavLink>
-                </li>
-              </ul>
-              <div className="">
-                <div className="flex flex-col gap-sm">
-                  <div className="inline-flex items-center gap-sm">
-                    <FaPhoneAlt className="mt-1 size-4 " />
-                    <p className=" text-pale-yellow">+46 123 46 78 90</p>
-                  </div>
-                  <div className="items-top inline-flex gap-sm">
-                    <FaMapPin className="mt-1 size-4 " />
-                    <div className="flex flex-col">
-                      <p className="">Mexikanska gatan 1</p>
-                      <p className="">723 52 Stockholm</p>
-                    </div>
-                  </div>
-                </div>
+              <div className="flex grow">
+                <ul className="grow basis-1/3">
+                  <li className="pb-sm">
+                    <NavLink
+                      to="/menu"
+                      className="text-almost-white transition hover:text-pale-yellow"
+                    >
+                      Menu
+                    </NavLink>
+                  </li>
+                  <li className="pb-sm">
+                    <NavLink
+                      to="/booking"
+                      className="text-almost-white transition hover:text-pale-yellow"
+                    >
+                      Book a table
+                    </NavLink>
+                  </li>
+                  <li className="pb-sm">
+                    <NavLink
+                      to="/contact"
+                      className="text-almost-white transition hover:text-pale-yellow"
+                    >
+                      Contact
+                    </NavLink>
+                  </li>
+                </ul>
+
+                <ul className="grow basis-1/3">
+                  <li className="pb-sm">
+                    <p className="inline-flex gap-xs text-paragraph-sm text-pale-yellow md:text-paragraph-md lg:text-paragraph-lg">
+                      <FaPhoneAlt className="mt-0.5 size-4" />
+                      +46 123 46 78 90
+                    </p>
+                  </li>
+                  <li className="pb-sm">
+                    <p className="inline-flex gap-xs text-paragraph-sm leading-6 text-pale-yellow md:text-paragraph-md lg:text-paragraph-lg">
+                      <FaMapPin className="mt-1 size-4" />
+                      Mexikanska gatan 1 <br />
+                      723 52 Stockholm
+                    </p>
+                  </li>
+                </ul>
               </div>
             </div>
-            <div className="pt-m flex  flex-col-reverse items-center justify-between p-lg sm:flex-row">
-              <div className="sm:mb-5 lg:mt-md">
-                <p>&copy; 2024, Vaca Caliente. All rights reserved.</p>
-              </div>
-              <div className="flex flex-col justify-center sm:flex-row">
-                <p className="mx-auto">Join the fiesta</p>
-                <ul className="flex gap-sm pb-sm pl-5 sm:order-last">
+            {/* <div className="pt-m flex flex-col-reverse items-center justify-between p-lg sm:flex-row"> */}
+            <div className="flex flex-col-reverse items-center pt-md sm:flex-row md:pt-lg">
+              <p className="text-paragraph-sm md:text-paragraph-md lg:text-paragraph-lg">
+                &copy; 2024, Vaca Caliente. All rights reserved.
+              </p>
+
+              <div className="flex flex-col pb-sm sm:ml-auto sm:flex-row sm:items-center sm:gap-sm sm:pb-0">
+                <p className="mx-auto mb-xs text-paragraph-sm sm:mb-0 md:text-paragraph-md lg:text-paragraph-lg">
+                  Join the fiesta
+                </p>
+
+                <ul className="flex gap-sm sm:order-last">
                   <li>
                     <Link to="#">
                       <FaInstagram className="size-md transition-all ease-in-out hover:scale-110 hover:text-almost-white-variant" />

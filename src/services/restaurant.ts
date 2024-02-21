@@ -2,9 +2,10 @@ import { Booking, IBooking } from "../models/Booking";
 import { Customer, ICustomer } from "../models/Customer";
 import { ICreateBookingResponse } from "../models/ICreateBookingResponse";
 import { IRestaurant } from "../models/IRestaurant";
+import { IUpdateBooking } from "../models/IUpdateBooking";
+import { IUpdateCustomer } from "../models/IUpdateCustomer";
 import { TimeSlots } from "../models/TimeSlots";
 import { get, post, put, remove } from "./http";
-
 
 export const restaurantId = "65c5e43412ebb6ed53265ab9";
 
@@ -93,13 +94,13 @@ export const createBooking = async (booking: Booking) => {
   }
 };
 
-export const updateBooking = async (booking: IBooking) => {
+export const updateBooking = async (booking: IUpdateBooking) => {
   try {
     const body = JSON.stringify(booking);
-    const response = await put(Endpoint.updateBooking(booking._id), body);
+    const response = await put(Endpoint.updateBooking(booking.id), body);
     return response;
   } catch (error) {
-    console.error(`Error while updating booking ${booking._id}`);
+    console.error(`Error while updating booking ${booking.id}`);
   }
 };
 
@@ -153,7 +154,7 @@ export const createCustomer = async (customer: Customer) => {
   }
 };
 
-export const updateCustomer = async (customer: ICustomer) => {
+export const updateCustomer = async (customer: IUpdateCustomer) => {
   try {
     const body = JSON.stringify(customer);
     const response = await put(Endpoint.updateCustomer(customer.id), body);
@@ -232,4 +233,32 @@ export const getAvailableTimeSlots = async (
   }
 
   return availableTimeSlots;
+};
+
+export const bookingIsPossible = async (
+  restaurantId: string,
+  date: string,
+  time: string,
+  numberOfGuests: number,
+  totalTables: number = 15,
+  seatsPerTable: number = 6,
+): Promise<boolean> => {
+  const requestedTables = Math.ceil(numberOfGuests / seatsPerTable);
+  const bookings = await getRestaurantBookings(restaurantId);
+
+  let availableTables = 0;
+
+  if (bookings) {
+    availableTables = calculateAvailableTables(
+      bookings,
+      date,
+      time,
+      totalTables,
+      seatsPerTable,
+    );
+  }
+  console.log("availableTables:", availableTables);
+  console.log("requestedTables:", requestedTables);
+
+  return requestedTables <= availableTables;
 };

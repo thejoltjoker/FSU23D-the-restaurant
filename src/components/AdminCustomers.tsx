@@ -1,31 +1,50 @@
 import { useEffect, useState } from "react";
 import "tailwindcss/components.css";
 import { ICustomer } from "../models/Customer";
-import { getRestaurantCustomers, restaurantId } from "../services/restaurant";
-import Button from "./Button";
+import {
+  getRestaurantCustomers,
+  restaurantId,
+  updateCustomer,
+} from "../services/restaurant";
+import AdminCustomersListItem from "./AdminCustomersListItem";
+import Spinner from "./Spinner";
 import WavySection from "./WavySection";
 
 const AdminCustomers = () => {
+  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [customers, setCustomers] = useState<ICustomer[]>();
-
+  const handleEditCustomer = async (customer: ICustomer) => {
+    const { _id, ...updateBody } = customer;
+    await updateCustomer({ ...updateBody, id: _id });
+    setCustomers(
+      customers?.map((c) => (c._id === customer._id ? customer : c)),
+    );
+  };
   useEffect(() => {
     if (customers) return;
+    setIsLoading(true);
     let ignore = false;
 
     const fetchData = async () => {
       try {
-        const customersResponse = await getRestaurantCustomers(restaurantId);
-        console.log(customersResponse);
-        if (!ignore) setCustomers(customersResponse);
+        const response = await getRestaurantCustomers(restaurantId);
+
+        if (!ignore) setCustomers(response);
+        setIsLoading(false);
       } catch (error) {
-        console.error("Error while getting customer data");
+        console.error("Couldn't get bookings");
+        setIsError(true);
+        setIsLoading(false);
       }
     };
     fetchData();
+
     return () => {
       ignore = true;
+      setIsLoading(false);
     };
-  }, []);
+  }, [customers]);
 
   return (
     <>
@@ -34,36 +53,21 @@ const AdminCustomers = () => {
           bgColor="dark-red"
           waveIdTop={8}
           waveIdBottom={1}
-          bottom={true}
+          bottom={false}
         >
-          <div className=" ml-10 mr-10 bg-dark-red pb-md">
-            <h1 className="mb-4 text-almost-white">Customers</h1>
-            <p className="w-2/5 text-sm text-almost-white">
-              Savor Mexico's finest in every taco bite at Vaca Caliente – a
-              burst of flavor in every taco, a fiesta on your palate!
-            </p>
-
-            <div className="form-with-dark-red-variant-shadow">
-              {customers?.map((customer) => (
-                <div key={customer.id}>
-                  <p className="text-sm text-dark-red">
-                    Customer: {customer.id}
-                  </p>
-                  <p className="text-sm text-dark-red">Name: {customer.name}</p>
-                  <p className="text-sm text-dark-red">
-                    Email: {customer.email}
-                  </p>
-                  <p className="text-sm text-dark-red">
-                    Phone: {customer.phone}
-                  </p>
-                  <div className="flex flex-col justify-around">
-                    <Button bgColor="dark-red" textColor="white">
-                      Update customer
-                    </Button>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="mx-auto max-w-screen-xl px-sm pb-wave-2 pt-md">
+            <h2 className="mb-4 text-4xl text-almost-white">Customers</h2>
+            {isError && !isLoading && <p>Something went wrong...</p>}
+            {isLoading && !isError && (
+              <Spinner chiliColor="dark-red">Loading...</Spinner>
+            )}
+            {customers?.map((customer) => (
+              <AdminCustomersListItem
+                key={customer._id}
+                customer={customer}
+                onEdit={handleEditCustomer}
+              />
+            ))}
           </div>
         </WavySection>
       </div>

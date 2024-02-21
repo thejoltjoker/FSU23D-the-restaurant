@@ -1,23 +1,25 @@
 import { useEffect, useState } from "react";
 import { IBooking } from "../../models/Booking";
 import {
+  bookingIsPossible,
   deleteBooking,
   getRestaurantBookings,
   restaurantId,
+  updateBooking,
 } from "../../services/restaurant";
-import Button from "../Button";
+import AdminBookingsTableRow from "../AdminBookingsListItem";
+import Spinner from "../Spinner";
 import WavySection from "../WavySection";
 import "./AdminBookings.css";
 
 const AdminBookings = () => {
+  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [bookings, setBookings] = useState<IBooking[]>();
-  // const [updatedBookingData, setUpdatedBookingData] = useState<string | null>(
-  //   null,
-  // );
-  // const [isClicked, setIsClicked] = useState<boolean>(false);
 
   useEffect(() => {
     if (bookings) return;
+    setIsLoading(true);
     let ignore = false;
 
     const fetchData = async () => {
@@ -25,114 +27,65 @@ const AdminBookings = () => {
         const response = await getRestaurantBookings(restaurantId);
 
         if (!ignore) setBookings(response);
+        setIsLoading(false);
       } catch (error) {
         console.error("Couldn't get bookings");
+        setIsError(true);
+        setIsLoading(false);
       }
     };
     fetchData();
 
     return () => {
       ignore = true;
+      setIsLoading(false);
     };
-  });
+  }, [bookings]);
 
-  // const HandleChangeBooking = async (bookingId: string, updatedBookingData: Partial<IBooking>) => {
-  //   try {
-  //     await
-
-  //   } catch (error) {
-  //     console.error("Error while updating booking:", error)
-  //   }
-  // };
-
-  // const handleChangeButton = (bookingId: string) => {
-  //   setIsClicked(!isClicked);
-  //   return null;
-  // };
-
-  const HandleCancelBooking = async (bookingId: string) => {
+  const handleEditBooking = async (booking: IBooking) => {
+    if (
+      await bookingIsPossible(
+        restaurantId,
+        booking.date,
+        booking.time,
+        booking.numberOfGuests,
+      )
+    ) {
+      const { _id, ...updateBody } = booking;
+      await updateBooking({ ...updateBody, id: _id });
+      setBookings(bookings?.map((b) => (b._id === booking._id ? booking : b)));
+    }
+  };
+  const handleCancelBooking = async (bookingId: string) => {
+    console.log("removing booking", bookingId);
     await deleteBooking(bookingId);
-
     setBookings(bookings?.filter((booking) => booking._id !== bookingId));
   };
 
   return (
     <>
-      <div className="px-lg py-wave"></div>
-      <div className="-mt-wave ">
-        <WavySection bgColor={"orange"} top={true} bottom={true}>
-          <div className="mx-auto max-w-screen-lg p-sm">
-            <h1 className="mb-4 text-4xl text-almost-white">Bookings</h1>
-            <p className="w-3/5 text-lg text-almost-white">
-              Savor Mexico's finest in every taco bite at Vaca Caliente – a
-              burst of flavor in every taco, a fiesta on your palate!
-            </p>
-            <div className="flex flex-col gap-sm">
-              {bookings &&
-                bookings.map((booking) => {
-                  return (
-                    <form
-                      className="form-with-dark-red-shadow"
-                      key={booking._id}
-                      onSubmit={(e) => {
-                        e.preventDefault();
-                      }}
-                    >
-                      <div className="inline-flex grow basis-full items-center gap-sm">
-                        <h4 className="text-lg text-dark-red">Booking</h4>
-                        <p className=" text-lg text-vivid-orange">
-                          #{booking._id}
-                        </p>
-                      </div>
-                      <div className="flex">
-                        <div className="grid shrink grid-cols-2">
-                          <p className="text-dark-red">Customer id: </p>
-                          <p className="text-vivid-orange">
-                            {booking.customerId}
-                          </p>
-                          <p className="text-dark-red">Guests: </p>
-                          <input
-                            className="text-vivid-orange"
-                            defaultValue={booking.numberOfGuests.toString()}
-                          />
-                          <p className="text-dark-red">Date: </p>
-                          <input
-                            className="text-vivid-orange"
-                            defaultValue={booking.date}
-                          />
-                          <p className="text-dark-red">Time: </p>
-                          <input
-                            className="text-vivid-orange"
-                            defaultValue={booking.time}
-                          />
-                        </div>
-                        <div className="ml-auto flex flex-col justify-around">
-                          <Button
-                            bgColor="vivid-orange"
-                            textColor="white"
-                            // onClick={() => handleChangeButton(booking._id)}
-                          >
-                            {/* {isClicked(booking._id)
-                              ? "Save booking"
-                              : "Change booking"} */}{" "}
-                            Change booking
-                          </Button>
-                          <Button
-                            bgColor="dark-red"
-                            textColor="white"
-                            onClick={() => HandleCancelBooking(booking._id)}
-                          >
-                            Cancel booking
-                          </Button>
-                        </div>
-                      </div>
-                    </form>
-                  );
-                })}
-            </div>
-          </div>
-        </WavySection>
-      </div>
+      <WavySection bgColor={"orange"} top={true} bottom={false}>
+        <div className="mx-auto max-w-screen-xl p-sm pb-wave-2 pt-md">
+          <h2 className="mb-4 text-4xl text-almost-white">Bookings</h2>
+          {isError && !isLoading && <p>Something went wrong...</p>}
+          {isLoading && !isError && (
+            <Spinner chiliColor="dark-red">Loading...</Spinner>
+          )}
+          <ul className="flex flex-col gap-sm">
+            {bookings &&
+              bookings.map((booking) => {
+                return (
+                  <AdminBookingsTableRow
+                    key={booking._id}
+                    booking={booking}
+                    onEdit={handleEditBooking}
+                    onCancel={handleCancelBooking}
+                  />
+                );
+              })}
+          </ul>
+        </div>
+      </WavySection>
     </>
   );
 };
