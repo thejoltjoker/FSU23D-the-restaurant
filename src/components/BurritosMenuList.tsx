@@ -4,6 +4,7 @@ interface BurritosMenuItemType {
   id: number;
   imageUrl: string;
   title: string;
+  description: string;
 }
 
 interface BurritosMenuListProps {

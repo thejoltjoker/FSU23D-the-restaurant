@@ -6,18 +6,21 @@ const dessertItems = [
     id: 1,
     imageUrl: "dessert-chocochurro-extravaganza.png",
     title: "Chocochurro Extravaganza",
+    description: "woooow",
   },
 
   {
     id: 2,
     imageUrl: "dessert-cinnamon-churro-explosion.png",
     title: "Cinnamon Churro Explosion",
+    description: "woooow",
   },
 
   {
     id: 3,
     imageUrl: "dessert-dulce-de-leche-delight.png",
     title: "Dulce De Leche Delight",
+    description: "woooow",
   },
 ];
 

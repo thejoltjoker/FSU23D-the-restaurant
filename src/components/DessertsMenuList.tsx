@@ -4,6 +4,7 @@ interface DessertsMenuItemType {
   id: number;
   imageUrl: string;
   title: string;
+  description: string;
 }
 
 interface DessertsMenuListProps {

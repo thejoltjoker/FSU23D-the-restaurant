@@ -6,18 +6,24 @@ const burritosItems = [
     id: 1,
     imageUrl: "burrito-bonanza.png",
     title: "Royal Burrito",
+    description:
+      "Savor freshness with our Vegetales Deluxe taco – a garden-inspired delight in every bite.",
   },
 
   {
     id: 2,
     imageUrl: "burrito-baby.png",
     title: "Baby Burrito",
+    description:
+      "Savor freshness with our Vegetales Deluxe taco – a garden-inspired delight in every bite.",
   },
 
   {
     id: 3,
     imageUrl: "burrito-veggie-fiesta.png",
     title: "Veggie Fiesta",
+    description:
+      "Savor freshness with our Vegetales Deluxe taco – a garden-inspired delight in every bite.",
   },
 ];
 
@@ -31,7 +37,7 @@ const BurritosMenu = () => {
           Burritos
         </h2>
 
-        <div className="m-auto flex w-full max-w-screen-lg flex-col p-5 md:flex-row md:gap-5  ">
+        <div className="m-auto flex w-full max-w-screen-lg flex-col p-5  md:flex-row md:gap-5 ">
           <BurritosMenuList items={burritosItems} />
         </div>
       </div>
