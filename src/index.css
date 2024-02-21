@@ -22,7 +22,7 @@
   }
 
   p {
-    @apply text-lg;
+    @apply text-paragraph-sm md:text-paragraph-md lg:text-paragraph-lg;
   }
 }
 

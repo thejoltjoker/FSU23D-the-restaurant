@@ -17,7 +17,7 @@ const Button = ({
 }: IButtonProps) => {
   return (
     <button
-      className={`bg-${bgColor} text-${textColor} rounded-full px-6 py-1.5 shadow-button-${bgColor} grow disabled:bg-stone-500 disabled:shadow-button-disabled`}
+      className={`bg-${bgColor} text-${textColor} rounded-full px-6 py-1.5 shadow-button-${bgColor} disabled:shadow-button-disabled h-fit shrink grow whitespace-nowrap disabled:bg-stone-500`}
       onClick={onClick}
       type={type}
       disabled={disabled}

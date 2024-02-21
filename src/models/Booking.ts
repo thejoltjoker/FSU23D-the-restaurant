@@ -12,7 +12,7 @@ export class Booking {
 
 export interface IBooking {
   _id: string;
-  restaurantID: string;
+  restaurantId: string;
   date: string;
   time: string;
   numberOfGuests: number;
