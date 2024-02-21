@@ -1,4 +1,4 @@
-import TacoMenuList from "./TacoMenuList";
+import BurritosMenuList from "./BurritosMenuList";
 import WavySection from "./WavySection";
 
 const burritosItems = [
@@ -6,21 +6,18 @@ const burritosItems = [
     id: 1,
     imageUrl: "burrito-bonanza.png",
     title: "Royal Burrito",
-    description: "",
   },
 
   {
     id: 2,
     imageUrl: "burrito-baby.png",
     title: "Baby Burrito",
-    description: "",
   },
 
   {
     id: 3,
-    imageUrl: "burrito-big-chunker.png",
-    title: "Big Chunker",
-    description: "",
+    imageUrl: "burrito-veggie-fiesta.png",
+    title: "Veggie Fiesta",
   },
 ];
 
@@ -35,7 +32,7 @@ const BurritosMenu = () => {
         </h2>
 
         <div className="m-auto flex w-full max-w-screen-lg flex-col p-5 md:flex-row md:gap-5  ">
-          <TacoMenuList items={burritosItems} />
+          <BurritosMenuList items={burritosItems} />
         </div>
       </div>
     </section>
