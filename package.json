@@ -12,11 +12,13 @@
     "test:unit": "vitest --root src/"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.202",
     "axios": "^0.27.2",
     "date-fns": "^3.3.1",
     "dotenv": "^16.4.4",
     "leaflet": "^1.9.4",
     "localforage": "^1.10.0",
+    "lodash": "^4.17.21",
     "mapbox-gl": "^3.1.2",
     "match-sorter": "^6.3.4",
     "react": "^18.2.0",
