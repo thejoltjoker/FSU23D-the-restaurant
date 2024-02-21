@@ -12,18 +12,18 @@ const tacoItems = [
 
   {
     id: 2,
-    imageUrl: "taco-spicy-sizzle.png",
-    title: "Taco Delight",
+    imageUrl: "taco-fishermans-catch.png",
+    title: "Taco Del Mar",
     description:
-      "Savor the Taco Delight – a perfect blend of seasoned goodness and zesty toppings.",
+      "Dive into the Taco Del Mar, where the freshness of the sea meets the bold flavors of Mexico in every mouthwatering bite.",
   },
 
   {
     id: 3,
-    imageUrl: "taco-spicy-sizzle.png",
-    title: "Taco Delight",
+    imageUrl: "taco-zesty-veggie-fiesta.png",
+    title: "Vegetales Deluxe",
     description:
-      "Savor the Taco Delight – a perfect blend of seasoned goodness and zesty toppings.",
+      "Savor freshness with our Vegetales Deluxe taco – a garden-inspired delight in every bite.",
   },
 ];
 
