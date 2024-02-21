@@ -14,7 +14,7 @@ interface IBookingReservationProps {
 const BookingReservation = (props: IBookingReservationProps) => {
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [booking, setBooking] = useState<IBooking>(props.booking);
+  const [booking] = useState<IBooking>(props.booking);
 
   const handleCancelBooking = async () => {
     try {
