@@ -29,14 +29,14 @@ const dessertItems = [
 
 const DessertsMenu = () => {
   return (
-    <section className="mt-{100px}">
+    <section className="mt-{100px} " id="dessert">
       <WavySection
         bgColor="dark-red-variant"
         top={true}
         bottom={false}
       ></WavySection>
 
-      <div className=" bg-dark-red-variant pb-24">
+      <div className=" bg-dark-red-variant pb-24 ">
         <h2 className="md:heading-md text-center text-heading-sm text-almost-white lg:text-heading-lg">
           Desserts
         </h2>

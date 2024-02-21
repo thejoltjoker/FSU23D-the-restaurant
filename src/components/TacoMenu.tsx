@@ -29,10 +29,10 @@ const tacoItems = [
 
 const TacoMenu = () => {
   return (
-    <section className="">
+    <section className="" id="taco">
       <WavySection bgColor="orange" top={true} bottom={false}></WavySection>
 
-      <div className=" -mb-[65px] bg-orange pb-24">
+      <div className=" -mb-[65px] bg-orange pb-24 ">
         <h2 className="md:heading-md text-center text-heading-sm text-almost-white lg:text-heading-lg">
           Tacos
         </h2>
