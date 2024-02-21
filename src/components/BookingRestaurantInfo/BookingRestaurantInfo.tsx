@@ -14,7 +14,6 @@ const BookingRestaurantInfo = () => {
     const fetchData = async () => {
       try {
         const restaurantResponse = await getRestaurant(restaurantId);
-        console.log(restaurantResponse);
         if (!ignore) setRestaurant(restaurantResponse);
       } catch (error) {
         console.error("Error while getting restaurant data");
