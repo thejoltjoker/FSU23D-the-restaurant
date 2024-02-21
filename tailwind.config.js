@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       screens: {
-        Mbl: { min: "469px" },
+        mbl: { min: "469px" },
       },
 
       fontFamily: {

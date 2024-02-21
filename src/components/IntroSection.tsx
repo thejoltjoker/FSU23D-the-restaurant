@@ -3,7 +3,7 @@ import OrderButton from "./OrderButton";
 
 const IntroSection = () => {
   return (
-    <div className="h-[1000px] p-5 md:w-2/3">
+    <div className="p-5 md:w-2/3">
       <h1 className="md:heading-md mb-5 mt-5 text-heading-sm lg:text-heading-lg">
         Menu
       </h1>
