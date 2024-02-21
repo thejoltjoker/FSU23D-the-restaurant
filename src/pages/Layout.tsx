@@ -20,6 +20,7 @@ const Layout = () => {
     setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
   }
+
   useEffect(() => {
     if (foodItems) return;
     let ignore = false;

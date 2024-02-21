@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { bookingToUpdateBooking } from "../../helpers/objects";
 import { IBooking } from "../../models/Booking";
 import {
   bookingIsPossible,
@@ -51,13 +52,11 @@ const AdminBookings = () => {
         booking.numberOfGuests,
       )
     ) {
-      const { _id, ...updateBody } = booking;
-      await updateBooking({ ...updateBody, id: _id });
+      await updateBooking(bookingToUpdateBooking(booking));
       setBookings(bookings?.map((b) => (b._id === booking._id ? booking : b)));
     }
   };
   const handleCancelBooking = async (bookingId: string) => {
-    console.log("removing booking", bookingId);
     await deleteBooking(bookingId);
     setBookings(bookings?.filter((booking) => booking._id !== bookingId));
   };
