@@ -5,35 +5,38 @@ const dessertItems = [
   {
     id: 1,
     imageUrl: "dessert-chocochurro-extravaganza.png",
-    title: "Chocochurro Extravaganza",
-    description: "woooow",
+    title: "Chocochurro Extra Vaganza",
+    description:
+      "Indulge in a symphony of flavors with our Chocochurro Extravaganza. A classic churro, reimagined with a luscious chocolate filling.",
   },
 
   {
     id: 2,
     imageUrl: "dessert-cinnamon-churro-explosion.png",
     title: "Cinnamon Churro Explosion",
-    description: "woooow",
+    description:
+      "Experience the burst of warm spices in every bite of our Cinnamon Churro Explosion. Crispy on the outside, soft on the inside.",
   },
 
   {
     id: 3,
     imageUrl: "dessert-dulce-de-leche-delight.png",
     title: "Dulce De Leche Delight",
-    description: "woooow",
+    description:
+      "Surrender to the sweet caress of our Dulce De Leche Delight. Enjoy the creamy, caramelized milk filling that oozes out of a tender, buttery pastry. ",
   },
 ];
 
 const DessertsMenu = () => {
   return (
-    <section className="  ">
+    <section className="mt-{100px}">
       <WavySection
         bgColor="dark-red-variant"
         top={true}
         bottom={false}
       ></WavySection>
 
-      <div className=" bg-dark-red-variant">
+      <div className=" bg-dark-red-variant pb-24">
         <h2 className="md:heading-md text-center text-heading-sm text-almost-white lg:text-heading-lg">
           Desserts
         </h2>

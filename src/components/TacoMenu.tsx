@@ -32,7 +32,7 @@ const TacoMenu = () => {
     <section className="">
       <WavySection bgColor="orange" top={true} bottom={false}></WavySection>
 
-      <div className=" -mb-[65px] bg-orange">
+      <div className=" -mb-[65px] bg-orange pb-24">
         <h2 className="md:heading-md text-center text-heading-sm text-almost-white lg:text-heading-lg">
           Tacos
         </h2>
