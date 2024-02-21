@@ -1,5 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import { getImageUrl } from "../helpers/strings";
+import BookButton from "./BookButton";
+import OrderButton from "./OrderButton";
 
 const HeroSection = () => {
   return (
@@ -34,32 +35,6 @@ const HeroImage = () => {
       />
     </div>
   );
-};
-
-const OrderButton = () => {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate("/menu");
-  };
-
-  return (
-    <button
-      className="rounded-full bg-vivid-orange p-3 px-4 py-2 text-white shadow-md"
-      onClick={handleClick}
-    >
-      Order Here
-    </button>
-  );
-};
-
-const BookButton = () => {
-  const navigate = useNavigate();
-  const handleClick = () => {
-    navigate("/booking");
-  };
-
-  return <button onClick={handleClick}>Book Here</button>;
 };
 
 export default HeroSection;
