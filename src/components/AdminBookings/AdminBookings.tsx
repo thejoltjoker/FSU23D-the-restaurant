@@ -71,8 +71,12 @@ const AdminBookings = () => {
             <Spinner chiliColor="dark-red">Loading...</Spinner>
           )}
           <ul className="flex flex-col gap-sm">
-            {bookings &&
-              bookings.map((booking) => {
+            {bookings?.length === 0 ? (
+              <p className="text-paragraph-sm text-almost-white md:text-paragraph-md lg:text-paragraph-lg">
+                No bookings
+              </p>
+            ) : (
+              bookings?.map((booking) => {
                 return (
                   <AdminBookingsTableRow
                     key={booking._id}
@@ -81,7 +85,8 @@ const AdminBookings = () => {
                     onCancel={handleCancelBooking}
                   />
                 );
-              })}
+              })
+            )}
           </ul>
         </div>
       </WavySection>

@@ -8,6 +8,7 @@ import Spinner from "./Spinner";
 interface IBookingReservationProps {
   booking: IBooking;
   updateReservations: () => void;
+  onCancel: (bookingId: string) => void;
 }
 
 const BookingReservation = (props: IBookingReservationProps) => {
@@ -16,8 +17,15 @@ const BookingReservation = (props: IBookingReservationProps) => {
   const [booking, setBooking] = useState<IBooking>(props.booking);
 
   const handleCancelBooking = async () => {
-    await deleteBooking(booking._id);
-    props.updateReservations();
+    try {
+      setIsLoading(true);
+      await deleteBooking(booking._id);
+      props.onCancel(booking._id);
+      setIsLoading(false);
+    } catch (error) {
+      setIsError(true);
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -43,7 +51,6 @@ const BookingReservation = (props: IBookingReservationProps) => {
         </label>
         <p>{booking.time}</p>
 
-        {isLoading && <Spinner>Updating reservation</Spinner>}
         <div className="col-span-full flex pt-xs">
           <Button
             bgColor={"dark-red"}
@@ -54,6 +61,12 @@ const BookingReservation = (props: IBookingReservationProps) => {
             Cancel reservation
           </Button>
         </div>
+        {isLoading && (
+          <div className="col-span-full pt-xs">
+            <Spinner>Cancelling reservation</Spinner>
+          </div>
+        )}
+
         {isError && "Error"}
       </div>
     </div>

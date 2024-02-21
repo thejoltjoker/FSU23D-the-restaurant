@@ -68,7 +68,11 @@ const Bookingpage = () => {
     };
   });
 
-  const updateReservations = async () => {
+  const handleCancelBooking = (bookingId: string) => {
+    setBookings(bookings?.filter((booking) => booking._id !== bookingId));
+  };
+
+  const updateReservations = () => {
     setBookings(undefined);
   };
 
@@ -97,6 +101,7 @@ const Bookingpage = () => {
                       key={booking._id}
                       booking={booking}
                       updateReservations={updateReservations}
+                      onCancel={handleCancelBooking}
                     />
                   );
                 }
