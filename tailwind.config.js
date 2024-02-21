@@ -17,6 +17,7 @@ export default {
         "paragraph-sm": "1.1rem",
         "paragraph-md": "1.15rem",
         "paragraph-lg": "1.25rem",
+        "heading-menu": "2rem",
         "heading-sm": "3rem",
         "heading-md": "4rem",
         "heading-lg": "4.5rem",
