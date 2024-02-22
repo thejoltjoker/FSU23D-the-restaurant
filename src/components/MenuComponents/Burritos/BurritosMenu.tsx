@@ -1,5 +1,5 @@
+import WavySection from "../../WavySection";
 import BurritosMenuList from "./BurritosMenuList";
-import WavySection from "./WavySection";
 
 const burritosItems = [
   {

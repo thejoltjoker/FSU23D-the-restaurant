@@ -1,8 +1,8 @@
-import BurritosMenu from "../components/BurritosMenu";
-import DessertMenu from "../components/DessertMenu";
 import IntroSection from "../components/IntroSection";
+import BurritosMenu from "../components/MenuComponents/Burritos/BurritosMenu";
+import DessertMenu from "../components/MenuComponents/Burritos/Desserts/DessertMenu";
+import TacoMenu from "../components/MenuComponents/Burritos/Tacos/TacoMenu";
 import MenuNavbar from "../components/MenuNavbar";
-import TacoMenu from "../components/TacoMenu";
 
 const Menupage = () => {
   return (
