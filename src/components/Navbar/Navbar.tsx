@@ -14,20 +14,25 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="h-navbar-sm md:h-navbar-md lg:h-navbar-lg relative mx-auto flex w-full max-w-screen-xl items-center justify-between bg-pale-yellow px-sm">
-        <NavLink to="/" className="z-50">
-          <div className="max-w-logo-sm md:max-w-logo-md lg:max-w-logo-lg opacity-90">
-            <img
-              src={
-                isOpen
-                  ? getImageUrl("logo_white.png")
-                  : getImageUrl("logo_black.png")
-              }
-              alt="Vaca Caliente logo"
-              onClick={isOpen ? toggleNavigation : undefined}
-            />
-          </div>
-        </NavLink>
+      <nav className="relative mx-auto flex h-navbar-sm w-full items-center justify-between bg-pale-yellow px-sm md:h-navbar-md lg:h-navbar-lg">
+        <div className="relative mx-auto flex h-navbar-sm w-full max-w-screen-xl items-center justify-between bg-pale-yellow px-sm md:h-navbar-md lg:h-navbar-lg">
+          <NavLink to="/" className="z-50">
+            <div className="max-w-logo-sm opacity-90 md:max-w-logo-md lg:max-w-logo-lg">
+              <img
+                src={
+                  isOpen
+                    ? getImageUrl("logo_white.png")
+                    : getImageUrl("logo_black.png")
+                }
+                alt="Vaca Caliente logo"
+                onClick={isOpen ? toggleNavigation : undefined}
+              />
+            </div>
+          </NavLink>
+          <label htmlFor="menu" className="z-50">
+            <MenuIcon isOpen={isOpen} />
+          </label>
+        </div>
         <input
           type="checkbox"
           name="menu"
@@ -36,9 +41,6 @@ const Navbar = () => {
           checked={isOpen}
           onChange={toggleNavigation}
         />
-        <label htmlFor="menu" className="z-50">
-          <MenuIcon isOpen={isOpen} />
-        </label>
 
         <div
           className="fixed right-0 z-30 flex h-full w-full flex-col items-center justify-center bg-orange text-almost-white transition-all duration-500"
