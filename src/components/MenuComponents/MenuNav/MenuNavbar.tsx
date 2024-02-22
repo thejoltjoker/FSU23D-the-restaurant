@@ -1,4 +1,4 @@
-import { getImageUrl } from "../helpers/strings";
+import { getImageUrl } from "../../../helpers/strings";
 
 const MenuNavbar = () => {
   return (
