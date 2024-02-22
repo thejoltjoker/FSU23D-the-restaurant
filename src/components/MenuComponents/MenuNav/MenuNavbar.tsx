@@ -1,4 +1,4 @@
-import { getImageUrl } from "../../../helpers/strings";
+import MenuItem from "./MenuItem"; // Adjust the import path as necessary
 
 const MenuNavbar = () => {
   return (
@@ -7,41 +7,12 @@ const MenuNavbar = () => {
      bg-orange-variant md:bottom-auto 
      
      md:left-auto md:right-auto md:top-auto md:h-1/2 
-     md:w-20 md:flex-col md:items-end md:justify-center  md:bg-transparent md:hover:bg-orange-variant "
+     md:w-20 md:flex-col md:items-end md:justify-center md:bg-transparent md:hover:bg-orange-variant "
     >
       <div className="flex w-full justify-between md:h-full md:flex-col md:items-center">
-        <a
-          href="#taco"
-          className="flex w-1/3 items-center justify-center md:w-full"
-        >
-          <img
-            className="max-h-full p-1 opacity-50 hover:p-0 hover:opacity-100"
-            src={getImageUrl("nav-tt.png")}
-            alt="Taco"
-          />
-        </a>
-
-        <a
-          href="#burrito"
-          className="flex w-1/3 items-center justify-center md:w-full"
-        >
-          <img
-            className="max-h-full p-1 opacity-50 hover:p-0 hover:opacity-100"
-            src={getImageUrl("nav-b.png")}
-            alt="Burrito"
-          />
-        </a>
-
-        <a
-          href="#dessert"
-          className="flex w-1/3 items-center justify-center md:w-full"
-        >
-          <img
-            className="max-h-full p-1 opacity-50 hover:p-0 hover:opacity-100"
-            src={getImageUrl("nav-c.png")}
-            alt="Dessert"
-          />
-        </a>
+        <MenuItem href="#taco" imageSrc="nav-tt.png" altText="Taco" />
+        <MenuItem href="#burrito" imageSrc="nav-b.png" altText="Burrito" />
+        <MenuItem href="#dessert" imageSrc="nav-c.png" altText="Dessert" />
       </div>
     </nav>
   );
