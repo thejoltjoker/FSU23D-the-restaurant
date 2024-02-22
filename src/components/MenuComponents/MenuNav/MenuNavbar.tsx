@@ -1,4 +1,4 @@
-import MenuItem from "./MenuItem"; // Adjust the import path as necessary
+import MenuItem from "./MenuItem";
 
 const MenuNavbar = () => {
   return (

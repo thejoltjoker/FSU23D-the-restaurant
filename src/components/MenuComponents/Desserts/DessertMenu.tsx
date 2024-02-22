@@ -1,4 +1,4 @@
-import WavySection from "../../../WavySection";
+import WavySection from "../../WavySection";
 import DessertsMenuList from "./DessertsMenuList";
 
 const dessertItems = [

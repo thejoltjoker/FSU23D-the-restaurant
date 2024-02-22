@@ -1,4 +1,4 @@
-import WavySection from "../../../WavySection";
+import WavySection from "../../WavySection";
 import TacoMenuList from "./TacoMenuList";
 
 const tacoItems = [

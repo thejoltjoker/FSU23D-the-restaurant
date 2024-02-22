@@ -1,4 +1,4 @@
-import { getImageUrl } from "../../../../helpers/strings";
+import { getImageUrl } from "../../../helpers/strings";
 
 interface DessertMenuItemProps {
   imageUrl: string;
