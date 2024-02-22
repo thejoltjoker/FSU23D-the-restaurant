@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { IBooking } from "../models/Booking";
 import { TimeSlots } from "../models/TimeSlots";
@@ -12,10 +12,6 @@ interface IAdminBookingsTableRowProps {
 const AdminBookingsTableRow = (props: IAdminBookingsTableRowProps) => {
   const [isEditable, setIsEditable] = useState(false);
   const [booking, setBooking] = useState<IBooking>(props.booking);
-
-  useEffect(() => {
-    console.log(booking);
-  }, [booking]);
 
   const handleEditBooking = () => {
     props.onEdit(booking);

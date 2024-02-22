@@ -1,25 +1,33 @@
 import { format } from "date-fns";
+import _ from "lodash";
 import { useState } from "react";
 import { Booking } from "../../models/Booking";
-import { Customer } from "../../models/Customer";
+import { Customer, ICustomer } from "../../models/Customer";
 import { ICreateBookingResponse } from "../../models/ICreateBookingResponse";
+import { TimeSlots } from "../../models/TimeSlots";
+import { setCustomerIdToLocalStorage } from "../../services/booking";
 import {
   createBooking,
   getAvailableTimeSlots,
+  getBooking,
   restaurantId,
 } from "../../services/restaurant";
 import BookingFormCustomer from "../BookingFormCustomer";
 import Button from "../Button";
 import Spinner from "../Spinner";
 import "./BookingForm.css";
-const BookingForm = () => {
+interface IBookingFormProps {
+  customer: ICustomer | undefined;
+  updateReservations: () => void;
+}
+const BookingForm = (props: IBookingFormProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [isMakingReservation, setIsMakingReservation] = useState(false);
   const [gdprIsChecked, setGdprIsChecked] = useState(false);
   const [bookingResponse, setBookingResponse] =
     useState<ICreateBookingResponse>();
   const [timeSlots, setTimeSlots] = useState<string[]>();
-
   const [booking, setBooking] = useState<Booking>(
     new Booking(
       restaurantId,
@@ -33,7 +41,7 @@ const BookingForm = () => {
   const formIsValid = () => {
     return (
       booking.date != "" &&
-      booking.time != "" &&
+      _.includes(Object.values(TimeSlots), booking.time) &&
       booking.numberOfGuests > 0 &&
       booking.customer.email != "" &&
       booking.customer.name != "" &&
@@ -50,18 +58,23 @@ const BookingForm = () => {
       date,
       numberOfGuests,
     );
-    console.log(booking);
     setTimeSlots(slots);
     setIsLoading(false);
   };
 
   const handleDateChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    setBooking({ ...booking, date: e.currentTarget.value });
+    setTimeSlots(undefined);
+    setBooking({ ...booking, date: e.currentTarget.value, time: "" });
     await getTimeSlots(e.currentTarget.value, booking.numberOfGuests);
   };
 
   const handleGuestsChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    setBooking({ ...booking, numberOfGuests: Number(e.currentTarget.value) });
+    setTimeSlots(undefined);
+    setBooking({
+      ...booking,
+      numberOfGuests: Number(e.currentTarget.value),
+      time: "",
+    });
     await getTimeSlots(booking.date, Number(e.currentTarget.value));
   };
 
@@ -69,35 +82,78 @@ const BookingForm = () => {
     e: React.MouseEvent<HTMLButtonElement>,
   ) => {
     e.preventDefault();
+    setTimeSlots(undefined);
     await getTimeSlots(booking.date, booking.numberOfGuests);
     setBooking({ ...booking, time: "" });
   };
 
   const handleTimeSlotClick = (e: React.MouseEvent<HTMLInputElement>) => {
-    setBooking({ ...booking, time: e.currentTarget.value });
+    const time = e.currentTarget.value;
+    if (props.customer) {
+      setBooking({
+        ...booking,
+        time: time,
+        customer: {
+          name: props.customer?.name ?? "",
+          lastname: props.customer?.lastname ?? "",
+          email: props.customer?.email ?? "",
+          phone: props.customer?.phone ?? "",
+        },
+      });
+    } else {
+      setBooking({ ...booking, time: time });
+    }
   };
 
   const handleCustomerChange = (customer: Customer) => {
     setBooking({ ...booking, customer });
   };
 
+  const resetForm = () => {
+    setBooking(
+      new Booking(
+        restaurantId,
+        format(new Date(), "yyyy-MM-dd"),
+        "",
+        2,
+        new Customer(
+          props.customer?.name ?? "",
+          props.customer?.lastname ?? "",
+          props.customer?.email ?? "",
+          props.customer?.phone ?? "",
+        ),
+      ),
+    );
+    setBookingResponse(undefined);
+    setTimeSlots(undefined);
+    setGdprIsChecked(false);
+  };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
+    setIsMakingReservation(true);
     try {
       const response = await createBooking(booking);
-      console.log(response);
       setBookingResponse(response);
+      if (response) {
+        const newBooking = await getBooking(response.insertedId);
+        if (newBooking) {
+          setCustomerIdToLocalStorage(newBooking.customerId);
+        }
+      }
+      props.updateReservations();
       setIsLoading(false);
-      console.log(booking);
+      setIsMakingReservation(false);
+      resetForm();
     } catch (error) {
       setIsLoading(false);
+      setIsMakingReservation(false);
       setIsError(true);
     }
   };
 
   return (
-    <div className="rounded-xl bg-almost-white px-sm py-md text-slate-800 booking-form">
+    <div className="booking-form rounded-xl bg-almost-white px-sm py-md text-slate-800">
       <h3 className="pb-sm text-3xl">Make a reservation</h3>
 
       <form onSubmit={handleSubmit} className="booking-form">
@@ -107,6 +163,7 @@ const BookingForm = () => {
               Date:
             </label>
             <input
+              min={format(new Date(), "yyyy-MM-dd")}
               type="date"
               name="date"
               id="date"
@@ -141,6 +198,7 @@ const BookingForm = () => {
           </Button>
         </div>
         {isLoading && !timeSlots && <Spinner>Looking for slots</Spinner>}
+
         {timeSlots && !bookingResponse ? (
           <>
             <div className="time-slots my-sm">
@@ -167,6 +225,7 @@ const BookingForm = () => {
             </div>
           </>
         ) : null}
+
         {booking.time != "" && !bookingResponse ? (
           <>
             <BookingFormCustomer
@@ -191,14 +250,16 @@ const BookingForm = () => {
                 bgColor={"orange"}
                 textColor={"almost-white"}
                 type="submit"
-                disabled={!formIsValid()}
+                disabled={!formIsValid() || isLoading}
               >
                 Create reservation
               </Button>
             </div>
           </>
         ) : null}
-        {isLoading && formIsValid() && <Spinner>Making reservation</Spinner>}
+        {isMakingReservation && formIsValid() && (
+          <Spinner>Making reservation</Spinner>
+        )}
         {isError && "Error"}
       </form>
     </div>

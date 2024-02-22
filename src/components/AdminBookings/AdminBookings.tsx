@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { bookingToUpdateBooking } from "../../helpers/objects";
 import { IBooking } from "../../models/Booking";
 import {
   bookingIsPossible,
@@ -51,13 +52,11 @@ const AdminBookings = () => {
         booking.numberOfGuests,
       )
     ) {
-      const { _id, ...updateBody } = booking;
-      await updateBooking({ ...updateBody, id: _id });
+      await updateBooking(bookingToUpdateBooking(booking));
       setBookings(bookings?.map((b) => (b._id === booking._id ? booking : b)));
     }
   };
   const handleCancelBooking = async (bookingId: string) => {
-    console.log("removing booking", bookingId);
     await deleteBooking(bookingId);
     setBookings(bookings?.filter((booking) => booking._id !== bookingId));
   };
@@ -72,8 +71,12 @@ const AdminBookings = () => {
             <Spinner chiliColor="dark-red">Loading...</Spinner>
           )}
           <ul className="flex flex-col gap-sm">
-            {bookings &&
-              bookings.map((booking) => {
+            {bookings?.length === 0 ? (
+              <p className="text-paragraph-sm text-almost-white md:text-paragraph-md lg:text-paragraph-lg">
+                No bookings
+              </p>
+            ) : (
+              bookings?.map((booking) => {
                 return (
                   <AdminBookingsTableRow
                     key={booking._id}
@@ -82,7 +85,8 @@ const AdminBookings = () => {
                     onCancel={handleCancelBooking}
                   />
                 );
-              })}
+              })
+            )}
           </ul>
         </div>
       </WavySection>

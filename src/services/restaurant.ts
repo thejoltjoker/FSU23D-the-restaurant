@@ -257,8 +257,6 @@ export const bookingIsPossible = async (
       seatsPerTable,
     );
   }
-  console.log("availableTables:", availableTables);
-  console.log("requestedTables:", requestedTables);
 
   return requestedTables <= availableTables;
 };

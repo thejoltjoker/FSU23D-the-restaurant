@@ -59,15 +59,23 @@ const AdminCustomers = () => {
             <h2 className="mb-4 text-4xl text-almost-white">Customers</h2>
             {isError && !isLoading && <p>Something went wrong...</p>}
             {isLoading && !isError && (
-              <Spinner chiliColor="dark-red">Loading...</Spinner>
+              <Spinner chiliColor="vivid-orange" textColor="almost-white">
+                Loading...
+              </Spinner>
             )}
-            {customers?.map((customer) => (
-              <AdminCustomersListItem
-                key={customer._id}
-                customer={customer}
-                onEdit={handleEditCustomer}
-              />
-            ))}
+            {customers?.length === 0 ? (
+              <p className="text-paragraph-sm text-almost-white md:text-paragraph-md lg:text-paragraph-lg">
+                No customers
+              </p>
+            ) : (
+              customers?.map((customer) => (
+                <AdminCustomersListItem
+                  key={customer._id}
+                  customer={customer}
+                  onEdit={handleEditCustomer}
+                />
+              ))
+            )}
           </div>
         </WavySection>
       </div>

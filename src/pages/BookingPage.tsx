@@ -1,14 +1,57 @@
+import _ from "lodash";
 import { useEffect, useState } from "react";
 import Downloadapp from "../components/BookingComponents/BookingApp";
 import BookingHeroImg from "../components/BookingComponents/BookingHeroImg";
 import BookingForm from "../components/BookingForm";
+import BookingReservation from "../components/BookingReservation";
 import BookingRestaurantInfo from "../components/BookingRestaurantInfo/BookingRestaurantInfo";
 import "../components/CreateBooking/CreateBooking.css";
 import WavySection from "../components/WavySection";
+import { IBooking } from "../models/Booking";
+import { ICustomer } from "../models/Customer";
 import { IRestaurant } from "../models/IRestaurant";
-import { getRestaurant, restaurantId } from "../services/restaurant";
+import { getCustomerIdFromLocalStorage } from "../services/booking";
+import {
+  getCustomer,
+  getRestaurant,
+  getRestaurantBookings,
+  restaurantId,
+} from "../services/restaurant";
 const Bookingpage = () => {
   const [restaurant, setRestaurant] = useState<IRestaurant>();
+  const [bookings, setBookings] = useState<IBooking[]>();
+  const [customer, setCustomer] = useState<ICustomer>();
+
+  useEffect(() => {
+    const customerId = getCustomerIdFromLocalStorage();
+    if (customer || customerId === "") return;
+    let ignore = false;
+    getCustomer(customerId)
+      .then((response) => {
+        if (!ignore) {
+          setCustomer(response);
+        }
+      })
+      .catch((error) => console.error(error));
+    return () => {
+      ignore = true;
+    };
+  });
+
+  useEffect(() => {
+    if (bookings) return;
+    let ignore = false;
+    getRestaurantBookings(restaurantId)
+      .then((response) => {
+        if (!ignore) {
+          setBookings(_.sortBy(response, ["date", "time"]));
+        }
+      })
+      .catch((error) => console.error(error));
+    return () => {
+      ignore = true;
+    };
+  });
 
   useEffect(() => {
     if (restaurant) return;
@@ -16,7 +59,6 @@ const Bookingpage = () => {
     getRestaurant(restaurantId)
       .then((response) => {
         if (!ignore) {
-          console.log(response);
           setRestaurant(response);
         }
       })
@@ -25,6 +67,14 @@ const Bookingpage = () => {
       ignore = true;
     };
   });
+
+  const handleCancelBooking = (bookingId: string) => {
+    setBookings(bookings?.filter((booking) => booking._id !== bookingId));
+  };
+
+  const updateReservations = () => {
+    setBookings(undefined);
+  };
 
   return (
     <>
@@ -39,8 +89,23 @@ const Bookingpage = () => {
             <div className="shrink grow basis-full pb-lg md:basis-1/3">
               <BookingRestaurantInfo />
             </div>
-            <div className="shrink grow basis-full pb-lg md:basis-1/3">
-              <BookingForm />
+            <div className="flex shrink grow basis-full flex-col gap-sm pb-lg md:basis-1/3">
+              <BookingForm
+                updateReservations={updateReservations}
+                customer={customer}
+              />
+              {bookings?.map((booking) => {
+                if (booking.customerId === getCustomerIdFromLocalStorage()) {
+                  return (
+                    <BookingReservation
+                      key={booking._id}
+                      booking={booking}
+                      updateReservations={updateReservations}
+                      onCancel={handleCancelBooking}
+                    />
+                  );
+                }
+              })}
             </div>
           </div>
         </div>

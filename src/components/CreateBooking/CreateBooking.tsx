@@ -1,4 +1,4 @@
-import { useState, FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import { Booking } from "../../models/Booking";
 import { Customer } from "../../models/Customer";
 import { ICreateBookingResponse } from "../../models/ICreateBookingResponse";
@@ -23,10 +23,8 @@ const CreateBooking = () => {
     setIsLoading(true);
     try {
       const response = await createBooking(inputValue);
-      console.log(response);
       setBooking(response);
       setIsLoading(false);
-      console.log(inputValue);
     } catch (error) {
       setIsLoading(false);
       setIsError(true);
