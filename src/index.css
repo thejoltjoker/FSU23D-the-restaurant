@@ -49,4 +49,8 @@
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
+
+  .paragraph-text-size{
+    @apply text-paragraph-sm md:text-paragraph-md lg:text-paragraph-lg
+  }
 }

@@ -22,16 +22,16 @@ const Contactpage = () => {
 
   return (
     <>
-      <div className="-mb-wave">
+      <div className="relative z-30 -mb-wave">
         <WavySection
           bgColor="pale-yellow"
-          waveIdTop={1}
-          waveIdBottom={2}
+          waveIdTop={4}
+          waveIdBottom={5}
           top={false}
           bottom={true}
         >
-          <div className="items-center pl-md pt-md">
-            <h1 className="text-4xl sm:text-7xl">Where are we?</h1>
+          <div className="mx-auto max-w-screen-lg items-center pt-wave">
+            <h2 className="text-4xl sm:text-7xl">Where are we?</h2>
             <p className="mb-8 mt-8 w-3/4 text-xl">
               We find ourselves in the midst of Stockholm's hustle and bustle,
               where the beautiful bridges intersect and where meatballs meet
@@ -42,69 +42,67 @@ const Contactpage = () => {
         </WavySection>
       </div>
 
-      <div id="map" className="h-[500px] w-full"></div>
+      <div id="map" className="h-map relative z-0 w-full"></div>
       <div className="-m-wave mx-auto flex flex-col">
         <WavySection
           bgColor="dark-green"
-          waveIdTop={1}
+          waveIdTop={7}
           waveIdBottom={2}
           top={true}
           bottom={false}
         >
-          <div className="flex flex-col justify-center pl-xl sm:flex-row">
-            <div className="flex flex-col items-center">
-              <h4 className="mt-8 text-4xl text-almost-white">Contact us</h4>
-              <div className="mt-4 flex flex-col">
-                <div className="flex">
-                  <FaMapPin className="mr-1 text-almost-white" />
-                  <p className=" text-m text-almost-white">
-                    Mexikanska gatan 1
+          <div className="paragraph-text-size mx-auto flex max-w-screen-lg py-sm pb-xl  text-almost-white">
+            <div className="flex shrink grow flex-col items-center">
+              <h2 className="my-sm text-4xl lg:text-5xl">Contact us</h2>
+              <div className="flex flex-col gap-sm">
+                <div className="flex gap-xs">
+                  <FaMapPin className="mt-1" />
+                  <p className="paragraph-text-size">
+                    Mexikanska gatan 1 <br />
+                    723 52 Stockholm
                   </p>
                 </div>
-                <p className="text-m text-almost-white">723 52 Stockholm</p>
-              </div>
-              <div className="mt-3 flex">
-                <FaPhoneAlt className="mr-1 text-almost-white" />
-                <p className="text-m text-almost-white">+46 123 46 78 90</p>
-              </div>
-              <div className="mb-5 mt-3 flex flex-row">
-                <FaEnvelope className="mr-1 text-almost-white" />
-                <p className="text-m text-almost-white">info.vacacaliente.se</p>
+                <div className="flex items-center gap-xs">
+                  <FaPhoneAlt />
+                  <p className="paragraph-text-size">+46 123 46 78 90</p>
+                </div>
+                <div className="flex items-center gap-xs">
+                  <FaEnvelope />
+                  <p className="paragraph-text-size">info.vacacaliente.se</p>
+                </div>
               </div>
             </div>
-            <div className="flex w-full flex-grow flex-col items-center">
-              <h4 className="mt-6 text-4xl text-pale-yellow-variant">
-                Working hours
-              </h4>
+            <div className="paragraph-text-size flex shrink grow flex-col items-center text-almost-white">
+              <h2 className="my-sm text-4xl lg:text-5xl">Working hours</h2>
               <table className=" mb-xl">
                 <tbody>
-                  <tr className="mt-1  text-pale-yellow-variant">
-                    <td>Mon</td>
-                    <td>18:00 - 00:00</td>
+                  <tr className="mt-1">
+                    <td className="pr-sm">Mon</td>
+                    <td className="text-pale-yellow">18:00 - 00:00</td>
                   </tr>
-                  <tr className="mt-1  text-pale-yellow-variant">
+                  <tr className="mt-1">
                     <td>Tue</td>
-                    <td>18:00 - 00:00</td>
+                    <td className="text-pale-yellow">18:00 - 00:00</td>
                   </tr>
-                  <tr className="mt-1  text-pale-yellow-variant">
+                  <tr className="mt-1">
                     <td>Wed</td>
-                    <td>18:00 - 00:00</td>
+                    <td className="text-pale-yellow">18:00 - 00:00</td>
                   </tr>
-                  <tr className="mt-1  text-pale-yellow-variant">
+                  <tr className="mt-1">
                     <td>Thu</td>
-                    <td>18:00 - 00:00</td>
+                    <td className="text-pale-yellow">18:00 - 00:00</td>
                   </tr>
-                  <tr className="mt-1  text-pale-yellow-variant">
+                  <tr className="mt-1">
                     <td>Fri</td>
-                    <td>18:00 - 00:00</td>
+                    <td className="text-pale-yellow">18:00 - 00:00</td>
                   </tr>
-                  <tr className="mt-1  text-pale-yellow-variant">
+                  <tr className="mt-1">
                     <td>Sat</td>
-                    <td>18:00 - 00:00</td>
+                    <td className="text-pale-yellow">18:00 - 00:00</td>
                   </tr>
-                  <tr className="mt-1  text-pale-yellow-variant">
+                  <tr className="mt-1">
                     <td>Sun</td>
-                    <td>18:00 - 00:00</td>
+                    <td className="text-pale-yellow">18:00 - 00:00</td>
                   </tr>
                 </tbody>
               </table>
