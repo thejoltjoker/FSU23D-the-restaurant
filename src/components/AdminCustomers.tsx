@@ -55,7 +55,7 @@ const AdminCustomers = () => {
           waveIdBottom={1}
           bottom={false}
         >
-          <div className="mx-auto max-w-screen-xl px-sm pb-wave-2 pt-md">
+          <div className="mx-auto flex max-w-screen-xl flex-col gap-sm px-sm pb-wave-2 pt-md">
             <h2 className="mb-4 text-4xl text-almost-white">Customers</h2>
             {isError && !isLoading && <p>Something went wrong...</p>}
             {isLoading && !isError && (
@@ -63,6 +63,7 @@ const AdminCustomers = () => {
                 Loading...
               </Spinner>
             )}
+
             {customers?.length === 0 ? (
               <p className="text-paragraph-sm text-almost-white md:text-paragraph-md lg:text-paragraph-lg">
                 No customers
