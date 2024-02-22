@@ -20,10 +20,6 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 
-# Use GitHub secrets
-env:
-  VITE_MAPBOX_TOKEN: ${{ secrets.VITE_MAPBOX_TOKEN }}
-
 jobs:
   # Single deploy job since we're just deploying
   deploy:
@@ -45,7 +41,8 @@ jobs:
         run: npm run test:unit
       - name: Build
         run: npm run build
-
+        env:
+          VITE_MAPBOX_TOKEN: ${{ secrets.VITE_MAPBOX_TOKEN }}
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
