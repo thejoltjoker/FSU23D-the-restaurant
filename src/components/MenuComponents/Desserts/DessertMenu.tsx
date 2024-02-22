@@ -1,5 +1,5 @@
+import WavySection from "../../WavySection";
 import DessertsMenuList from "./DessertsMenuList";
-import WavySection from "./WavySection";
 
 const dessertItems = [
   {

@@ -1,5 +1,5 @@
-import BookButton from "./BookButton";
-import OrderButton from "./OrderButton";
+import BookButton from "../BookButton";
+import OrderButton from "../OrderButton";
 
 const IntroSection = () => {
   return (

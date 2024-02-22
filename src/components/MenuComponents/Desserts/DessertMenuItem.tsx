@@ -1,4 +1,4 @@
-import { getImageUrl } from "../helpers/strings";
+import { getImageUrl } from "../../../helpers/strings";
 
 interface DessertMenuItemProps {
   imageUrl: string;
@@ -12,10 +12,10 @@ const DessertMenuItem = ({
   description,
 }: DessertMenuItemProps) => {
   return (
-    <div className="mbl:w-2/3 mbl:m-auto max-h-1/2 md:w-full">
+    <div className="max-h-1/2 md:w-full mbl:m-auto mbl:w-2/3">
       <img className="m-auto w-3/4" src={getImageUrl(imageUrl)} alt={title} />
       <div className="rounded-md   bg-white p-5 text-dark-red">
-        <h3 className="text-heading-menu mb-5 text-center">{title}</h3>
+        <h3 className="mb-5 text-center text-heading-menu">{title}</h3>
         <p className="md:paragraph-md text-paragraph-sm">{description}</p>
       </div>
     </div>
