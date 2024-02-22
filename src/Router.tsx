@@ -1,4 +1,4 @@
-import { createBrowserRouter, createHashRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import AdminPage from "./pages/AdminPage";
 import BookingPage from "./pages/BookingPage";
 import ContactPage from "./pages/ContactPage";
@@ -8,11 +8,7 @@ import Layout from "./pages/Layout";
 import MenuPage from "./pages/MenuPage";
 import StylesPage from "./pages/StylesPage";
 
-const createRouterFunction = import.meta.env.DEV
-  ? createBrowserRouter
-  : createHashRouter;
-
-export const router = createRouterFunction(
+export const router = createBrowserRouter(
   [
     {
       path: "/",
