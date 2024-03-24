@@ -43,5 +43,5 @@ export const router = createBrowserRouter(
       ],
     },
   ],
-  { basename: "/the-restaurant-grupp1/" },
+  { basename: "/FSU23D-the-restaurant/" },
 );
